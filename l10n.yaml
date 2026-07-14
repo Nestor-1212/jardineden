@@ -9,7 +9,8 @@
 #
 # SALIDA: lib/l10n/generated/ (excluida del análisis estático)
 # CLASE GENERADA: AppLocalizations
-# USO EN WIDGETS: AppLocalizations.of(context)!.appTitle
+# USO EN WIDGETS: context.l10n.appTitle  (via extension)
+#                 AppLocalizations.of(context).appTitle
 # ============================================================
 
 # Directorio donde viven los archivos .arb (fuente de verdad)
@@ -18,7 +19,8 @@ arb-dir: lib/l10n
 # Nombre del archivo de salida principal
 output-localization-file: app_localizations.dart
 
-# Directorio de salida de los archivos generados
+# Directorio de salida de los archivos generados.
+# Con synthetic-package: false, los archivos van aquí como Dart regulares.
 output-dir: lib/l10n/generated
 
 # Clase principal generada
@@ -27,13 +29,15 @@ output-class: AppLocalizations
 # Idioma fuente de verdad (todos los textos nuevos van aquí primero)
 template-arb-file: app_es.arb
 
-# Idiomas soportados en orden de prioridad
+# Idiomas soportados
 # es: Español (primario — lanzamiento inicial)
-# en: Inglés (Año 4 del roadmap)
-# pt: Portugués (Año 4 del roadmap)
+# en: Inglés (preparado — Año 4 del roadmap)
+# pt: Portugués (preparado — Año 4 del roadmap)
 
-# Genera salida nullable-safe
+# Genera salida nullable-safe: AppLocalizations.of(context) sin !
 nullable-getter: false
 
-# Usar sintaxis preferida de ICU para plurales y géneros
+# Carga todos los strings al inicio — en mobile no hay ventaja en diferir
 use-deferred-loading: false
+
+# output-dir ya controla el destino de los archivos generados.

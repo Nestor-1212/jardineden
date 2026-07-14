@@ -46,7 +46,7 @@ analyzer:
     - '**/*.g.dart'
     - '**/*.freezed.dart'
     - '**/*.gen.dart'
-    - 'lib/l10n/app_localizations*.dart'
+    - 'lib/l10n/generated/**'
 
 linter:
   rules:

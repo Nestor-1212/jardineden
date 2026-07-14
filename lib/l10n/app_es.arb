@@ -1,59 +1,1108 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2026-07-12",
+  "@@last_modified": "2026-07-13",
 
   "appTitle": "Jardín del Edén",
   "@appTitle": {
-    "description": "Nombre completo de la aplicación mostrado en el sistema."
+    "description": "Nombre completo de la aplicación."
   },
 
-  "appSubtitle": "Videojuego educativo bíblico",
-  "@appSubtitle": {
-    "description": "Subtítulo de la aplicación en pantallas de presentación."
+  "appTagline": "Explora la Biblia, un jardín a la vez",
+  "@appTagline": {
+    "description": "Frase que captura la esencia del juego. Mostrada en splash y onboarding."
   },
 
-  "loading": "Cargando...",
-  "@loading": {
-    "description": "Texto genérico de carga mientras el sistema inicializa."
+  "appVersionDisplay": "Versión {version}",
+  "@appVersionDisplay": {
+    "description": "Cadena de versión mostrada en Ajustes > Acerca de.",
+    "placeholders": {
+      "version": { "type": "String" }
+    }
   },
+
+  "actionSave": "Guardar",
+  "@actionSave": { "description": "Botón para guardar cambios." },
+
+  "actionCancel": "Cancelar",
+  "@actionCancel": { "description": "Botón para cancelar la operación actual." },
+
+  "actionConfirm": "Confirmar",
+  "@actionConfirm": { "description": "Botón de confirmación en diálogos de acción crítica." },
+
+  "actionDelete": "Eliminar",
+  "@actionDelete": { "description": "Botón de eliminar. Siempre acompañado de un diálogo de confirmación." },
+
+  "actionEdit": "Editar",
+  "@actionEdit": { "description": "Botón para entrar al modo de edición." },
+
+  "actionBack": "Regresar",
+  "@actionBack": { "description": "Botón para navegar a la pantalla anterior." },
+
+  "actionClose": "Cerrar",
+  "@actionClose": { "description": "Botón para cerrar un modal, bottom sheet o diálogo." },
+
+  "actionRetry": "Reintentar",
+  "@actionRetry": { "description": "Botón para reintentar una operación fallida." },
+
+  "actionNext": "Siguiente",
+  "@actionNext": { "description": "Botón para avanzar al siguiente paso en un flujo." },
+
+  "actionPrev": "Anterior",
+  "@actionPrev": { "description": "Botón para retroceder un paso en un flujo." },
+
+  "actionSkip": "Omitir",
+  "@actionSkip": { "description": "Botón para saltar un paso opcional (onboarding, tutorial)." },
+
+  "actionDone": "Listo",
+  "@actionDone": { "description": "Botón para completar una acción o flujo." },
+
+  "actionContinue": "Continuar",
+  "@actionContinue": { "description": "Botón de acción primaria para continuar el flujo actual." },
+
+  "actionStart": "Comenzar",
+  "@actionStart": { "description": "Botón para iniciar un juego, capítulo o actividad por primera vez." },
+
+  "actionPlay": "Jugar",
+  "@actionPlay": { "description": "Botón de juego en tarjetas de capítulo y mundo." },
+
+  "actionPause": "Pausar",
+  "@actionPause": { "description": "Botón de pausa durante un minijuego." },
+
+  "actionResume": "Reanudar",
+  "@actionResume": { "description": "Botón para continuar después de pausa." },
+
+  "actionShare": "Compartir",
+  "@actionShare": { "description": "Botón para compartir logros o versículos con la familia." },
+
+  "actionYes": "Sí",
+  "@actionYes": { "description": "Respuesta afirmativa en diálogos." },
+
+  "actionNo": "No",
+  "@actionNo": { "description": "Respuesta negativa en diálogos." },
+
+  "statusLoading": "Cargando…",
+  "@statusLoading": { "description": "Texto del indicador de carga genérico." },
+
+  "statusEmpty": "Nada por aquí todavía",
+  "@statusEmpty": { "description": "Estado vacío genérico cuando no hay datos." },
+
+  "statusError": "Algo salió mal",
+  "@statusError": { "description": "Título genérico de pantalla de error." },
+
+  "statusSuccess": "¡Hecho!",
+  "@statusSuccess": { "description": "Confirmación genérica de éxito." },
+
+  "statusOffline": "Sin conexión",
+  "@statusOffline": { "description": "Indicador de modo sin internet en el HUD." },
+
+  "statusSyncing": "Sincronizando…",
+  "@statusSyncing": { "description": "Indicador mientras se sincronizan datos con la nube." },
+
+  "labelName": "Nombre",
+  "@labelName": { "description": "Etiqueta genérica de campo de nombre." },
+
+  "labelAge": "Edad",
+  "@labelAge": { "description": "Etiqueta genérica de campo de edad." },
+
+  "labelLevel": "Nivel",
+  "@labelLevel": { "description": "Etiqueta de nivel en pantallas de estadísticas." },
+
+  "labelScore": "Puntuación",
+  "@labelScore": { "description": "Etiqueta de puntuación en resultados de minijuego." },
+
+  "labelTime": "Tiempo",
+  "@labelTime": { "description": "Etiqueta genérica de tiempo." },
+
+  "labelTotal": "Total",
+  "@labelTotal": { "description": "Etiqueta de total en resúmenes." },
+
+  "labelCompleted": "Completado",
+  "@labelCompleted": { "description": "Estado de elemento completado." },
+
+  "labelLocked": "Bloqueado",
+  "@labelLocked": { "description": "Estado de elemento bloqueado." },
+
+  "labelNew": "¡Nuevo!",
+  "@labelNew": { "description": "Badge de elemento nuevo no visto." },
+
+  "authWelcomeTitle": "¡Bienvenido al Jardín!",
+  "@authWelcomeTitle": { "description": "Título de la pantalla de bienvenida al seleccionar perfil." },
+
+  "authWelcomeSubtitle": "¿Quién está explorando hoy?",
+  "@authWelcomeSubtitle": { "description": "Subtítulo de la pantalla de selección de perfil." },
+
+  "authProfileCreateTitle": "Crear Explorador",
+  "@authProfileCreateTitle": { "description": "Título del flujo de creación de nuevo perfil." },
+
+  "authProfileCreateSubtitle": "Cuéntanos sobre el nuevo aventurero del jardín",
+  "@authProfileCreateSubtitle": { "description": "Subtítulo que introduce el formulario de creación de perfil." },
+
+  "authProfileNameLabel": "Nombre del explorador",
+  "@authProfileNameLabel": { "description": "Etiqueta del campo de nombre en el formulario de perfil." },
+
+  "authProfileNameHint": "¿Cómo te llamas?",
+  "@authProfileNameHint": { "description": "Texto de sugerencia del campo de nombre." },
+
+  "authProfileNameErrorEmpty": "Por favor escribe tu nombre",
+  "@authProfileNameErrorEmpty": { "description": "Error de validación cuando el nombre está vacío." },
+
+  "authProfileNameErrorTooShort": "El nombre debe tener al menos 2 letras",
+  "@authProfileNameErrorTooShort": { "description": "Error cuando el nombre es demasiado corto." },
+
+  "authProfileNameErrorTooLong": "El nombre no puede tener más de 20 letras",
+  "@authProfileNameErrorTooLong": { "description": "Error cuando el nombre excede el máximo de 20 caracteres." },
+
+  "authProfileAgeLabel": "¿Cuántos años tienes?",
+  "@authProfileAgeLabel": { "description": "Etiqueta del selector de edad." },
+
+  "authProfileAgeHint": "Elige tu edad",
+  "@authProfileAgeHint": { "description": "Texto de sugerencia del selector de edad." },
+
+  "authProfileAgeErrorInvalid": "La edad debe estar entre 4 y 12 años",
+  "@authProfileAgeErrorInvalid": { "description": "Error cuando la edad está fuera del rango permitido (4-12)." },
+
+  "authProfileAvatarTitle": "Elige tu aventurero",
+  "@authProfileAvatarTitle": { "description": "Título del selector de avatar de perfil." },
+
+  "authProfileCount": "{count, plural, =0{Aún no hay exploradores} =1{1 explorador} other{{count} exploradores}}",
+  "@authProfileCount": {
+    "description": "Número de perfiles existentes en la pantalla de selección.",
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+
+  "authProfileMaxReached": "Ya tienes 5 exploradores. Elimina uno para agregar otro.",
+  "@authProfileMaxReached": { "description": "Error cuando se alcanza el límite máximo de 5 perfiles." },
+
+  "authProfileDeleteTitle": "¿Eliminar a {name}?",
+  "@authProfileDeleteTitle": {
+    "description": "Título del diálogo de confirmación de eliminación de perfil.",
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+
+  "authProfileDeleteMessage": "Se perderá todo el progreso de {name} para siempre. Esta acción no puede deshacerse.",
+  "@authProfileDeleteMessage": {
+    "description": "Cuerpo del diálogo de eliminación. Lenguaje claro pero no alarmante.",
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+
+  "authProfileDeleteConfirm": "Sí, eliminar explorador",
+  "@authProfileDeleteConfirm": { "description": "Botón de confirmación de eliminación de perfil." },
+
+  "authPinSetTitle": "Crear PIN parental",
+  "@authPinSetTitle": { "description": "Título del flujo de configuración del PIN parental." },
+
+  "authPinSetSubtitle": "Este PIN protege los ajustes del juego y el panel de padres",
+  "@authPinSetSubtitle": { "description": "Explicación del propósito del PIN parental." },
+
+  "authPinLabel": "PIN de 4 dígitos",
+  "@authPinLabel": { "description": "Etiqueta del campo de entrada del PIN." },
+
+  "authPinConfirmLabel": "Confirmar PIN",
+  "@authPinConfirmLabel": { "description": "Etiqueta del segundo campo del PIN para confirmación." },
+
+  "authPinErrorMismatch": "Los PINs no coinciden. Inténtalo de nuevo.",
+  "@authPinErrorMismatch": { "description": "Error cuando los dos campos de PIN no son iguales." },
+
+  "authPinErrorTooSimple": "Elige un PIN más seguro (evita secuencias como 0000 o 1234)",
+  "@authPinErrorTooSimple": { "description": "Error cuando el PIN es demasiado predecible o simple." },
+
+  "authPinParentTitle": "Panel de Padres",
+  "@authPinParentTitle": { "description": "Título de la pantalla de ingreso del PIN parental." },
+
+  "authPinParentSubtitle": "Ingresa el PIN parental para acceder a los ajustes",
+  "@authPinParentSubtitle": { "description": "Subtítulo de la pantalla de ingreso del PIN." },
+
+  "authPinForgottenMessage": "Si olvidaste el PIN, contacta soporte: support@jardindeleden.com",
+  "@authPinForgottenMessage": { "description": "Mensaje de ayuda cuando el padre no recuerda el PIN." },
+
+  "navHome": "Inicio",
+  "@navHome": { "description": "Etiqueta del tab de inicio en la barra de navegación." },
+
+  "navWorlds": "Mundos",
+  "@navWorlds": { "description": "Etiqueta del tab del mapa de mundos bíblicos." },
+
+  "navMissions": "Misiones",
+  "@navMissions": { "description": "Etiqueta del tab de misiones del día." },
+
+  "navLibrary": "Biblia",
+  "@navLibrary": { "description": "Etiqueta del tab de biblioteca bíblica." },
+
+  "navDiary": "Diario",
+  "@navDiary": { "description": "Etiqueta del tab del diario del explorador." },
+
+  "navRewards": "Logros",
+  "@navRewards": { "description": "Etiqueta del tab de logros y recompensas." },
+
+  "navPet": "Lumi",
+  "@navPet": { "description": "Etiqueta del tab del búho mascota Lumi. No traducir el nombre." },
+
+  "navCollection": "Colección",
+  "@navCollection": { "description": "Etiqueta del tab de colección de ítems." },
+
+  "navStats": "Progreso",
+  "@navStats": { "description": "Etiqueta del tab de estadísticas y progreso." },
+
+  "navSettings": "Ajustes",
+  "@navSettings": { "description": "Etiqueta del tab de configuración." },
+
+  "pageHomeTitle": "Mi Jardín",
+  "@pageHomeTitle": { "description": "Título de la página principal (dashboard) del jugador." },
+
+  "pageWorldsTitle": "Mapa del Jardín",
+  "@pageWorldsTitle": { "description": "Título de la página del mapa de mundos bíblicos." },
+
+  "pageMissionsTitle": "Misiones del Día",
+  "@pageMissionsTitle": { "description": "Título de la página de misiones diarias." },
+
+  "pageLibraryTitle": "Biblioteca Bíblica",
+  "@pageLibraryTitle": { "description": "Título de la página de la biblioteca de versículos." },
+
+  "pageDiaryTitle": "Mi Diario",
+  "@pageDiaryTitle": { "description": "Título de la página del diario del explorador." },
+
+  "pageRewardsTitle": "Mis Logros",
+  "@pageRewardsTitle": { "description": "Título de la página de logros y trofeos." },
+
+  "pagePetTitle": "Mi Amigo Lumi",
+  "@pagePetTitle": { "description": "Título de la página de interacción con la mascota Lumi." },
+
+  "pageCollectionTitle": "Mi Colección",
+  "@pageCollectionTitle": { "description": "Título de la página de inventario y colección de ítems." },
+
+  "pageStatsTitle": "Mi Progreso",
+  "@pageStatsTitle": { "description": "Título de la página de estadísticas del jugador." },
+
+  "pageSettingsTitle": "Ajustes",
+  "@pageSettingsTitle": { "description": "Título de la página de configuración." },
+
+  "pageInventoryTitle": "Inventario",
+  "@pageInventoryTitle": { "description": "Título de la página de inventario completo." },
+
+  "hudLevel": "Nv. {level}",
+  "@hudLevel": {
+    "description": "Indicador de nivel del jugador en el HUD. 'Nv.' es abreviación de Nivel.",
+    "placeholders": {
+      "level": { "type": "int" }
+    }
+  },
+
+  "hudStreakDays": "{count, plural, =1{{count} día seguido} other{{count} días seguidos}}",
+  "@hudStreakDays": {
+    "description": "Contador de racha de días consecutivos en el HUD.",
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+
+  "hudDailyLimitReached": "¡Límite diario alcanzado! Vuelve mañana 🌙",
+  "@hudDailyLimitReached": { "description": "Mensaje cuando el jugador alcanza el límite de tiempo diario configurado por los padres." },
+
+  "hudCurrencyLuzSingular": "Semilla de Luz",
+  "@hudCurrencyLuzSingular": { "description": "Nombre singular de la moneda principal (XP) del juego." },
+
+  "hudCurrencyLuzPlural": "Semillas de Luz",
+  "@hudCurrencyLuzPlural": { "description": "Nombre plural de la moneda principal del juego." },
+
+  "hudCurrencySabiduriaSingular": "Pergamino de Sabiduría",
+  "@hudCurrencySabiduriaSingular": { "description": "Nombre singular de la moneda de sabiduría." },
+
+  "hudCurrencySabiduriaPlural": "Pergaminos de Sabiduría",
+  "@hudCurrencySabiduriaPlural": { "description": "Nombre plural de la moneda de sabiduría." },
+
+  "hudCurrencyJordanSingular": "Piedra del Jordán",
+  "@hudCurrencyJordanSingular": { "description": "Nombre singular de la moneda del Jordán." },
+
+  "hudCurrencyJordanPlural": "Piedras del Jordán",
+  "@hudCurrencyJordanPlural": { "description": "Nombre plural de la moneda del Jordán." },
+
+  "hudCurrencyAbraamSingular": "Estrella de Abraam",
+  "@hudCurrencyAbraamSingular": { "description": "Nombre singular de la moneda premium de Abraam." },
+
+  "hudCurrencyAbraamPlural": "Estrellas de Abraam",
+  "@hudCurrencyAbraamPlural": { "description": "Nombre plural de la moneda premium." },
+
+  "hudXpGained": "+{amount} Semillas de Luz",
+  "@hudXpGained": {
+    "description": "Notificación flotante de XP ganado en el HUD.",
+    "placeholders": {
+      "amount": { "type": "int" }
+    }
+  },
+
+  "hudLevelUp": "¡Subiste al nivel {level}!",
+  "@hudLevelUp": {
+    "description": "Mensaje de subida de nivel. Se muestra en animación de celebración.",
+    "placeholders": {
+      "level": { "type": "int" }
+    }
+  },
+
+  "tierQuerubin": "Querubín",
+  "@tierQuerubin": { "description": "Nombre del nivel de edad 4-6 años." },
+
+  "tierQuerubiAgeRange": "4 a 6 años",
+  "@tierQuerubiAgeRange": { "description": "Rango de edad del nivel Querubín." },
+
+  "tierDiscipulo": "Discípulo",
+  "@tierDiscipulo": { "description": "Nombre del nivel de edad 7-9 años." },
+
+  "tierDiscipuloAgeRange": "7 a 9 años",
+  "@tierDiscipuloAgeRange": { "description": "Rango de edad del nivel Discípulo." },
+
+  "tierApostol": "Apóstol",
+  "@tierApostol": { "description": "Nombre del nivel de edad 10-12 años." },
+
+  "tierApostolAgeRange": "10 a 12 años",
+  "@tierApostolAgeRange": { "description": "Rango de edad del nivel Apóstol." },
+
+  "rarityBarro": "Barro",
+  "@rarityBarro": { "description": "Rareza 1/6 (más común). Referencia bíblica: el barro del que fuimos formados (Génesis 2:7)." },
+
+  "rarityBronce": "Bronce",
+  "@rarityBronce": { "description": "Rareza 2/6." },
+
+  "rarityPlata": "Plata",
+  "@rarityPlata": { "description": "Rareza 3/6." },
+
+  "rarityOro": "Oro",
+  "@rarityOro": { "description": "Rareza 4/6." },
+
+  "rarityOnix": "Ónix",
+  "@rarityOnix": { "description": "Rareza 5/6. Ónix con tilde en español." },
+
+  "rarityGloria": "Gloria",
+  "@rarityGloria": { "description": "Rareza 6/6 (máxima). Reservado para logros especiales y versículos 'Grabados en el Corazón'." },
+
+  "world01Name": "El Jardín de Edén",
+  "@world01Name": { "description": "Nombre del Mundo 1: Génesis y la Creación." },
+
+  "world01Description": "En el principio, Dios creó los cielos y la tierra",
+  "@world01Description": { "description": "Descripción del Mundo 1. Referencia a Génesis 1:1." },
+
+  "world02Name": "El Gran Diluvio",
+  "@world02Name": { "description": "Nombre del Mundo 2: Noé y el Diluvio." },
+
+  "world02Description": "Noé y el arca que salvó la vida sobre la tierra",
+  "@world02Description": { "description": "Descripción del Mundo 2." },
+
+  "world03Name": "El Llamado de Abraam",
+  "@world03Name": { "description": "Nombre del Mundo 3: Abraam (Génesis 12-25)." },
+
+  "world03Description": "El padre de la fe respondió al llamado de Dios",
+  "@world03Description": { "description": "Descripción del Mundo 3." },
+
+  "world04Name": "La Promesa",
+  "@world04Name": { "description": "Nombre del Mundo 4: Isaac, Jacob y las tribus." },
+
+  "world04Description": "Isaac, Jacob y las doce tribus de Israel",
+  "@world04Description": { "description": "Descripción del Mundo 4." },
+
+  "world05Name": "El Sueño de José",
+  "@world05Name": { "description": "Nombre del Mundo 5: José en Egipto." },
+
+  "world05Description": "De la prisión al palacio: la historia de José en Egipto",
+  "@world05Description": { "description": "Descripción del Mundo 5." },
+
+  "world06Name": "La Gran Liberación",
+  "@world06Name": { "description": "Nombre del Mundo 6: Moisés y el Éxodo." },
+
+  "world06Description": "Moisés y el Éxodo del pueblo de Dios",
+  "@world06Description": { "description": "Descripción del Mundo 6." },
+
+  "world07Name": "El Rey y el Poeta",
+  "@world07Name": { "description": "Nombre del Mundo 7: David y Salomón." },
+
+  "world07Description": "David y Salomón: el corazón del reino de Israel",
+  "@world07Description": { "description": "Descripción del Mundo 7." },
+
+  "world08Name": "La Profecía",
+  "@world08Name": { "description": "Nombre del Mundo 8: Daniel y Ester." },
+
+  "world08Description": "Daniel y Ester en las cortes de los reyes",
+  "@world08Description": { "description": "Descripción del Mundo 8." },
+
+  "world09Name": "La Voz en la Tormenta",
+  "@world09Name": { "description": "Nombre del Mundo 9: Profetas (Jonás, Elías)." },
+
+  "world09Description": "Jonás, Elías y la voz de Dios en medio de la tormenta",
+  "@world09Description": { "description": "Descripción del Mundo 9." },
+
+  "world10Name": "La Gracia",
+  "@world10Name": { "description": "Nombre del Mundo 10: Jesús y el Nuevo Testamento." },
+
+  "world10Description": "Jesús y sus discípulos: la historia más grande jamás contada",
+  "@world10Description": { "description": "Descripción del Mundo 10." },
+
+  "worldLocked": "Completa el mundo anterior para desbloquear este",
+  "@worldLocked": { "description": "Mensaje de mundo bloqueado en la tarjeta del mapa." },
+
+  "worldCompleted": "¡Mundo completado!",
+  "@worldCompleted": { "description": "Etiqueta de mundo completado en la tarjeta del mapa." },
+
+  "worldInProgress": "En progreso",
+  "@worldInProgress": { "description": "Etiqueta de mundo en progreso (al menos un capítulo iniciado)." },
+
+  "worldChapterCount": "{count, plural, =1{1 capítulo} other{{count} capítulos}}",
+  "@worldChapterCount": {
+    "description": "Número de capítulos en un mundo. Mostrado en la tarjeta del mapa.",
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+
+  "chapterLocked": "Capítulo bloqueado",
+  "@chapterLocked": { "description": "Estado de capítulo bloqueado." },
+
+  "chapterCompleted": "¡Capítulo completado!",
+  "@chapterCompleted": { "description": "Estado de capítulo completado." },
+
+  "chapterStart": "Iniciar capítulo",
+  "@chapterStart": { "description": "Botón para iniciar un capítulo nuevo." },
+
+  "chapterContinue": "Continuar capítulo",
+  "@chapterContinue": { "description": "Botón para continuar un capítulo en progreso." },
+
+  "chapterReplay": "Volver a jugar",
+  "@chapterReplay": { "description": "Botón para repetir un capítulo ya completado." },
+
+  "chapterStars": "{count, plural, =0{Sin estrellas} =1{1 estrella} other{{count} estrellas}}",
+  "@chapterStars": {
+    "description": "Número de estrellas obtenidas en un capítulo (máximo 3).",
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+
+  "verseTitle": "Versículo del Capítulo",
+  "@verseTitle": { "description": "Título de la sección de versículo al terminar un capítulo." },
+
+  "versePracticeTitle": "Práctica del Versículo",
+  "@versePracticeTitle": { "description": "Título de la pantalla de práctica de memorización." },
+
+  "verseMemorizeTitle": "Memoriza este Versículo",
+  "@verseMemorizeTitle": { "description": "Título de la pantalla de presentación del versículo." },
+
+  "verseStatusNew": "Por aprender",
+  "@verseStatusNew": { "description": "Estado de versículo nuevo, aún no estudiado en el Sistema 44." },
+
+  "verseStatusLearning": "Aprendiendo",
+  "@verseStatusLearning": { "description": "Estado de versículo en proceso de memorización activa." },
+
+  "verseStatusReview": "En revisión",
+  "@verseStatusReview": { "description": "Estado de versículo en ciclo de repaso espaciado del Sistema 44." },
+
+  "verseStatusMastered": "Grabado en el Corazón",
+  "@verseStatusMastered": { "description": "Estado máximo de memorización: 5 repasos exitosos en el Sistema 44." },
+
+  "verseGrabadoCorazon": "Grabado en el Corazón",
+  "@verseGrabadoCorazon": { "description": "Nombre del logro máximo de memorización. Referencia a Deuteronomio 6:6." },
+
+  "verseGrabadoCorazonDesc": "¡Este versículo vive en tu corazón para siempre!",
+  "@verseGrabadoCorazonDesc": { "description": "Descripción celebratoria cuando el jugador alcanza el nivel máximo de memorización." },
+
+  "verseNextReview": "Próxima revisión: {date}",
+  "@verseNextReview": {
+    "description": "Fecha de la próxima revisión del Sistema 44. {date} es un string ya formateado por AppDateFormatter.",
+    "placeholders": {
+      "date": { "type": "String" }
+    }
+  },
+
+  "verseReference": "{book} {chapter}:{verse}",
+  "@verseReference": {
+    "description": "Formato de referencia bíblica. Ejemplo: Juan 3:16",
+    "placeholders": {
+      "book": { "type": "String" },
+      "chapter": { "type": "int" },
+      "verse": { "type": "int" }
+    }
+  },
+
+  "verseCount": "{count, plural, =0{Sin versículos} =1{1 versículo} other{{count} versículos}}",
+  "@verseCount": {
+    "description": "Número de versículos. Usado en estadísticas y listas.",
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+
+  "s44Title": "Sistema 44",
+  "@s44Title": { "description": "Nombre del sistema de repaso espaciado. '44' hace referencia al número de días del ciclo completo." },
+
+  "s44Subtitle": "Repaso inteligente de versículos",
+  "@s44Subtitle": { "description": "Descripción corta del Sistema 44 para el jugador." },
+
+  "s44DueNow": "¡Listo para repasar!",
+  "@s44DueNow": { "description": "Texto cuando hay versículos listos para repasar ahora mismo." },
+
+  "s44DueInHours": "{count, plural, =1{En 1 hora} other{En {count} horas}}",
+  "@s44DueInHours": {
+    "description": "Tiempo restante para el próximo repaso en horas.",
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+
+  "s44DueTomorrow": "Mañana",
+  "@s44DueTomorrow": { "description": "El próximo repaso del Sistema 44 está programado para mañana." },
+
+  "s44ReviewComplete": "¡Repasos del día completos!",
+  "@s44ReviewComplete": { "description": "Mensaje de celebración cuando se completan todos los repasos del día." },
+
+  "s44ReviewRemaining": "{count, plural, =1{1 versículo para repasar} other{{count} versículos para repasar}}",
+  "@s44ReviewRemaining": {
+    "description": "Número de versículos pendientes de repaso hoy.",
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+
+  "s44StreakPerfect": "¡Racha perfecta!",
+  "@s44StreakPerfect": { "description": "Mensaje cuando el jugador responde correctamente todos los repasos del día." },
+
+  "vinculumTitle": "Vínculo",
+  "@vinculumTitle": { "description": "Nombre del sistema de relación entre el jugador y los personajes bíblicos." },
+
+  "vinculumLevelLabel": "Nivel {level} de 5",
+  "@vinculumLevelLabel": {
+    "description": "Indicador del nivel actual de vínculo con un personaje bíblico.",
+    "placeholders": {
+      "level": { "type": "int" }
+    }
+  },
+
+  "vinculumLevel0": "Desconocidos",
+  "@vinculumLevel0": { "description": "Nivel 0 de vínculo: el jugador aún no conoce al personaje." },
+
+  "vinculumLevel1": "Conocidos",
+  "@vinculumLevel1": { "description": "Nivel 1 de vínculo: el jugador ha conocido al personaje." },
+
+  "vinculumLevel2": "Amigos",
+  "@vinculumLevel2": { "description": "Nivel 2 de vínculo: amigos en el jardín." },
+
+  "vinculumLevel3": "Compañeros",
+  "@vinculumLevel3": { "description": "Nivel 3 de vínculo: compañeros de aventura." },
+
+  "vinculumLevel4": "Aliados",
+  "@vinculumLevel4": { "description": "Nivel 4 de vínculo: aliados de confianza." },
+
+  "vinculumLevel5": "Inseparables",
+  "@vinculumLevel5": { "description": "Nivel 5/5 (máximo) de vínculo: inseparables para siempre." },
+
+  "feedbackCorrect": "¡Correcto!",
+  "@feedbackCorrect": { "description": "Feedback positivo inmediato en minijuegos." },
+
+  "feedbackIncorrect": "¡Casi! Inténtalo de nuevo",
+  "@feedbackIncorrect": { "description": "Feedback negativo en minijuegos. Tono alentador, nunca punitivo." },
+
+  "feedbackPerfect": "¡Perfecto! Sin ningún error",
+  "@feedbackPerfect": { "description": "Feedback al completar un minijuego sin errores." },
+
+  "feedbackStreak": "{count, plural, =2{¡2 respuestas seguidas!} other{¡{count} respuestas seguidas!}}",
+  "@feedbackStreak": {
+    "description": "Notificación de racha de respuestas correctas consecutivas. Inicia desde 2.",
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+
+  "feedbackTimeUp": "¡Se acabó el tiempo!",
+  "@feedbackTimeUp": { "description": "Mensaje cuando el temporizador del minijuego llega a cero." },
+
+  "feedbackHintUsed": "Pista utilizada",
+  "@feedbackHintUsed": { "description": "Notificación cuando el jugador usa una pista." },
+
+  "feedbackShowAnswer": "Ver respuesta",
+  "@feedbackShowAnswer": { "description": "Botón para revelar la respuesta correcta después de fallar." },
+
+  "feedbackTryAgain": "Intentar de nuevo",
+  "@feedbackTryAgain": { "description": "Botón para reintentar el minijuego desde el principio." },
+
+  "feedbackChallengeComplete": "¡Desafío completado!",
+  "@feedbackChallengeComplete": { "description": "Mensaje al completar un desafío especial." },
+
+  "missionDaily": "Misiones del Día",
+  "@missionDaily": { "description": "Título de la sección de misiones diarias." },
+
+  "missionWeekly": "Misiones Semanales",
+  "@missionWeekly": { "description": "Título de la sección de misiones semanales." },
+
+  "missionSpecial": "Misión Especial",
+  "@missionSpecial": { "description": "Etiqueta de misión especial de evento o temporada." },
+
+  "missionCompleted": "¡Misión completada!",
+  "@missionCompleted": { "description": "Mensaje de misión completada con éxito." },
+
+  "missionLocked": "Completa las misiones anteriores primero",
+  "@missionLocked": { "description": "Mensaje de misión bloqueada por dependencia." },
+
+  "missionRewardLabel": "Recompensa",
+  "@missionRewardLabel": { "description": "Etiqueta de la sección de recompensa de una misión." },
+
+  "missionProgress": "{current} de {total}",
+  "@missionProgress": {
+    "description": "Progreso de una misión. Ejemplo: 3 de 5",
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+
+  "inventoryTitle": "Inventario",
+  "@inventoryTitle": { "description": "Título de la pantalla de inventario." },
+
+  "inventoryEmptyTitle": "Tu inventario está vacío",
+  "@inventoryEmptyTitle": { "description": "Título del estado vacío del inventario." },
+
+  "inventoryEmptySubtitle": "Completa capítulos para ganar ítems y tesoros",
+  "@inventoryEmptySubtitle": { "description": "Subtítulo del estado vacío con call-to-action." },
+
+  "inventoryFilterAll": "Todos",
+  "@inventoryFilterAll": { "description": "Filtro para mostrar todos los ítems." },
+
+  "inventoryFilterEquipped": "Equipados",
+  "@inventoryFilterEquipped": { "description": "Filtro para mostrar solo los ítems equipados." },
+
+  "inventoryFilterNew": "Nuevos",
+  "@inventoryFilterNew": { "description": "Filtro para mostrar solo los ítems nuevos no vistos." },
+
+  "inventoryItemEquip": "Equipar",
+  "@inventoryItemEquip": { "description": "Botón para equipar un ítem del inventario." },
+
+  "inventoryItemEquipped": "Equipado",
+  "@inventoryItemEquipped": { "description": "Estado de ítem actualmente equipado." },
+
+  "petLumiName": "Lumi",
+  "@petLumiName": { "description": "Nombre propio del búho mascota. NO traducir — es un nombre propio." },
+
+  "petLumiTitle": "Tu búho compañero",
+  "@petLumiTitle": { "description": "Subtítulo descriptivo de Lumi en la pantalla del pet." },
+
+  "petLumiGreetingMorning": "¡Buenos días! ¿Listos para explorar el jardín hoy?",
+  "@petLumiGreetingMorning": { "description": "Saludo de Lumi en la mañana (antes del mediodía)." },
+
+  "petLumiGreetingAfternoon": "¡Buenas tardes! ¿Continuamos la aventura?",
+  "@petLumiGreetingAfternoon": { "description": "Saludo de Lumi en la tarde (12:00-18:00)." },
+
+  "petLumiGreetingEvening": "¡Buenas noches! Un día más de crecimiento en el jardín.",
+  "@petLumiGreetingEvening": { "description": "Saludo de Lumi en la noche (18:00-23:59)." },
+
+  "petLumiStreakMessage": "¡Llevas {days} días seguidos explorando! ¡Eso es increíble!",
+  "@petLumiStreakMessage": {
+    "description": "Mensaje de Lumi celebrando la racha del jugador.",
+    "placeholders": {
+      "days": { "type": "int" }
+    }
+  },
+
+  "petLumiIdleMessage": "Estoy aquí si me necesitas. ¡El jardín siempre nos espera!",
+  "@petLumiIdleMessage": { "description": "Mensaje de Lumi cuando el jugador no ha interactuado en un rato." },
+
+  "petLumiEncouragement": "¡Tú puedes! Cada error es una semilla de aprendizaje.",
+  "@petLumiEncouragement": { "description": "Frase de aliento de Lumi después de un error en un minijuego." },
+
+  "petLumiLevelUp": "¡Felicidades! ¡Llegaste al nivel {level}! ¡Estoy muy orgulloso de ti!",
+  "@petLumiLevelUp": {
+    "description": "Mensaje de Lumi al subir de nivel el jugador.",
+    "placeholders": {
+      "level": { "type": "int" }
+    }
+  },
+
+  "settingsTitle": "Ajustes",
+  "@settingsTitle": { "description": "Título de la pantalla de configuración." },
+
+  "settingsSectionAudio": "Audio",
+  "@settingsSectionAudio": { "description": "Cabecera de la sección de ajustes de audio." },
+
+  "settingsSectionVisual": "Visual",
+  "@settingsSectionVisual": { "description": "Cabecera de la sección de ajustes visuales." },
+
+  "settingsSectionAccount": "Mi Cuenta",
+  "@settingsSectionAccount": { "description": "Cabecera de la sección de ajustes de cuenta del jugador." },
+
+  "settingsSectionParent": "Control Parental",
+  "@settingsSectionParent": { "description": "Cabecera de la sección de controles para padres (protegida por PIN)." },
+
+  "settingsSectionAbout": "Acerca de",
+  "@settingsSectionAbout": { "description": "Cabecera de la sección de información sobre la aplicación." },
+
+  "settingsMusicVolume": "Música",
+  "@settingsMusicVolume": { "description": "Etiqueta del control deslizante de volumen de música de fondo." },
+
+  "settingsSfxVolume": "Efectos de sonido",
+  "@settingsSfxVolume": { "description": "Etiqueta del control deslizante de volumen de efectos de sonido." },
+
+  "settingsLanguage": "Idioma",
+  "@settingsLanguage": { "description": "Etiqueta del selector de idioma de la aplicación." },
+
+  "settingsLanguageEs": "Español",
+  "@settingsLanguageEs": { "description": "Nombre del idioma Español. Mostrar en el idioma nativo." },
+
+  "settingsLanguageEn": "English",
+  "@settingsLanguageEn": { "description": "Nombre del idioma Inglés. Siempre en inglés, NO traducir." },
+
+  "settingsLanguagePt": "Português",
+  "@settingsLanguagePt": { "description": "Nombre del idioma Portugués. Siempre en portugués, NO traducir." },
+
+  "settingsDarkMode": "Apariencia",
+  "@settingsDarkMode": { "description": "Etiqueta del selector de tema claro/oscuro." },
+
+  "settingsDarkModeSystem": "Seguir al sistema",
+  "@settingsDarkModeSystem": { "description": "Opción para usar el tema del sistema operativo." },
+
+  "settingsDarkModeLight": "Siempre claro",
+  "@settingsDarkModeLight": { "description": "Opción para forzar el tema claro." },
+
+  "settingsDarkModeDark": "Siempre oscuro",
+  "@settingsDarkModeDark": { "description": "Opción para forzar el tema oscuro." },
+
+  "settingsNotifications": "Notificaciones",
+  "@settingsNotifications": { "description": "Etiqueta del toggle de notificaciones de la app." },
+
+  "settingsNotificationsReminder": "Recordatorio diario de práctica",
+  "@settingsNotificationsReminder": { "description": "Toggle específico para el recordatorio diario de estudiar versículos." },
+
+  "settingsVersion": "Versión {version}",
+  "@settingsVersion": {
+    "description": "Número de versión de la app en la sección Acerca de.",
+    "placeholders": {
+      "version": { "type": "String" }
+    }
+  },
+
+  "settingsPrivacyPolicy": "Política de privacidad",
+  "@settingsPrivacyPolicy": { "description": "Enlace a la política de privacidad." },
+
+  "settingsTerms": "Términos de uso",
+  "@settingsTerms": { "description": "Enlace a los términos y condiciones de uso." },
+
+  "settingsFeedback": "Enviar comentarios",
+  "@settingsFeedback": { "description": "Botón para abrir el formulario de comentarios y reporte de problemas." },
+
+  "settingsResetData": "Restablecer todos los datos",
+  "@settingsResetData": { "description": "Opción de borrar todos los datos del juego. Acción destructiva, requiere PIN." },
+
+  "settingsResetDataConfirm": "¿Borrar TODO el progreso del juego? Esta acción no puede deshacerse.",
+  "@settingsResetDataConfirm": { "description": "Mensaje de confirmación antes de borrar los datos." },
+
+  "parentTitle": "Panel de Padres",
+  "@parentTitle": { "description": "Título de la pantalla del panel de control parental." },
+
+  "parentSubtitle": "Supervisa y controla la experiencia de tu hijo",
+  "@parentSubtitle": { "description": "Subtítulo descriptivo del panel de padres." },
+
+  "parentTimeLimitTitle": "Límite de tiempo diario",
+  "@parentTimeLimitTitle": { "description": "Título de la opción de límite de pantalla diario." },
+
+  "parentTimeLimitUnlimited": "Sin límite",
+  "@parentTimeLimitUnlimited": { "description": "Opción de sin límite de tiempo en el selector." },
+
+  "parentTimeLimitMinutes": "{minutes} minutos",
+  "@parentTimeLimitMinutes": {
+    "description": "Formato genérico del límite de tiempo en minutos. Las etiquetas especiales (1 hora, 2 horas) se generan en AppDateFormatter.formatTimeLimitLabel().",
+    "placeholders": {
+      "minutes": { "type": "int" }
+    }
+  },
+
+  "parentTimeLimitReached": "¡Límite de pantalla completado por hoy! 🌙",
+  "@parentTimeLimitReached": { "description": "Pantalla de bloqueo cuando el niño alcanza el límite de tiempo configurado." },
+
+  "parentProgressTitle": "Progreso de {name}",
+  "@parentProgressTitle": {
+    "description": "Título de la sección de progreso del perfil seleccionado.",
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+
+  "parentProgressVerses": "{count, plural, =0{Aún sin versículos grabados} =1{1 versículo grabado en el corazón} other{{count} versículos grabados en el corazón}}",
+  "@parentProgressVerses": {
+    "description": "Resumen de versículos memorizados en el informe para padres.",
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+
+  "parentProgressDays": "{count, plural, =1{1 día activo} other{{count} días activos}}",
+  "@parentProgressDays": {
+    "description": "Total de días en que el perfil ha tenido actividad.",
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+
+  "parentProgressWorlds": "{count, plural, =0{Sin mundos completados} =1{1 mundo completado} other{{count} mundos completados}}",
+  "@parentProgressWorlds": {
+    "description": "Número de mundos completados en el informe para padres.",
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+
+  "parentExportProgress": "Exportar informe de progreso",
+  "@parentExportProgress": { "description": "Botón para exportar el resumen de progreso del hijo como PDF o imagen." },
+
+  "diaryTitle": "Mi Diario",
+  "@diaryTitle": { "description": "Título de la pantalla del diario del explorador." },
+
+  "diaryEmptyTitle": "Tu diario está en blanco",
+  "@diaryEmptyTitle": { "description": "Título del estado vacío del diario." },
+
+  "diaryEmptySubtitle": "Completa capítulos para escribir tu historia en el jardín",
+  "@diaryEmptySubtitle": { "description": "Subtítulo del estado vacío con motivación para jugar." },
+
+  "diaryEntrySaved": "Entrada guardada en tu diario",
+  "@diaryEntrySaved": { "description": "Confirmación de que una nueva entrada de diario fue guardada." },
+
+  "diaryWritePrompt": "¿Qué aprendiste hoy del jardín?",
+  "@diaryWritePrompt": { "description": "Pregunta de reflexión que aparece al crear una entrada de diario." },
+
+  "rewardUnlockedTitle": "¡Logro Desbloqueado!",
+  "@rewardUnlockedTitle": { "description": "Título del modal de notificación de logro desbloqueado." },
+
+  "rewardCollection": "Mis Logros",
+  "@rewardCollection": { "description": "Título de la colección completa de logros del jugador." },
+
+  "rewardLocked": "Logro por descubrir",
+  "@rewardLocked": { "description": "Texto que oculta el nombre de un logro aún no obtenido." },
+
+  "rewardProgress": "{current} de {total} logros",
+  "@rewardProgress": {
+    "description": "Progreso en la colección de logros.",
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+
+  "rewardFirstVerse": "Primer versículo",
+  "@rewardFirstVerse": { "description": "Nombre del logro por memorizar el primer versículo." },
+
+  "rewardFirstVerseSub": "Memorizaste tu primer versículo bíblico",
+  "@rewardFirstVerseSub": { "description": "Descripción del logro del primer versículo." },
+
+  "rewardFirstWorld": "Primer mundo",
+  "@rewardFirstWorld": { "description": "Nombre del logro por completar el primer mundo." },
+
+  "rewardFirstWorldSub": "Completaste el primer mundo del jardín",
+  "@rewardFirstWorldSub": { "description": "Descripción del logro del primer mundo." },
+
+  "rewardPerfectDay": "Día perfecto",
+  "@rewardPerfectDay": { "description": "Nombre del logro por completar todas las misiones del día." },
+
+  "rewardPerfectDaySub": "Completaste todas las misiones de un día",
+  "@rewardPerfectDaySub": { "description": "Descripción del logro día perfecto." },
+
+  "rewardStreakWeek": "Una semana seguida",
+  "@rewardStreakWeek": { "description": "Nombre del logro por estudiar 7 días consecutivos." },
+
+  "rewardStreakWeekSub": "Estudiaste el jardín 7 días consecutivos",
+  "@rewardStreakWeekSub": { "description": "Descripción del logro de racha semanal." },
+
+  "rewardGrabadoCorazon": "Escritura en el corazón",
+  "@rewardGrabadoCorazon": { "description": "Nombre del logro especial por alcanzar el nivel Gloria en un versículo." },
+
+  "rewardGrabadoCorazonSub": "Un versículo llegó al nivel más alto: Gloria",
+  "@rewardGrabadoCorazonSub": { "description": "Descripción del logro de Grabado en el Corazón." },
 
   "errorGeneric": "Algo salió mal. Por favor intenta de nuevo.",
-  "@errorGeneric": {
-    "description": "Mensaje de error genérico para el usuario final."
+  "@errorGeneric": { "description": "Error genérico para el usuario final. No revelar detalles técnicos." },
+
+  "errorNetworkUnavailable": "Sin conexión a internet",
+  "@errorNetworkUnavailable": { "description": "Error de red. El juego es Offline First; este error solo aparece en features que requieren conectividad." },
+
+  "errorOfflineModeActive": "Jugando sin conexión. Tu progreso se guarda localmente.",
+  "@errorOfflineModeActive": { "description": "Mensaje informativo cuando la app detecta modo offline pero puede continuar." },
+
+  "errorDatabaseCorrupted": "Error al leer los datos del juego",
+  "@errorDatabaseCorrupted": { "description": "Error grave de base de datos. Acompañar de opción de contactar soporte." },
+
+  "errorDatabaseWrite": "No se pudo guardar tu progreso",
+  "@errorDatabaseWrite": { "description": "Error al intentar escribir en la base de datos local." },
+
+  "errorAssetLoad": "No se pudo cargar el contenido",
+  "@errorAssetLoad": { "description": "Error al cargar un asset de imagen, audio o datos del juego." },
+
+  "errorProfileNotFound": "Perfil no encontrado",
+  "@errorProfileNotFound": { "description": "Error cuando se intenta acceder a un perfil que no existe." },
+
+  "errorMaxProfiles": "Límite de 5 perfiles alcanzado",
+  "@errorMaxProfiles": { "description": "Error al intentar crear un sexto perfil." },
+
+  "errorInvalidPin": "PIN incorrecto. Inténtalo de nuevo.",
+  "@errorInvalidPin": { "description": "Error de autenticación del PIN parental." },
+
+  "errorInvalidAge": "La edad debe estar entre 4 y 12 años",
+  "@errorInvalidAge": { "description": "Error de validación de edad fuera del rango del juego." },
+
+  "a11yPlayButton": "Botón de jugar",
+  "@a11yPlayButton": { "description": "Etiqueta de accesibilidad para el botón principal de jugar." },
+
+  "a11yBackButton": "Regresar a la pantalla anterior",
+  "@a11yBackButton": { "description": "Etiqueta de accesibilidad para el botón de regreso." },
+
+  "a11yCloseButton": "Cerrar",
+  "@a11yCloseButton": { "description": "Etiqueta de accesibilidad para el botón de cerrar modales." },
+
+  "a11yProfileAvatar": "Avatar del explorador {name}",
+  "@a11yProfileAvatar": {
+    "description": "Etiqueta de accesibilidad para el avatar de un perfil.",
+    "placeholders": {
+      "name": { "type": "String" }
+    }
   },
 
-  "errorNoConnection": "Sin conexión a internet.",
-  "@errorNoConnection": {
-    "description": "Error de red. Aunque la app es Offline First, algunas features futuras requieren red."
+  "a11yLevelIndicator": "Nivel {level}",
+  "@a11yLevelIndicator": {
+    "description": "Etiqueta de accesibilidad para el indicador de nivel en el HUD.",
+    "placeholders": {
+      "level": { "type": "int" }
+    }
   },
 
-  "buttonContinue": "Continuar",
-  "@buttonContinue": {
-    "description": "Texto del botón de acción primaria para continuar."
+  "a11yStreakIndicator": "{count, plural, =1{1 día de racha} other{{count} días de racha}}",
+  "@a11yStreakIndicator": {
+    "description": "Etiqueta de accesibilidad para el contador de racha en el HUD.",
+    "placeholders": {
+      "count": { "type": "int" }
+    }
   },
 
-  "buttonCancel": "Cancelar",
-  "@buttonCancel": {
-    "description": "Texto del botón para cancelar una acción."
+  "a11yXpGained": "Ganaste {amount} Semillas de Luz",
+  "@a11yXpGained": {
+    "description": "Anuncio de accesibilidad para la notificación de XP ganado.",
+    "placeholders": {
+      "amount": { "type": "int" }
+    }
   },
 
-  "buttonRetry": "Reintentar",
-  "@buttonRetry": {
-    "description": "Texto del botón para reintentar una operación fallida."
+  "a11yCorrectAnswer": "Respuesta correcta",
+  "@a11yCorrectAnswer": { "description": "Anuncio de accesibilidad al responder correctamente." },
+
+  "a11yIncorrectAnswer": "Respuesta incorrecta. Inténtalo de nuevo.",
+  "@a11yIncorrectAnswer": { "description": "Anuncio de accesibilidad al responder incorrectamente." },
+
+  "a11yLoadingIndicator": "Cargando contenido",
+  "@a11yLoadingIndicator": { "description": "Etiqueta de accesibilidad para indicadores de carga." },
+
+  "a11yWorldCard": "Mundo {name}, {status}",
+  "@a11yWorldCard": {
+    "description": "Etiqueta de accesibilidad para una tarjeta de mundo en el mapa.",
+    "placeholders": {
+      "name": { "type": "String" },
+      "status": { "type": "String" }
+    }
   },
 
-  "buttonBack": "Regresar",
-  "@buttonBack": {
-    "description": "Texto del botón para navegar hacia atrás."
+  "a11yVerseMemorized": "Versículo grabado en el corazón",
+  "@a11yVerseMemorized": { "description": "Etiqueta de accesibilidad para el badge de versículo memorizado." },
+
+  "timeJustNow": "Ahora mismo",
+  "@timeJustNow": { "description": "Tiempo relativo: hace menos de 1 minuto." },
+
+  "timeMinutesAgo": "{count, plural, =1{Hace 1 minuto} other{Hace {count} minutos}}",
+  "@timeMinutesAgo": {
+    "description": "Tiempo relativo en minutos. Para timestamps recientes en el diario.",
+    "placeholders": {
+      "count": { "type": "int" }
+    }
   },
 
-  "buttonClose": "Cerrar",
-  "@buttonClose": {
-    "description": "Texto del botón para cerrar un modal o diálogo."
+  "timeHoursAgo": "{count, plural, =1{Hace 1 hora} other{Hace {count} horas}}",
+  "@timeHoursAgo": {
+    "description": "Tiempo relativo en horas.",
+    "placeholders": {
+      "count": { "type": "int" }
+    }
   },
 
-  "accessibilityLoading": "Cargando contenido, por favor espera",
-  "@accessibilityLoading": {
-    "description": "Descripción de accesibilidad para indicadores de carga (TalkBack/VoiceOver)."
+  "timeDaysAgo": "{count, plural, =1{Hace 1 día} other{Hace {count} días}}",
+  "@timeDaysAgo": {
+    "description": "Tiempo relativo en días.",
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+
+  "timeWeeksAgo": "{count, plural, =1{Hace 1 semana} other{Hace {count} semanas}}",
+  "@timeWeeksAgo": {
+    "description": "Tiempo relativo en semanas.",
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+
+  "timeToday": "Hoy",
+  "@timeToday": { "description": "Referencia de tiempo: el día de hoy." },
+
+  "timeYesterday": "Ayer",
+  "@timeYesterday": { "description": "Referencia de tiempo: el día de ayer." },
+
+  "timeTomorrow": "Mañana",
+  "@timeTomorrow": { "description": "Referencia de tiempo: el día de mañana." },
+
+  "timeInDays": "{count, plural, =1{En 1 día} other{En {count} días}}",
+  "@timeInDays": {
+    "description": "Tiempo futuro en días. Para fechas próximas de repaso del Sistema 44.",
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+
+  "timeInHours": "{count, plural, =1{En 1 hora} other{En {count} horas}}",
+  "@timeInHours": {
+    "description": "Tiempo futuro en horas. Para el próximo repaso del Sistema 44.",
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+
+  "onboardingSkip": "Omitir tutorial",
+  "@onboardingSkip": { "description": "Botón para saltar el tutorial inicial." },
+
+  "onboardingWelcomeTitle": "¡Bienvenido, Explorador!",
+  "@onboardingWelcomeTitle": { "description": "Título de la primera pantalla del tutorial de onboarding." },
+
+  "onboardingWelcomeBody": "Estás a punto de comenzar el viaje más increíble por el Jardín del Edén.",
+  "@onboardingWelcomeBody": { "description": "Cuerpo de la pantalla de bienvenida del onboarding." },
+
+  "onboardingLumiTitle": "Conoce a Lumi",
+  "@onboardingLumiTitle": { "description": "Título de la pantalla de presentación de la mascota Lumi." },
+
+  "onboardingLumiBody": "Lumi es tu búho compañero. Te guiará, te dará pistas y celebrará contigo.",
+  "@onboardingLumiBody": { "description": "Descripción de Lumi en el onboarding." },
+
+  "onboardingVerseTitle": "Aprende Versículos",
+  "@onboardingVerseTitle": { "description": "Título de la pantalla explicativa de la memorización de versículos." },
+
+  "onboardingVerseBody": "Memoriza versículos bíblicos mientras juegas y graba la Palabra en tu corazón.",
+  "@onboardingVerseBody": { "description": "Descripción del sistema de memorización en el onboarding." },
+
+  "onboardingStartButton": "¡Comenzar la aventura!",
+  "@onboardingStartButton": { "description": "Botón final del onboarding que lleva al jugador a crear su perfil." },
+
+  "searchHint": "Buscar en el jardín…",
+  "@searchHint": { "description": "Placeholder del campo de búsqueda global." },
+
+  "searchEmpty": "Sin resultados",
+  "@searchEmpty": { "description": "Título del estado vacío de la búsqueda." },
+
+  "searchEmptySuggestion": "Intenta con otras palabras clave",
+  "@searchEmptySuggestion": { "description": "Sugerencia cuando la búsqueda no devuelve resultados." },
+
+  "searchResultsCount": "{count, plural, =1{1 resultado} other{{count} resultados}}",
+  "@searchResultsCount": {
+    "description": "Número de resultados encontrados en la búsqueda.",
+    "placeholders": {
+      "count": { "type": "int" }
+    }
   }
 }
