@@ -55,7 +55,10 @@ void installGlobalErrorHandlers(AppLogger logger) {
       module: LogModules.unhandled,
       cause: details.exception,
       stackTrace: details.stack,
-      metadata: {'library': details.library, 'context': details.context?.toString()},
+      metadata: {
+        'library': details.library,
+        'context': details.context?.toString(),
+      },
     );
     previousOnError?.call(details);
   };

@@ -20,7 +20,8 @@ import 'package:jardindeleden/core/storage/storage_service.dart';
 
 /// Implementación de [AccessibilityService] sobre [StorageService].
 final class AccessibilityServiceImpl implements AccessibilityService {
-  AccessibilityServiceImpl({required StorageService storage}) : _storage = storage;
+  AccessibilityServiceImpl({required StorageService storage})
+    : _storage = storage;
 
   final StorageService _storage;
 

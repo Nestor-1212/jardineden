@@ -1,0 +1,26 @@
+{
+  // ─────────────────────────────────────────────────────────────────────────
+  // Formato automático — ver analysis_options.yaml (bloque `formatter`) y
+  // lib/core/quality/code_conventions.dart para la explicación completa.
+  // Con esto, guardar un archivo .dart ya deja el código formateado según
+  // las mismas reglas que corre `dart format .` en CI — nadie necesita
+  // acordarse de correrlo a mano antes de un commit.
+  // ─────────────────────────────────────────────────────────────────────────
+  "[dart]": {
+    "editor.defaultFormatter": "Dart-Code.dart-code",
+    "editor.formatOnSave": true,
+    "editor.rulers": [80],
+    "editor.selectionHighlight": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": "off",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "always"
+    }
+  },
+
+  // dart.lineLength: usado por el extension Dart-Code para envolver
+  // sugerencias y el comando "Organize Imports" — debe calzar con
+  // `formatter.page_width` de analysis_options.yaml (80), no un valor aparte.
+  "dart.lineLength": 80
+}

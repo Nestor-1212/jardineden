@@ -24,6 +24,7 @@
 // DEPENDENCIAS PROHIBIDAS:   features, core/infrastructure, Riverpod.
 // ─────────────────────────────────────────────────────────────────────────────
 
+import 'dart:async';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
@@ -58,7 +59,8 @@ class AppRotateIn extends StatefulWidget {
   State<AppRotateIn> createState() => _AppRotateInState();
 }
 
-class _AppRotateInState extends State<AppRotateIn> with SingleTickerProviderStateMixin {
+class _AppRotateInState extends State<AppRotateIn>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   late final Animation<double> _rotation;
   late final Animation<double> _opacity;
@@ -72,13 +74,16 @@ class _AppRotateInState extends State<AppRotateIn> with SingleTickerProviderStat
     );
     _controller = AnimationController(vsync: this, duration: duration);
     final curved = CurvedAnimation(parent: _controller, curve: widget.curve);
-    _rotation = Tween<double>(begin: widget.beginTurns, end: 0.0).animate(curved);
+    _rotation = Tween<double>(
+      begin: widget.beginTurns,
+      end: 0.0,
+    ).animate(curved);
     _opacity = curved;
 
     if (duration == Duration.zero) {
       _controller.value = 1.0;
     } else {
-      _controller.forward();
+      unawaited(_controller.forward());
     }
   }
 
@@ -120,14 +125,15 @@ class AppSpinner extends StatefulWidget {
   State<AppSpinner> createState() => _AppSpinnerState();
 }
 
-class _AppSpinnerState extends State<AppSpinner> with SingleTickerProviderStateMixin {
+class _AppSpinnerState extends State<AppSpinner>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(vsync: this, duration: widget.period)
-      ..repeat();
+    _controller = AnimationController(vsync: this, duration: widget.period);
+    unawaited(_controller.repeat());
   }
 
   @override
@@ -190,9 +196,9 @@ class _AppFlipState extends State<AppFlip> with SingleTickerProviderStateMixin {
       if (_controller.duration == Duration.zero) {
         _controller.value = widget.flipped ? 1.0 : 0.0;
       } else if (widget.flipped) {
-        _controller.forward();
+        unawaited(_controller.forward());
       } else {
-        _controller.reverse();
+        unawaited(_controller.reverse());
       }
     }
   }

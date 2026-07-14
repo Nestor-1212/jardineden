@@ -39,11 +39,7 @@ abstract final class AppHeroTags {
 /// Uso: idéntico a [Hero]: el mismo [tag] en la pantalla de origen y en la
 /// pantalla de destino conecta la animación entre ambas.
 class AppHero extends StatelessWidget {
-  const AppHero({
-    required this.tag,
-    required this.child,
-    super.key,
-  });
+  const AppHero({required this.tag, required this.child, super.key});
 
   final Object tag;
   final Widget child;
@@ -52,29 +48,33 @@ class AppHero extends StatelessWidget {
   Widget build(BuildContext context) {
     return Hero(
       tag: tag,
-      flightShuttleBuilder: (
-        flightContext,
-        animation,
-        direction,
-        fromHeroContext,
-        toHeroContext,
-      ) {
-        final fromHero = fromHeroContext.widget as Hero;
-        final toHero = toHeroContext.widget as Hero;
+      flightShuttleBuilder:
+          (
+            flightContext,
+            animation,
+            direction,
+            fromHeroContext,
+            toHeroContext,
+          ) {
+            final fromHero = fromHeroContext.widget as Hero;
+            final toHero = toHeroContext.widget as Hero;
 
-        return AnimatedBuilder(
-          animation: animation,
-          builder: (context, _) {
-            return Stack(
-              alignment: Alignment.center,
-              children: [
-                Opacity(opacity: 1 - animation.value, child: fromHero.child),
-                Opacity(opacity: animation.value, child: toHero.child),
-              ],
+            return AnimatedBuilder(
+              animation: animation,
+              builder: (context, _) {
+                return Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Opacity(
+                      opacity: 1 - animation.value,
+                      child: fromHero.child,
+                    ),
+                    Opacity(opacity: animation.value, child: toHero.child),
+                  ],
+                );
+              },
             );
           },
-        );
-      },
       child: child,
     );
   }

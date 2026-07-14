@@ -64,8 +64,8 @@ class AccessibilityController extends _$AccessibilityController {
       _update((settings) => settings.copyWith(reduceMotionEnabled: enabled));
 
   Future<void> setSimplifiedNavigationEnabled(bool enabled) => _update(
-        (settings) => settings.copyWith(simplifiedNavigationEnabled: enabled),
-      );
+    (settings) => settings.copyWith(simplifiedNavigationEnabled: enabled),
+  );
 
   Future<void> setLargeButtonsEnabled(bool enabled) =>
       _update((settings) => settings.copyWith(largeButtonsEnabled: enabled));

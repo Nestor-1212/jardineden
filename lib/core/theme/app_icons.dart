@@ -226,26 +226,24 @@ abstract final class AppIcons {
   /// Retorna el ícono de moneda correspondiente a la moneda dada.
   ///
   /// Uso: `AppIcons.forCurrency('Semillas de Luz')`
-  static IconData forCurrency(String currencyName) =>
-      switch (currencyName) {
-        'Semillas de Luz' => currencyLuz,
-        'Pergaminos de Sabiduría' => currencySabiduria,
-        'Piedras del Jordán' => currencyJordan,
-        'Estrellas de Abraam' => currencyAbraam,
-        _ => star,
-      };
+  static IconData forCurrency(String currencyName) => switch (currencyName) {
+    'Semillas de Luz' => currencyLuz,
+    'Pergaminos de Sabiduría' => currencySabiduria,
+    'Piedras del Jordán' => currencyJordan,
+    'Estrellas de Abraam' => currencyAbraam,
+    _ => star,
+  };
 
   /// Retorna el ícono de rareza correspondiente al nivel dado.
   ///
   /// Uso: `AppIcons.forRarity('Oro')`
-  static IconData forRarity(String rarityName) =>
-      switch (rarityName) {
-        'Barro' => rarityBarro,
-        'Bronce' => rarityBronce,
-        'Plata' => rarityPlata,
-        'Oro' => rarityOro,
-        'Ónix' => rarityOnix,
-        'Gloria' => rarityGloria,
-        _ => rarityBarro,
-      };
+  static IconData forRarity(String rarityName) => switch (rarityName) {
+    'Barro' => rarityBarro,
+    'Bronce' => rarityBronce,
+    'Plata' => rarityPlata,
+    'Oro' => rarityOro,
+    'Ónix' => rarityOnix,
+    'Gloria' => rarityGloria,
+    _ => rarityBarro,
+  };
 }

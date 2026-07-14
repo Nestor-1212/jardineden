@@ -42,7 +42,7 @@ abstract interface class IAuthLocalDataSource {
     String id,
   );
 
-  /// Inserta un nuevo perfil. Falla si ya existe un perfil con el mismo [id].
+  /// Inserta un nuevo perfil. Falla si ya existe un perfil con el mismo id.
   Future<Result<void, DatabaseException>> insertProfile(
     PlayerProfileModel model,
   );
@@ -82,7 +82,7 @@ final class AuthLocalDataSource implements IAuthLocalDataSource {
 
   @override
   Future<Result<List<PlayerProfileModel>, DatabaseException>>
-      getAllProfiles() async {
+  getAllProfiles() async {
     // TODO(sprint-03): return (await _db.authDao.getAllProfiles())
     //     .map(PlayerProfileModel.fromDrift)
     //     .toList();
@@ -120,20 +120,26 @@ final class AuthLocalDataSource implements IAuthLocalDataSource {
     String profileId,
     String hash,
   ) async {
-    throw UnimplementedError('Implementar en Sprint 03 con flutter_secure_storage');
+    throw UnimplementedError(
+      'Implementar en Sprint 03 con flutter_secure_storage',
+    );
   }
 
   @override
   Future<Result<String?, DatabaseException>> getPinHash(
     String profileId,
   ) async {
-    throw UnimplementedError('Implementar en Sprint 03 con flutter_secure_storage');
+    throw UnimplementedError(
+      'Implementar en Sprint 03 con flutter_secure_storage',
+    );
   }
 
   @override
   Future<Result<void, DatabaseException>> deletePinHash(
     String profileId,
   ) async {
-    throw UnimplementedError('Implementar en Sprint 03 con flutter_secure_storage');
+    throw UnimplementedError(
+      'Implementar en Sprint 03 con flutter_secure_storage',
+    );
   }
 }

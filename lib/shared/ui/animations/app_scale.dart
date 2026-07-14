@@ -16,6 +16,8 @@
 // DEPENDENCIAS PROHIBIDAS:   features, core/infrastructure, Riverpod.
 // ─────────────────────────────────────────────────────────────────────────────
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:jardindeleden/core/theme/app_animations.dart';
 import 'package:jardindeleden/core/theme/app_motion.dart';
@@ -47,7 +49,8 @@ class AppScaleIn extends StatefulWidget {
   State<AppScaleIn> createState() => _AppScaleInState();
 }
 
-class _AppScaleInState extends State<AppScaleIn> with SingleTickerProviderStateMixin {
+class _AppScaleInState extends State<AppScaleIn>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   late final Animation<double> _scale;
 
@@ -64,10 +67,10 @@ class _AppScaleInState extends State<AppScaleIn> with SingleTickerProviderStateM
     if (duration == Duration.zero) {
       _controller.value = 1.0;
     } else if (widget.delay == Duration.zero) {
-      _controller.forward();
+      unawaited(_controller.forward());
     } else {
       Future.delayed(widget.delay, () {
-        if (mounted) _controller.forward();
+        if (mounted) unawaited(_controller.forward());
       });
     }
   }

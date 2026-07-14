@@ -18,6 +18,8 @@
 // DEPENDENCIAS PROHIBIDAS:   features, core/infrastructure, Riverpod.
 // ─────────────────────────────────────────────────────────────────────────────
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:jardindeleden/core/theme/app_animations.dart';
 import 'package:jardindeleden/core/theme/app_motion.dart';
@@ -49,7 +51,8 @@ class AppCoinFloat extends StatefulWidget {
   State<AppCoinFloat> createState() => _AppCoinFloatState();
 }
 
-class _AppCoinFloatState extends State<AppCoinFloat> with SingleTickerProviderStateMixin {
+class _AppCoinFloatState extends State<AppCoinFloat>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   late final Animation<double> _rise;
   late final Animation<double> _opacity;
@@ -66,9 +69,10 @@ class _AppCoinFloatState extends State<AppCoinFloat> with SingleTickerProviderSt
         if (status == AnimationStatus.completed) widget.onCompleted?.call();
       });
 
-    _rise = Tween<double>(begin: 0.0, end: -widget.floatDistance).animate(
-      CurvedAnimation(parent: _controller, curve: widget.curve),
-    );
+    _rise = Tween<double>(
+      begin: 0.0,
+      end: -widget.floatDistance,
+    ).animate(CurvedAnimation(parent: _controller, curve: widget.curve));
     // El desvanecimiento ocurre en la segunda mitad del recorrido — la
     // moneda debe verse sólida mientras sube, no desvanecerse desde el inicio.
     _opacity = CurvedAnimation(
@@ -76,7 +80,7 @@ class _AppCoinFloatState extends State<AppCoinFloat> with SingleTickerProviderSt
       curve: const Interval(0.5, 1.0, curve: Curves.easeIn),
     ).drive(Tween<double>(begin: 1.0, end: 0.0));
 
-    _controller.forward();
+    unawaited(_controller.forward());
   }
 
   @override
@@ -91,7 +95,10 @@ class _AppCoinFloatState extends State<AppCoinFloat> with SingleTickerProviderSt
       animation: _controller,
       builder: (context, child) => Opacity(
         opacity: _opacity.value,
-        child: Transform.translate(offset: Offset(0, _rise.value), child: child),
+        child: Transform.translate(
+          offset: Offset(0, _rise.value),
+          child: child,
+        ),
       ),
       child: widget.child,
     );

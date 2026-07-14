@@ -38,6 +38,8 @@
 // DEPENDENCIAS PROHIBIDAS:   features, shared, otros módulos core.
 // ─────────────────────────────────────────────────────────────────────────────
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
 
@@ -49,7 +51,7 @@ abstract final class AppScreenReader {
   /// Uso: resultado de una acción que no cambia qué widget tiene foco
   /// (ej. "Respuesta correcta. Ganaste 5 Semillas de Luz.").
   ///
-  /// Requiere [context] (para resolver el [FlutterView] actual vía
+  /// Requiere [context] (para resolver el FlutterView actual vía
   /// `View.of` — `SemanticsService.sendAnnouncement` lo exige desde que
   /// Flutter soporta múltiples ventanas). No-op silencioso si no hay lector
   /// de pantalla activo — seguro de llamar siempre.
@@ -59,11 +61,13 @@ abstract final class AppScreenReader {
     TextDirection textDirection = TextDirection.ltr,
     Assertiveness assertiveness = Assertiveness.polite,
   }) {
-    SemanticsService.sendAnnouncement(
-      View.of(context),
-      message,
-      textDirection,
-      assertiveness: assertiveness,
+    unawaited(
+      SemanticsService.sendAnnouncement(
+        View.of(context),
+        message,
+        textDirection,
+        assertiveness: assertiveness,
+      ),
     );
   }
 }
@@ -82,6 +86,5 @@ extension AppScreenReaderContext on BuildContext {
   void announceForAccessibility(
     String message, {
     Assertiveness assertiveness = Assertiveness.polite,
-  }) =>
-      AppScreenReader.announce(this, message, assertiveness: assertiveness);
+  }) => AppScreenReader.announce(this, message, assertiveness: assertiveness);
 }

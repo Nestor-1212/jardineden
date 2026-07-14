@@ -103,67 +103,67 @@ abstract final class AppTheme {
 
   /// Modo claro: fondos verdes pálidos, texto oscuro — jardín al mediodía.
   static ThemeData get light => ThemeData(
-        useMaterial3: true,
-        brightness: Brightness.light,
-        colorScheme: _colorScheme(isDark: false),
-        scaffoldBackgroundColor: AppColors.backgroundLight,
-        textTheme: _buildTextTheme(AppColors.textPrimaryLight),
-        appBarTheme: _appBarTheme(isDark: false),
-        navigationBarTheme: _navigationBarTheme(isDark: false),
-        cardTheme: _cardTheme(isDark: false),
-        elevatedButtonTheme: _elevatedButtonTheme(),
-        textButtonTheme: _textButtonTheme(isDark: false),
-        outlinedButtonTheme: _outlinedButtonTheme(isDark: false),
-        floatingActionButtonTheme: _fabTheme(),
-        bottomSheetTheme: _bottomSheetTheme(isDark: false),
-        dialogTheme: _dialogTheme(isDark: false),
-        snackBarTheme: _snackBarTheme(isDark: false),
-        inputDecorationTheme: _inputDecorationTheme(isDark: false),
-        chipTheme: _chipTheme(isDark: false),
-        progressIndicatorTheme: _progressIndicatorTheme(isDark: false),
-        dividerTheme: _dividerTheme(isDark: false),
-        iconTheme: _iconTheme(isDark: false),
-        primaryIconTheme: _primaryIconTheme(),
-        listTileTheme: _listTileTheme(isDark: false),
-        expansionTileTheme: _expansionTileTheme(isDark: false),
-        switchTheme: _switchTheme(isDark: false),
-        sliderTheme: _sliderTheme(isDark: false),
-        checkboxTheme: _checkboxTheme(isDark: false),
-        radioTheme: _radioTheme(isDark: false),
-        badgeTheme: _badgeTheme(isDark: false),
-      );
+    useMaterial3: true,
+    brightness: Brightness.light,
+    colorScheme: _colorScheme(isDark: false),
+    scaffoldBackgroundColor: AppColors.backgroundLight,
+    textTheme: _buildTextTheme(AppColors.textPrimaryLight),
+    appBarTheme: _appBarTheme(isDark: false),
+    navigationBarTheme: _navigationBarTheme(isDark: false),
+    cardTheme: _cardTheme(isDark: false),
+    elevatedButtonTheme: _elevatedButtonTheme(),
+    textButtonTheme: _textButtonTheme(isDark: false),
+    outlinedButtonTheme: _outlinedButtonTheme(isDark: false),
+    floatingActionButtonTheme: _fabTheme(),
+    bottomSheetTheme: _bottomSheetTheme(isDark: false),
+    dialogTheme: _dialogTheme(isDark: false),
+    snackBarTheme: _snackBarTheme(isDark: false),
+    inputDecorationTheme: _inputDecorationTheme(isDark: false),
+    chipTheme: _chipTheme(isDark: false),
+    progressIndicatorTheme: _progressIndicatorTheme(isDark: false),
+    dividerTheme: _dividerTheme(isDark: false),
+    iconTheme: _iconTheme(isDark: false),
+    primaryIconTheme: _primaryIconTheme(),
+    listTileTheme: _listTileTheme(isDark: false),
+    expansionTileTheme: _expansionTileTheme(isDark: false),
+    switchTheme: _switchTheme(isDark: false),
+    sliderTheme: _sliderTheme(isDark: false),
+    checkboxTheme: _checkboxTheme(isDark: false),
+    radioTheme: _radioTheme(isDark: false),
+    badgeTheme: _badgeTheme(isDark: false),
+  );
 
   /// Modo oscuro: fondos verde-profundo, texto claro — jardín de noche.
   static ThemeData get dark => ThemeData(
-        useMaterial3: true,
-        brightness: Brightness.dark,
-        colorScheme: _colorScheme(isDark: true),
-        scaffoldBackgroundColor: AppColors.backgroundDark,
-        textTheme: _buildTextTheme(AppColors.textPrimaryDark),
-        appBarTheme: _appBarTheme(isDark: true),
-        navigationBarTheme: _navigationBarTheme(isDark: true),
-        cardTheme: _cardTheme(isDark: true),
-        elevatedButtonTheme: _elevatedButtonTheme(),
-        textButtonTheme: _textButtonTheme(isDark: true),
-        outlinedButtonTheme: _outlinedButtonTheme(isDark: true),
-        floatingActionButtonTheme: _fabTheme(),
-        bottomSheetTheme: _bottomSheetTheme(isDark: true),
-        dialogTheme: _dialogTheme(isDark: true),
-        snackBarTheme: _snackBarTheme(isDark: true),
-        inputDecorationTheme: _inputDecorationTheme(isDark: true),
-        chipTheme: _chipTheme(isDark: true),
-        progressIndicatorTheme: _progressIndicatorTheme(isDark: true),
-        dividerTheme: _dividerTheme(isDark: true),
-        iconTheme: _iconTheme(isDark: true),
-        primaryIconTheme: _primaryIconTheme(),
-        listTileTheme: _listTileTheme(isDark: true),
-        expansionTileTheme: _expansionTileTheme(isDark: true),
-        switchTheme: _switchTheme(isDark: true),
-        sliderTheme: _sliderTheme(isDark: true),
-        checkboxTheme: _checkboxTheme(isDark: true),
-        radioTheme: _radioTheme(isDark: true),
-        badgeTheme: _badgeTheme(isDark: true),
-      );
+    useMaterial3: true,
+    brightness: Brightness.dark,
+    colorScheme: _colorScheme(isDark: true),
+    scaffoldBackgroundColor: AppColors.backgroundDark,
+    textTheme: _buildTextTheme(AppColors.textPrimaryDark),
+    appBarTheme: _appBarTheme(isDark: true),
+    navigationBarTheme: _navigationBarTheme(isDark: true),
+    cardTheme: _cardTheme(isDark: true),
+    elevatedButtonTheme: _elevatedButtonTheme(),
+    textButtonTheme: _textButtonTheme(isDark: true),
+    outlinedButtonTheme: _outlinedButtonTheme(isDark: true),
+    floatingActionButtonTheme: _fabTheme(),
+    bottomSheetTheme: _bottomSheetTheme(isDark: true),
+    dialogTheme: _dialogTheme(isDark: true),
+    snackBarTheme: _snackBarTheme(isDark: true),
+    inputDecorationTheme: _inputDecorationTheme(isDark: true),
+    chipTheme: _chipTheme(isDark: true),
+    progressIndicatorTheme: _progressIndicatorTheme(isDark: true),
+    dividerTheme: _dividerTheme(isDark: true),
+    iconTheme: _iconTheme(isDark: true),
+    primaryIconTheme: _primaryIconTheme(),
+    listTileTheme: _listTileTheme(isDark: true),
+    expansionTileTheme: _expansionTileTheme(isDark: true),
+    switchTheme: _switchTheme(isDark: true),
+    sliderTheme: _sliderTheme(isDark: true),
+    checkboxTheme: _checkboxTheme(isDark: true),
+    radioTheme: _radioTheme(isDark: true),
+    badgeTheme: _badgeTheme(isDark: true),
+  );
 
   // ══════════════════════════════════════════════════════════════════════════
   // COLOR SCHEME
@@ -273,31 +273,31 @@ abstract final class AppTheme {
   // ──────────────────────────────────────────────────────────────────────────
 
   static TextTheme _buildTextTheme(Color defaultColor) => TextTheme(
-        // Pantallas de celebración, títulos de mundo, splash screen.
-        displayLarge: AppTextStyles.display.copyWith(color: defaultColor),
-        // Títulos principales de pantalla (Inventory, Library, etc.).
-        headlineLarge: AppTextStyles.h1.copyWith(color: defaultColor),
-        // Subtítulos, nombre del capítulo activo.
-        headlineMedium: AppTextStyles.h2.copyWith(color: defaultColor),
-        // Títulos de sección dentro de una pantalla.
-        headlineSmall: AppTextStyles.h3.copyWith(color: defaultColor),
-        // Título de tarjeta, nombre de personaje en diálogo.
-        titleLarge: AppTextStyles.h4.copyWith(color: defaultColor),
-        // Variante de título para subtítulos de card (ej: rareza del ítem).
-        titleMedium: AppTextStyles.h4.copyWith(color: defaultColor),
-        // Texto corriente de historia y descripciones de contenido.
-        bodyLarge: AppTextStyles.body.copyWith(color: defaultColor),
-        // Texto secundario: metadatos, fechas, labels de stats.
-        bodyMedium: AppTextStyles.bodySm.copyWith(color: defaultColor),
-        // Texto muy pequeño: badges, timestamps, hint text de input.
-        bodySmall: AppTextStyles.caption.copyWith(color: defaultColor),
-        // Texto de botones de acción: bold, legible, impactante.
-        labelLarge: AppTextStyles.button.copyWith(color: defaultColor),
-        // Texto de botones secundarios y chips.
-        labelMedium: AppTextStyles.buttonSm.copyWith(color: defaultColor),
-        // Texto de badges, tags, indicadores de estado muy pequeños.
-        labelSmall: AppTextStyles.caption.copyWith(color: defaultColor),
-      );
+    // Pantallas de celebración, títulos de mundo, splash screen.
+    displayLarge: AppTextStyles.display.copyWith(color: defaultColor),
+    // Títulos principales de pantalla (Inventory, Library, etc.).
+    headlineLarge: AppTextStyles.h1.copyWith(color: defaultColor),
+    // Subtítulos, nombre del capítulo activo.
+    headlineMedium: AppTextStyles.h2.copyWith(color: defaultColor),
+    // Títulos de sección dentro de una pantalla.
+    headlineSmall: AppTextStyles.h3.copyWith(color: defaultColor),
+    // Título de tarjeta, nombre de personaje en diálogo.
+    titleLarge: AppTextStyles.h4.copyWith(color: defaultColor),
+    // Variante de título para subtítulos de card (ej: rareza del ítem).
+    titleMedium: AppTextStyles.h4.copyWith(color: defaultColor),
+    // Texto corriente de historia y descripciones de contenido.
+    bodyLarge: AppTextStyles.body.copyWith(color: defaultColor),
+    // Texto secundario: metadatos, fechas, labels de stats.
+    bodyMedium: AppTextStyles.bodySm.copyWith(color: defaultColor),
+    // Texto muy pequeño: badges, timestamps, hint text de input.
+    bodySmall: AppTextStyles.caption.copyWith(color: defaultColor),
+    // Texto de botones de acción: bold, legible, impactante.
+    labelLarge: AppTextStyles.button.copyWith(color: defaultColor),
+    // Texto de botones secundarios y chips.
+    labelMedium: AppTextStyles.buttonSm.copyWith(color: defaultColor),
+    // Texto de badges, tags, indicadores de estado muy pequeños.
+    labelSmall: AppTextStyles.caption.copyWith(color: defaultColor),
+  );
 
   // ══════════════════════════════════════════════════════════════════════════
   // APPBAR
@@ -330,33 +330,30 @@ abstract final class AppTheme {
   // ──────────────────────────────────────────────────────────────────────────
 
   static AppBarTheme _appBarTheme({required bool isDark}) => AppBarTheme(
-        // gardenDeep en ambos modos — ver decisión arriba.
-        backgroundColor: AppColors.gardenDeep,
-        foregroundColor: Colors.white,
-        // Sin sombra en reposo. Aparece al hacer scroll (scrolledUnderElevation).
-        elevation: AppSpacing.elevationNone,
-        scrolledUnderElevation: AppSpacing.elevationSm,
-        // Sombra verde sutil en oscuro, negra sutil en claro.
-        shadowColor:
-            isDark ? const Color(0x2052B788) : Colors.black26,
-        centerTitle: false,
-        // Fuente h4 de Fredoka en blanco para el título.
-        titleTextStyle: AppTextStyles.h4.copyWith(color: Colors.white),
-        // Íconos de leading y actions: blancos, 24px (AppSpacing.iconMd).
-        iconTheme: const IconThemeData(
-          color: Colors.white,
-          size: AppSpacing.iconMd,
-        ),
-        actionsIconTheme: const IconThemeData(
-          color: Colors.white,
-          size: AppSpacing.iconMd,
-        ),
-        toolbarHeight: 56,
-        // Esquinas inferiores redondeadas: el AppBar "abraza" el contenido.
-        shape: const RoundedRectangleBorder(
-          borderRadius: AppBorderRadius.bottomMd,
-        ),
-      );
+    // gardenDeep en ambos modos — ver decisión arriba.
+    backgroundColor: AppColors.gardenDeep,
+    foregroundColor: Colors.white,
+    // Sin sombra en reposo. Aparece al hacer scroll (scrolledUnderElevation).
+    elevation: AppSpacing.elevationNone,
+    scrolledUnderElevation: AppSpacing.elevationSm,
+    // Sombra verde sutil en oscuro, negra sutil en claro.
+    shadowColor: isDark ? const Color(0x2052B788) : Colors.black26,
+    centerTitle: false,
+    // Fuente h4 de Fredoka en blanco para el título.
+    titleTextStyle: AppTextStyles.h4.copyWith(color: Colors.white),
+    // Íconos de leading y actions: blancos, 24px (AppSpacing.iconMd).
+    iconTheme: const IconThemeData(
+      color: Colors.white,
+      size: AppSpacing.iconMd,
+    ),
+    actionsIconTheme: const IconThemeData(
+      color: Colors.white,
+      size: AppSpacing.iconMd,
+    ),
+    toolbarHeight: 56,
+    // Esquinas inferiores redondeadas: el AppBar "abraza" el contenido.
+    shape: const RoundedRectangleBorder(borderRadius: AppBorderRadius.bottomMd),
+  );
 
   // ══════════════════════════════════════════════════════════════════════════
   // NAVIGATION BAR (Material 3 bottom navigation)
@@ -439,18 +436,16 @@ abstract final class AppTheme {
   // ──────────────────────────────────────────────────────────────────────────
 
   static CardThemeData _cardTheme({required bool isDark}) => CardThemeData(
-        color: isDark ? AppColors.surfaceDark : AppColors.surfaceLight,
-        elevation: AppSpacing.elevationSm,
-        // Sombra verde en oscuro, negra sutil en claro.
-        shadowColor: isDark ? const Color(0x2052B788) : Colors.black12,
-        // Sin tint del primary — ver decisión arriba.
-        surfaceTintColor: Colors.transparent,
-        shape: const RoundedRectangleBorder(
-          borderRadius: AppBorderRadius.md,
-        ),
-        // 4px de margen: los GridView y ListView necesitan separación mínima.
-        margin: const EdgeInsets.all(AppSpacing.xs),
-      );
+    color: isDark ? AppColors.surfaceDark : AppColors.surfaceLight,
+    elevation: AppSpacing.elevationSm,
+    // Sombra verde en oscuro, negra sutil en claro.
+    shadowColor: isDark ? const Color(0x2052B788) : Colors.black12,
+    // Sin tint del primary — ver decisión arriba.
+    surfaceTintColor: Colors.transparent,
+    shape: const RoundedRectangleBorder(borderRadius: AppBorderRadius.md),
+    // 4px de margen: los GridView y ListView necesitan separación mínima.
+    margin: const EdgeInsets.all(AppSpacing.xs),
+  );
 
   // ══════════════════════════════════════════════════════════════════════════
   // BUTTON THEMES — Elevated, Text, Outlined, FAB
@@ -479,48 +474,47 @@ abstract final class AppTheme {
   //    → radius 24px (AppBorderRadius.lg): FAB más redondeado que cards.
   // ──────────────────────────────────────────────────────────────────────────
 
-  static ElevatedButtonThemeData _elevatedButtonTheme() =>
-      ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.gardenMedium,
-          foregroundColor: Colors.white,
-          // Desactivado: verde desaturado para mostrar claramente que no está disponible.
-          disabledBackgroundColor: AppColors.gardenMedium.withValues(alpha: 0.38),
-          disabledForegroundColor: Colors.white.withValues(alpha: 0.60),
-          elevation: AppSpacing.elevationSm,
-          // Ancho completo: en teléfonos, los CTAs deben ser fáciles de tocar.
-          minimumSize: const Size(double.infinity, AppSpacing.buttonHeight),
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppSpacing.lg,
-            vertical: AppSpacing.md,
-          ),
-          shape: const RoundedRectangleBorder(
-            borderRadius: AppBorderRadius.md,
-          ),
-          textStyle: AppTextStyles.button,
-        ),
-      );
+  static ElevatedButtonThemeData
+  _elevatedButtonTheme() => ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      backgroundColor: AppColors.gardenMedium,
+      foregroundColor: Colors.white,
+      // Desactivado: verde desaturado para mostrar claramente que no está disponible.
+      disabledBackgroundColor: AppColors.gardenMedium.withValues(alpha: 0.38),
+      disabledForegroundColor: Colors.white.withValues(alpha: 0.60),
+      elevation: AppSpacing.elevationSm,
+      // Ancho completo: en teléfonos, los CTAs deben ser fáciles de tocar.
+      minimumSize: const Size(double.infinity, AppSpacing.buttonHeight),
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.lg,
+        vertical: AppSpacing.md,
+      ),
+      shape: const RoundedRectangleBorder(borderRadius: AppBorderRadius.md),
+      textStyle: AppTextStyles.button,
+    ),
+  );
 
   static TextButtonThemeData _textButtonTheme({required bool isDark}) =>
       TextButtonThemeData(
         style: TextButton.styleFrom(
           // En oscuro gardenLight porque tiene suficiente contraste sobre dark.
           // En claro gardenMedium porque gardenLight no contrasta sobre blanco.
-          foregroundColor:
-              isDark ? AppColors.gardenLight : AppColors.gardenMedium,
+          foregroundColor: isDark
+              ? AppColors.gardenLight
+              : AppColors.gardenMedium,
           disabledForegroundColor: isDark
               ? AppColors.gardenLight.withValues(alpha: 0.38)
               : AppColors.gardenMedium.withValues(alpha: 0.38),
           // Mínimo 44×44pt de touch target aunque el texto sea pequeño.
-          minimumSize:
-              const Size(AppSpacing.touchTargetMin, AppSpacing.touchTargetMin),
+          minimumSize: const Size(
+            AppSpacing.touchTargetMin,
+            AppSpacing.touchTargetMin,
+          ),
           padding: const EdgeInsets.symmetric(
             horizontal: AppSpacing.md,
             vertical: AppSpacing.sm,
           ),
-          shape: const RoundedRectangleBorder(
-            borderRadius: AppBorderRadius.sm,
-          ),
+          shape: const RoundedRectangleBorder(borderRadius: AppBorderRadius.sm),
           textStyle: AppTextStyles.buttonSm,
         ),
       );
@@ -528,8 +522,9 @@ abstract final class AppTheme {
   static OutlinedButtonThemeData _outlinedButtonTheme({required bool isDark}) =>
       OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
-          foregroundColor:
-              isDark ? AppColors.gardenLight : AppColors.gardenMedium,
+          foregroundColor: isDark
+              ? AppColors.gardenLight
+              : AppColors.gardenMedium,
           disabledForegroundColor: isDark
               ? AppColors.gardenLight.withValues(alpha: 0.38)
               : AppColors.gardenMedium.withValues(alpha: 0.38),
@@ -543,26 +538,22 @@ abstract final class AppTheme {
             horizontal: AppSpacing.lg,
             vertical: AppSpacing.md,
           ),
-          shape: const RoundedRectangleBorder(
-            borderRadius: AppBorderRadius.md,
-          ),
+          shape: const RoundedRectangleBorder(borderRadius: AppBorderRadius.md),
           textStyle: AppTextStyles.button,
         ),
       );
 
-  static FloatingActionButtonThemeData _fabTheme() =>
-      const FloatingActionButtonThemeData(
-        // sacredGold: la acción especial de la pantalla. Solo un FAB por pantalla.
-        backgroundColor: AppColors.sacredGold,
-        // textPrimaryLight sobre sacredGold: 8.7:1 contraste (WCAG AAA).
-        foregroundColor: AppColors.textPrimaryLight,
-        elevation: AppSpacing.elevationMd,
-        highlightElevation: AppSpacing.elevationLg,
-        // radius 24px: más redondeado que las tarjetas → mayor "flotación".
-        shape: RoundedRectangleBorder(
-          borderRadius: AppBorderRadius.lg,
-        ),
-      );
+  static FloatingActionButtonThemeData
+  _fabTheme() => const FloatingActionButtonThemeData(
+    // sacredGold: la acción especial de la pantalla. Solo un FAB por pantalla.
+    backgroundColor: AppColors.sacredGold,
+    // textPrimaryLight sobre sacredGold: 8.7:1 contraste (WCAG AAA).
+    foregroundColor: AppColors.textPrimaryLight,
+    elevation: AppSpacing.elevationMd,
+    highlightElevation: AppSpacing.elevationLg,
+    // radius 24px: más redondeado que las tarjetas → mayor "flotación".
+    shape: RoundedRectangleBorder(borderRadius: AppBorderRadius.lg),
+  );
 
   // ══════════════════════════════════════════════════════════════════════════
   // INPUT DECORATION — InputTheme
@@ -600,8 +591,7 @@ abstract final class AppTheme {
     final fillColor = isDark
         ? AppColors.gardenMoss.withValues(alpha: 0.30)
         : AppColors.gardenLight.withValues(alpha: 0.25);
-    final borderColor =
-        isDark ? AppColors.gardenMedium : AppColors.gardenLeaf;
+    final borderColor = isDark ? AppColors.gardenMedium : AppColors.gardenLeaf;
 
     return InputDecorationTheme(
       filled: true,
@@ -618,9 +608,7 @@ abstract final class AppTheme {
       // Habilitado sin focus: borde muy sutil (40% opacidad).
       enabledBorder: OutlineInputBorder(
         borderRadius: AppBorderRadius.md,
-        borderSide: BorderSide(
-          color: borderColor.withValues(alpha: 0.40),
-        ),
+        borderSide: BorderSide(color: borderColor.withValues(alpha: 0.40)),
       ),
       // Con focus: borde completo gardenMedium / gardenLeaf, 2px.
       focusedBorder: OutlineInputBorder(
@@ -647,7 +635,9 @@ abstract final class AppTheme {
         ),
       ),
       labelStyle: AppTextStyles.bodySm.copyWith(
-        color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
+        color: isDark
+            ? AppColors.textSecondaryDark
+            : AppColors.textSecondaryLight,
       ),
       // Label flotante al hacer focus: verde + semibold → claramente activo.
       floatingLabelStyle: AppTextStyles.caption.copyWith(
@@ -660,9 +650,7 @@ abstract final class AppTheme {
             ? AppColors.textSecondaryDark.withValues(alpha: 0.60)
             : AppColors.textSecondaryLight.withValues(alpha: 0.60),
       ),
-      errorStyle: AppTextStyles.caption.copyWith(
-        color: AppColors.error,
-      ),
+      errorStyle: AppTextStyles.caption.copyWith(color: AppColors.error),
       // Íconos de prefix/suffix heredan el color del borde activo.
       prefixIconColor: isDark ? AppColors.gardenLight : AppColors.gardenLeaf,
       suffixIconColor: isDark ? AppColors.gardenLight : AppColors.gardenLeaf,
@@ -699,29 +687,28 @@ abstract final class AppTheme {
   //      porque el divider entre contenido y acciones ya crea separación.
   // ──────────────────────────────────────────────────────────────────────────
 
-  static DialogThemeData _dialogTheme({required bool isDark}) => DialogThemeData(
-        backgroundColor:
-            isDark ? AppColors.surfaceDark : AppColors.surfaceLight,
-        surfaceTintColor: Colors.transparent,
-        elevation: AppSpacing.elevationXl,
-        shape: const RoundedRectangleBorder(
-          borderRadius: AppBorderRadius.lg,
-        ),
-        titleTextStyle: AppTextStyles.h3.copyWith(
-          color: isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight,
-        ),
-        contentTextStyle: AppTextStyles.body.copyWith(
-          color: isDark
-              ? AppColors.textSecondaryDark
-              : AppColors.textSecondaryLight,
-        ),
-        actionsPadding: const EdgeInsets.fromLTRB(
-          AppSpacing.md,
-          AppSpacing.xs,
-          AppSpacing.md,
-          AppSpacing.md,
-        ),
-      );
+  static DialogThemeData _dialogTheme({
+    required bool isDark,
+  }) => DialogThemeData(
+    backgroundColor: isDark ? AppColors.surfaceDark : AppColors.surfaceLight,
+    surfaceTintColor: Colors.transparent,
+    elevation: AppSpacing.elevationXl,
+    shape: const RoundedRectangleBorder(borderRadius: AppBorderRadius.lg),
+    titleTextStyle: AppTextStyles.h3.copyWith(
+      color: isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight,
+    ),
+    contentTextStyle: AppTextStyles.body.copyWith(
+      color: isDark
+          ? AppColors.textSecondaryDark
+          : AppColors.textSecondaryLight,
+    ),
+    actionsPadding: const EdgeInsets.fromLTRB(
+      AppSpacing.md,
+      AppSpacing.xs,
+      AppSpacing.md,
+      AppSpacing.md,
+    ),
+  );
 
   // ══════════════════════════════════════════════════════════════════════════
   // BOTTOM SHEET
@@ -749,22 +736,19 @@ abstract final class AppTheme {
   //    → Misma razón que Dialog: la superficie del sheet debe ser neutra.
   // ──────────────────────────────────────────────────────────────────────────
 
-  static BottomSheetThemeData _bottomSheetTheme({required bool isDark}) =>
-      BottomSheetThemeData(
-        backgroundColor:
-            isDark ? AppColors.surfaceDark : AppColors.surfaceLight,
-        surfaceTintColor: Colors.transparent,
-        elevation: AppSpacing.elevationXl,
-        modalElevation: AppSpacing.elevationXl,
-        shape: const RoundedRectangleBorder(
-          borderRadius: AppBorderRadius.sheet,
-        ),
-        // Handle visual para enseñar al niño que puede deslizar para cerrar.
-        dragHandleColor:
-            isDark ? AppColors.gardenMedium : AppColors.gardenLeaf,
-        dragHandleSize: const Size(32, 4),
-        showDragHandle: true,
-      );
+  static BottomSheetThemeData _bottomSheetTheme({
+    required bool isDark,
+  }) => BottomSheetThemeData(
+    backgroundColor: isDark ? AppColors.surfaceDark : AppColors.surfaceLight,
+    surfaceTintColor: Colors.transparent,
+    elevation: AppSpacing.elevationXl,
+    modalElevation: AppSpacing.elevationXl,
+    shape: const RoundedRectangleBorder(borderRadius: AppBorderRadius.sheet),
+    // Handle visual para enseñar al niño que puede deslizar para cerrar.
+    dragHandleColor: isDark ? AppColors.gardenMedium : AppColors.gardenLeaf,
+    dragHandleSize: const Size(32, 4),
+    showDragHandle: true,
+  );
 
   // ══════════════════════════════════════════════════════════════════════════
   // SNACKBAR
@@ -800,9 +784,7 @@ abstract final class AppTheme {
         // sacredGold sobre gardenDeep: 5.3:1 contraste (WCAG AA).
         actionTextColor: AppColors.sacredGold,
         behavior: SnackBarBehavior.floating,
-        shape: const RoundedRectangleBorder(
-          borderRadius: AppBorderRadius.md,
-        ),
+        shape: const RoundedRectangleBorder(borderRadius: AppBorderRadius.md),
         elevation: AppSpacing.elevationMd,
         insetPadding: const EdgeInsets.symmetric(
           horizontal: AppSpacing.md,
@@ -867,32 +849,34 @@ abstract final class AppTheme {
   //    → Los dedos de niños son menos precisos que los de adultos.
   // ──────────────────────────────────────────────────────────────────────────
 
-  static ListTileThemeData _listTileTheme({required bool isDark}) =>
-      ListTileThemeData(
-        tileColor: Colors.transparent,
-        selectedTileColor: AppColors.gardenMedium.withValues(alpha: 0.12),
-        iconColor: isDark ? AppColors.gardenLight : AppColors.gardenLeaf,
-        textColor:
-            isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight,
-        titleTextStyle: AppTextStyles.body.copyWith(
-          color: isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight,
-        ),
-        subtitleTextStyle: AppTextStyles.caption.copyWith(
-          color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
-        ),
-        leadingAndTrailingTextStyle: AppTextStyles.caption.copyWith(
-          color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
-        ),
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: AppSpacing.md,
-          vertical: AppSpacing.xs,
-        ),
-        shape: const RoundedRectangleBorder(
-          borderRadius: AppBorderRadius.sm,
-        ),
-        minTileHeight: AppSpacing.touchTargetMin,
-        minLeadingWidth: AppSpacing.iconMd,
-      );
+  static ListTileThemeData _listTileTheme({
+    required bool isDark,
+  }) => ListTileThemeData(
+    tileColor: Colors.transparent,
+    selectedTileColor: AppColors.gardenMedium.withValues(alpha: 0.12),
+    iconColor: isDark ? AppColors.gardenLight : AppColors.gardenLeaf,
+    textColor: isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight,
+    titleTextStyle: AppTextStyles.body.copyWith(
+      color: isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight,
+    ),
+    subtitleTextStyle: AppTextStyles.caption.copyWith(
+      color: isDark
+          ? AppColors.textSecondaryDark
+          : AppColors.textSecondaryLight,
+    ),
+    leadingAndTrailingTextStyle: AppTextStyles.caption.copyWith(
+      color: isDark
+          ? AppColors.textSecondaryDark
+          : AppColors.textSecondaryLight,
+    ),
+    contentPadding: const EdgeInsets.symmetric(
+      horizontal: AppSpacing.md,
+      vertical: AppSpacing.xs,
+    ),
+    shape: const RoundedRectangleBorder(borderRadius: AppBorderRadius.sm),
+    minTileHeight: AppSpacing.touchTargetMin,
+    minLeadingWidth: AppSpacing.iconMd,
+  );
 
   // ══════════════════════════════════════════════════════════════════════════
   // EXPANSION TILE
@@ -937,44 +921,41 @@ abstract final class AppTheme {
   //    → El shape aparece cuando el tile recibe el foco (accessibility).
   // ──────────────────────────────────────────────────────────────────────────
 
-  static ExpansionTileThemeData _expansionTileTheme({required bool isDark}) =>
-      ExpansionTileThemeData(
-        // Fondo siempre transparente → hereda el contexto padre.
-        backgroundColor: Colors.transparent,
-        collapsedBackgroundColor: Colors.transparent,
-        // Expandido: ícono 100% visible (estado activo).
-        iconColor: isDark ? AppColors.gardenLight : AppColors.gardenLeaf,
-        // Colapsado: ícono 70% opacidad (estado inactivo, sigue siendo visible).
-        collapsedIconColor: isDark
-            ? AppColors.gardenLight.withValues(alpha: 0.70)
-            : AppColors.gardenLeaf.withValues(alpha: 0.70),
-        // Expandido: texto primario 100% (el usuario está interactuando).
-        textColor:
-            isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight,
-        // Colapsado: color de acción (verde) indica "toca para expandir".
-        collapsedTextColor:
-            isDark ? AppColors.gardenLight : AppColors.gardenMedium,
-        tilePadding: const EdgeInsets.symmetric(
-          horizontal: AppSpacing.md,
-          vertical: AppSpacing.xs,
-        ),
-        // Hijos: mismo indent horizontal. Sin espacio top (tile lo da). 8px bottom.
-        childrenPadding: const EdgeInsets.only(
-          left: AppSpacing.md,
-          right: AppSpacing.md,
-          bottom: AppSpacing.sm,
-        ),
-        shape: const RoundedRectangleBorder(
-          borderRadius: AppBorderRadius.sm,
-        ),
-        collapsedShape: const RoundedRectangleBorder(
-          borderRadius: AppBorderRadius.sm,
-        ),
-        // Hijos alineados a la izquierda (lectura natural occident.).
-        expandedAlignment: Alignment.centerLeft,
-        // Sin clip: permite que los hijos usen sombras sin ser cortadas.
-        clipBehavior: Clip.none,
-      );
+  static ExpansionTileThemeData _expansionTileTheme({
+    required bool isDark,
+  }) => ExpansionTileThemeData(
+    // Fondo siempre transparente → hereda el contexto padre.
+    backgroundColor: Colors.transparent,
+    collapsedBackgroundColor: Colors.transparent,
+    // Expandido: ícono 100% visible (estado activo).
+    iconColor: isDark ? AppColors.gardenLight : AppColors.gardenLeaf,
+    // Colapsado: ícono 70% opacidad (estado inactivo, sigue siendo visible).
+    collapsedIconColor: isDark
+        ? AppColors.gardenLight.withValues(alpha: 0.70)
+        : AppColors.gardenLeaf.withValues(alpha: 0.70),
+    // Expandido: texto primario 100% (el usuario está interactuando).
+    textColor: isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight,
+    // Colapsado: color de acción (verde) indica "toca para expandir".
+    collapsedTextColor: isDark ? AppColors.gardenLight : AppColors.gardenMedium,
+    tilePadding: const EdgeInsets.symmetric(
+      horizontal: AppSpacing.md,
+      vertical: AppSpacing.xs,
+    ),
+    // Hijos: mismo indent horizontal. Sin espacio top (tile lo da). 8px bottom.
+    childrenPadding: const EdgeInsets.only(
+      left: AppSpacing.md,
+      right: AppSpacing.md,
+      bottom: AppSpacing.sm,
+    ),
+    shape: const RoundedRectangleBorder(borderRadius: AppBorderRadius.sm),
+    collapsedShape: const RoundedRectangleBorder(
+      borderRadius: AppBorderRadius.sm,
+    ),
+    // Hijos alineados a la izquierda (lectura natural occident.).
+    expandedAlignment: Alignment.centerLeft,
+    // Sin clip: permite que los hijos usen sombras sin ser cortadas.
+    clipBehavior: Clip.none,
+  );
 
   // ══════════════════════════════════════════════════════════════════════════
   // CHIP
@@ -1001,38 +982,32 @@ abstract final class AppTheme {
   // ──────────────────────────────────────────────────────────────────────────
 
   static ChipThemeData _chipTheme({required bool isDark}) => ChipThemeData(
-        backgroundColor:
-            isDark ? AppColors.gardenMoss : const Color(0xFFE8F5EE),
-        selectedColor: AppColors.gardenMedium,
-        disabledColor: isDark
-            ? AppColors.gardenMoss.withValues(alpha: 0.38)
-            : const Color(0xFFE8F5EE).withValues(alpha: 0.38),
-        deleteIconColor:
-            isDark ? AppColors.gardenLight : AppColors.gardenMoss,
-        labelStyle: AppTextStyles.caption.copyWith(
-          color: isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight,
-        ),
-        // Label cuando está seleccionado: blanco sobre gardenMedium.
-        secondaryLabelStyle: AppTextStyles.caption.copyWith(
-          color: Colors.white,
-        ),
-        padding: const EdgeInsets.symmetric(
-          horizontal: AppSpacing.sm,
-          vertical: AppSpacing.xs,
-        ),
-        // Forma de píldora: chips son etiquetas, no botones.
-        shape: const RoundedRectangleBorder(
-          borderRadius: AppBorderRadius.full,
-        ),
-        // Borde sutil sin seleccionar (40% opacidad → apenas visible).
-        side: BorderSide(
-          color: isDark
-              ? AppColors.gardenMedium.withValues(alpha: 0.40)
-              : AppColors.gardenLeaf.withValues(alpha: 0.40),
-        ),
-        elevation: AppSpacing.elevationNone,
-        pressElevation: AppSpacing.elevationSm,
-      );
+    backgroundColor: isDark ? AppColors.gardenMoss : const Color(0xFFE8F5EE),
+    selectedColor: AppColors.gardenMedium,
+    disabledColor: isDark
+        ? AppColors.gardenMoss.withValues(alpha: 0.38)
+        : const Color(0xFFE8F5EE).withValues(alpha: 0.38),
+    deleteIconColor: isDark ? AppColors.gardenLight : AppColors.gardenMoss,
+    labelStyle: AppTextStyles.caption.copyWith(
+      color: isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight,
+    ),
+    // Label cuando está seleccionado: blanco sobre gardenMedium.
+    secondaryLabelStyle: AppTextStyles.caption.copyWith(color: Colors.white),
+    padding: const EdgeInsets.symmetric(
+      horizontal: AppSpacing.sm,
+      vertical: AppSpacing.xs,
+    ),
+    // Forma de píldora: chips son etiquetas, no botones.
+    shape: const RoundedRectangleBorder(borderRadius: AppBorderRadius.full),
+    // Borde sutil sin seleccionar (40% opacidad → apenas visible).
+    side: BorderSide(
+      color: isDark
+          ? AppColors.gardenMedium.withValues(alpha: 0.40)
+          : AppColors.gardenLeaf.withValues(alpha: 0.40),
+    ),
+    elevation: AppSpacing.elevationNone,
+    pressElevation: AppSpacing.elevationSm,
+  );
 
   // ══════════════════════════════════════════════════════════════════════════
   // PROGRESS INDICATOR
@@ -1056,20 +1031,21 @@ abstract final class AppTheme {
   //    → 8px sería demasiado prominente en listas densas.
   // ──────────────────────────────────────────────────────────────────────────
 
-  static ProgressIndicatorThemeData _progressIndicatorTheme(
-          {required bool isDark}) =>
-      ProgressIndicatorThemeData(
-        color: AppColors.gardenMedium,
-        linearTrackColor: isDark
-            ? AppColors.gardenMoss.withValues(alpha: 0.40)
-            : AppColors.gardenLight.withValues(alpha: 0.60),
-        circularTrackColor: isDark
-            ? AppColors.gardenMoss.withValues(alpha: 0.40)
-            : AppColors.gardenLight.withValues(alpha: 0.60),
-        linearMinHeight: 6,
-        refreshBackgroundColor:
-            isDark ? AppColors.surfaceDark : AppColors.surfaceLight,
-      );
+  static ProgressIndicatorThemeData _progressIndicatorTheme({
+    required bool isDark,
+  }) => ProgressIndicatorThemeData(
+    color: AppColors.gardenMedium,
+    linearTrackColor: isDark
+        ? AppColors.gardenMoss.withValues(alpha: 0.40)
+        : AppColors.gardenLight.withValues(alpha: 0.60),
+    circularTrackColor: isDark
+        ? AppColors.gardenMoss.withValues(alpha: 0.40)
+        : AppColors.gardenLight.withValues(alpha: 0.60),
+    linearMinHeight: 6,
+    refreshBackgroundColor: isDark
+        ? AppColors.surfaceDark
+        : AppColors.surfaceLight,
+  );
 
   // ══════════════════════════════════════════════════════════════════════════
   // SWITCH
@@ -1167,34 +1143,35 @@ abstract final class AppTheme {
   //      puede distraer — se lee visualmente del track.
   // ──────────────────────────────────────────────────────────────────────────
 
-  static SliderThemeData _sliderTheme({required bool isDark}) =>
-      SliderThemeData(
-        activeTrackColor: AppColors.gardenMedium,
-        inactiveTrackColor: isDark
-            ? AppColors.gardenMoss.withValues(alpha: 0.50)
-            : AppColors.gardenLight.withValues(alpha: 0.70),
-        thumbColor: AppColors.gardenMedium,
-        overlayColor: AppColors.gardenMedium.withValues(alpha: 0.12),
-        valueIndicatorColor: AppColors.gardenDeep,
-        // Tick marks en los "steps" del slider (si los hay).
-        activeTickMarkColor: Colors.white.withValues(alpha: 0.54),
-        inactiveTickMarkColor: AppColors.gardenMedium.withValues(alpha: 0.54),
-        // Disabled: versiones desaturadas de los colores activos.
-        disabledActiveTrackColor: AppColors.gardenMedium.withValues(alpha: 0.38),
-        disabledInactiveTrackColor: AppColors.gardenLight.withValues(alpha: 0.38),
-        disabledThumbColor: AppColors.gardenMedium.withValues(alpha: 0.38),
-        trackHeight: 4,
-        // thumb 12dp = 24×24px total de touch target visible.
-        thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 12),
-        // overlayRadius 24dp = 48×48px total en el gesto. Fácil de tocar.
-        overlayShape: const RoundSliderOverlayShape(),
-        // Forma de paleta: lúdica y amigable para el videojuego.
-        valueIndicatorShape: const PaddleSliderValueIndicatorShape(),
-        valueIndicatorTextStyle: AppTextStyles.caption.copyWith(
-          color: Colors.white,
-        ),
-        showValueIndicator: ShowValueIndicator.onlyForDiscrete,
-      );
+  static SliderThemeData _sliderTheme({
+    required bool isDark,
+  }) => SliderThemeData(
+    activeTrackColor: AppColors.gardenMedium,
+    inactiveTrackColor: isDark
+        ? AppColors.gardenMoss.withValues(alpha: 0.50)
+        : AppColors.gardenLight.withValues(alpha: 0.70),
+    thumbColor: AppColors.gardenMedium,
+    overlayColor: AppColors.gardenMedium.withValues(alpha: 0.12),
+    valueIndicatorColor: AppColors.gardenDeep,
+    // Tick marks en los "steps" del slider (si los hay).
+    activeTickMarkColor: Colors.white.withValues(alpha: 0.54),
+    inactiveTickMarkColor: AppColors.gardenMedium.withValues(alpha: 0.54),
+    // Disabled: versiones desaturadas de los colores activos.
+    disabledActiveTrackColor: AppColors.gardenMedium.withValues(alpha: 0.38),
+    disabledInactiveTrackColor: AppColors.gardenLight.withValues(alpha: 0.38),
+    disabledThumbColor: AppColors.gardenMedium.withValues(alpha: 0.38),
+    trackHeight: 4,
+    // thumb 12dp = 24×24px total de touch target visible.
+    thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 12),
+    // overlayRadius 24dp = 48×48px total en el gesto. Fácil de tocar.
+    overlayShape: const RoundSliderOverlayShape(),
+    // Forma de paleta: lúdica y amigable para el videojuego.
+    valueIndicatorShape: const PaddleSliderValueIndicatorShape(),
+    valueIndicatorTextStyle: AppTextStyles.caption.copyWith(
+      color: Colors.white,
+    ),
+    showValueIndicator: ShowValueIndicator.onlyForDiscrete,
+  );
 
   // ══════════════════════════════════════════════════════════════════════════
   // CHECKBOX
@@ -1333,35 +1310,35 @@ abstract final class AppTheme {
   // ──────────────────────────────────────────────────────────────────────────
 
   static RadioThemeData _radioTheme({required bool isDark}) => RadioThemeData(
-        fillColor: WidgetStateProperty.resolveWith<Color?>((states) {
-          if (states.contains(WidgetState.disabled)) {
-            // Desactivado: verde desaturado.
-            return AppColors.gardenMedium.withValues(alpha: 0.38);
-          }
-          if (states.contains(WidgetState.selected)) {
-            // Seleccionado: verde jardín pleno.
-            return AppColors.gardenMedium;
-          }
-          // No seleccionado: aro verde sutil (70% opacidad).
-          return isDark
-              ? AppColors.gardenLight.withValues(alpha: 0.70)
-              : AppColors.gardenMoss.withValues(alpha: 0.70);
-        }),
-        overlayColor: WidgetStateProperty.resolveWith<Color?>((states) {
-          if (states.contains(WidgetState.pressed)) {
-            return AppColors.gardenMedium.withValues(alpha: 0.12);
-          }
-          if (states.contains(WidgetState.hovered)) {
-            return AppColors.gardenMedium.withValues(alpha: 0.08);
-          }
-          if (states.contains(WidgetState.focused)) {
-            return AppColors.gardenMedium.withValues(alpha: 0.12);
-          }
-          return Colors.transparent;
-        }),
-        // 24px de splash = área táctil efectiva de 48px (supera el mínimo de 44).
-        splashRadius: AppSpacing.lg,
-      );
+    fillColor: WidgetStateProperty.resolveWith<Color?>((states) {
+      if (states.contains(WidgetState.disabled)) {
+        // Desactivado: verde desaturado.
+        return AppColors.gardenMedium.withValues(alpha: 0.38);
+      }
+      if (states.contains(WidgetState.selected)) {
+        // Seleccionado: verde jardín pleno.
+        return AppColors.gardenMedium;
+      }
+      // No seleccionado: aro verde sutil (70% opacidad).
+      return isDark
+          ? AppColors.gardenLight.withValues(alpha: 0.70)
+          : AppColors.gardenMoss.withValues(alpha: 0.70);
+    }),
+    overlayColor: WidgetStateProperty.resolveWith<Color?>((states) {
+      if (states.contains(WidgetState.pressed)) {
+        return AppColors.gardenMedium.withValues(alpha: 0.12);
+      }
+      if (states.contains(WidgetState.hovered)) {
+        return AppColors.gardenMedium.withValues(alpha: 0.08);
+      }
+      if (states.contains(WidgetState.focused)) {
+        return AppColors.gardenMedium.withValues(alpha: 0.12);
+      }
+      return Colors.transparent;
+    }),
+    // 24px de splash = área táctil efectiva de 48px (supera el mínimo de 44).
+    splashRadius: AppSpacing.lg,
+  );
 
   // ══════════════════════════════════════════════════════════════════════════
   // ICON THEME
@@ -1390,17 +1367,15 @@ abstract final class AppTheme {
   // ──────────────────────────────────────────────────────────────────────────
 
   static IconThemeData _iconTheme({required bool isDark}) => IconThemeData(
-        color: isDark ? AppColors.gardenLight : AppColors.gardenLeaf,
-        size: AppSpacing.iconMd,
-        opticalSize: 24,
-        weight: 400,
-      );
+    color: isDark ? AppColors.gardenLight : AppColors.gardenLeaf,
+    size: AppSpacing.iconMd,
+    opticalSize: 24,
+    weight: 400,
+  );
 
   // Íconos en la "zona chrome" (AppBar): siempre blancos, independiente del modo.
-  static IconThemeData _primaryIconTheme() => const IconThemeData(
-        color: Colors.white,
-        size: AppSpacing.iconMd,
-      );
+  static IconThemeData _primaryIconTheme() =>
+      const IconThemeData(color: Colors.white, size: AppSpacing.iconMd);
 
   // ══════════════════════════════════════════════════════════════════════════
   // BADGE
@@ -1430,20 +1405,17 @@ abstract final class AppTheme {
   // ──────────────────────────────────────────────────────────────────────────
 
   static BadgeThemeData _badgeTheme({required bool isDark}) => BadgeThemeData(
-        backgroundColor: AppColors.error,
-        textColor: Colors.white,
-        textStyle: AppTextStyles.caption.copyWith(
-          color: Colors.white,
-          fontWeight: FontWeight.w700,
-          fontSize: 10,
-        ),
-        padding: const EdgeInsets.symmetric(
-          horizontal: AppSpacing.xs,
-          vertical: 1,
-        ),
-        smallSize: 8,
-        largeSize: 16,
-        // +4px derecha, -4px arriba del ícono host.
-        offset: const Offset(4, -4),
-      );
+    backgroundColor: AppColors.error,
+    textColor: Colors.white,
+    textStyle: AppTextStyles.caption.copyWith(
+      color: Colors.white,
+      fontWeight: FontWeight.w700,
+      fontSize: 10,
+    ),
+    padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xs, vertical: 1),
+    smallSize: 8,
+    largeSize: 16,
+    // +4px derecha, -4px arriba del ícono host.
+    offset: const Offset(4, -4),
+  );
 }

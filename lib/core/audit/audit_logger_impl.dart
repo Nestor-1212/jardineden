@@ -32,8 +32,8 @@ import 'package:jardindeleden/core/logging/log_modules.dart';
 /// Implementación de [AuditLogger] con persistencia JSONL vía [FileService].
 final class AuditLoggerImpl implements AuditLogger {
   AuditLoggerImpl({required FileService fileService, required AppLogger logger})
-      : _fileService = fileService,
-        _logger = logger;
+    : _fileService = fileService,
+      _logger = logger;
 
   final FileService _fileService;
   final AppLogger _logger;
@@ -83,9 +83,10 @@ final class AuditLoggerImpl implements AuditLogger {
     final entries = content
         .split('\n')
         .where((line) => line.trim().isNotEmpty)
-        .map((line) => AuditEntry.fromJson(
-              jsonDecode(line) as Map<String, Object?>,
-            ))
+        .map(
+          (line) =>
+              AuditEntry.fromJson(jsonDecode(line) as Map<String, Object?>),
+        )
         .toList();
 
     entries.sort((a, b) => b.timestamp.compareTo(a.timestamp));

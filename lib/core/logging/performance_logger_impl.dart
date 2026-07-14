@@ -37,20 +37,39 @@ final class PerformanceLoggerImpl implements PerformanceLogger {
     try {
       final result = await action();
       stopwatch.stop();
-      _log(operation, stopwatch.elapsedMilliseconds, effectiveModule, failed: false);
+      _log(
+        operation,
+        stopwatch.elapsedMilliseconds,
+        effectiveModule,
+        failed: false,
+      );
       return result;
     } catch (_) {
       stopwatch.stop();
-      _log(operation, stopwatch.elapsedMilliseconds, effectiveModule, failed: true);
+      _log(
+        operation,
+        stopwatch.elapsedMilliseconds,
+        effectiveModule,
+        failed: true,
+      );
       rethrow;
     }
   }
 
-  void _log(String operation, int elapsedMs, String module, {required bool failed}) {
+  void _log(
+    String operation,
+    int elapsedMs,
+    String module, {
+    required bool failed,
+  }) {
     final metadata = {'duration_ms': elapsedMs, if (failed) 'failed': true};
 
     if (elapsedMs >= warnThreshold.inMilliseconds) {
-      _logger.warning('slow_operation: $operation', module: module, metadata: metadata);
+      _logger.warning(
+        'slow_operation: $operation',
+        module: module,
+        metadata: metadata,
+      );
     } else {
       _logger.debug(operation, module: module, metadata: metadata);
     }

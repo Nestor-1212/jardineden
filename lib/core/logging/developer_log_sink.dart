@@ -23,7 +23,8 @@ final class DeveloperLogSink implements LogSink {
   void write(LogEntry entry) {
     final context = <String, Object?>{
       if (entry.sessionId != null) 'session_id': entry.sessionId,
-      if (entry.anonymousProfileId != null) 'profile_id': entry.anonymousProfileId,
+      if (entry.anonymousProfileId != null)
+        'profile_id': entry.anonymousProfileId,
       ...entry.metadata,
     };
 
@@ -40,10 +41,10 @@ final class DeveloperLogSink implements LogSink {
   /// Traduce [LogLevel] a la escala de severidad de dart:developer.log,
   /// que sigue la convención de java.util.logging.Level.
   int _developerLevel(LogLevel level) => switch (level) {
-        LogLevel.verbose => 300,
-        LogLevel.debug => 500,
-        LogLevel.info => 800,
-        LogLevel.warning => 900,
-        LogLevel.error => 1000,
-      };
+    LogLevel.verbose => 300,
+    LogLevel.debug => 500,
+    LogLevel.info => 800,
+    LogLevel.warning => 900,
+    LogLevel.error => 1000,
+  };
 }

@@ -113,4 +113,3 @@ final class CreateProfileUseCase {
     return AgeTier.apostol;
   }
 }
-

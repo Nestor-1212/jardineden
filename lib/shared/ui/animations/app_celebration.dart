@@ -29,6 +29,8 @@
 //                            responsabilidad de este widget).
 // ─────────────────────────────────────────────────────────────────────────────
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:jardindeleden/core/theme/app_animations.dart';
 import 'package:jardindeleden/core/theme/app_motion.dart';
@@ -103,7 +105,7 @@ class _AppCelebrationOverlayState extends State<AppCelebrationOverlay>
     // `.value` directamente, porque eso NO dispara el AnimationStatusListener
     // que llama a [onCompleted]. Con duration cero, forward() completa en el
     // siguiente tick y el listener se dispara igual, de forma confiable.
-    _controller.forward();
+    unawaited(_controller.forward());
   }
 
   @override
@@ -127,10 +129,16 @@ class _AppCelebrationOverlayState extends State<AppCelebrationOverlay>
               ),
             ),
             if (widget.backgroundEffect != null)
-              Opacity(opacity: _scrimOpacity.value, child: widget.backgroundEffect),
+              Opacity(
+                opacity: _scrimOpacity.value,
+                child: widget.backgroundEffect,
+              ),
             Opacity(
               opacity: _contentOpacity.value,
-              child: Transform.scale(scale: _contentScale.value, child: widget.child),
+              child: Transform.scale(
+                scale: _contentScale.value,
+                child: widget.child,
+              ),
             ),
           ],
         );

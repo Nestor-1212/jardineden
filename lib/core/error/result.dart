@@ -88,8 +88,7 @@ final class Success<S, F> extends Result<S, F> {
   T fold<T>({
     required T Function(S value) onSuccess,
     required T Function(F error) onFailure,
-  }) =>
-      onSuccess(value);
+  }) => onSuccess(value);
 
   @override
   String toString() => 'Success($value)';
@@ -106,8 +105,7 @@ final class Failure<S, F> extends Result<S, F> {
   T fold<T>({
     required T Function(S value) onSuccess,
     required T Function(F error) onFailure,
-  }) =>
-      onFailure(error);
+  }) => onFailure(error);
 
   @override
   String toString() => 'Failure($error)';

@@ -33,5 +33,8 @@ part 'security_service_provider.g.dart';
 SecurityService securityService(SecurityServiceRef ref) {
   final secureStorage = ref.watch(secureStorageProvider);
   final encryption = ref.watch(encryptionServiceProvider);
-  return SecurityServiceImpl(secureStorage: secureStorage, encryption: encryption);
+  return SecurityServiceImpl(
+    secureStorage: secureStorage,
+    encryption: encryption,
+  );
 }

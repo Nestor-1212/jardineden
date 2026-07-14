@@ -56,25 +56,25 @@ abstract final class AppTextScale {
   /// Esta función existe para el caso raro de necesitar acotar un subárbol
   /// específico con un TextScaler ya obtenido.
   static TextScaler clampSystemScaler(TextScaler scaler) => scaler.clamp(
-        minScaleFactor: minSystemScale,
-        maxScaleFactor: maxSystemScale,
-      );
+    minScaleFactor: minSystemScale,
+    maxScaleFactor: maxSystemScale,
+  );
 
   // ── Escalado por Tamaño de Pantalla ───────────────────────────────────────
 
   /// Multiplicador de fontSize según [ScreenSize] — eje independiente del
   /// TextScaler de accesibilidad (ver documentación del archivo).
   static double breakpointFactor(ScreenSize screenSize) => switch (screenSize) {
-        ScreenSize.compactPhone => 0.95,
-        ScreenSize.phone => 1.0,
-        ScreenSize.phablet => 1.05,
-        ScreenSize.tablet => 1.1,
-        ScreenSize.largeTablet => 1.15,
-      };
+    ScreenSize.compactPhone => 0.95,
+    ScreenSize.phone => 1.0,
+    ScreenSize.phablet => 1.05,
+    ScreenSize.tablet => 1.1,
+    ScreenSize.largeTablet => 1.15,
+  };
 
   /// Retorna [style] con su fontSize multiplicado por [breakpointFactor].
   ///
-  /// Si [style.fontSize] es null, retorna [style] sin modificar.
+  /// Si `style.fontSize` es null, retorna [style] sin modificar.
   static TextStyle scale(TextStyle style, ScreenSize screenSize) {
     final fontSize = style.fontSize;
     if (fontSize == null) return style;

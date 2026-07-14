@@ -167,11 +167,11 @@ abstract final class AppBreakpoints {
   ///
   /// En teléfonos: 16px. En tablets: 24px. En desktop: 32px.
   static double horizontalPadding(double width) => responsive(
-        width: width,
-        mobile: AppSpacing.md,
-        tablet: AppSpacing.lg,
-        desktop: AppSpacing.xl,
-      );
+    width: width,
+    mobile: AppSpacing.md,
+    tablet: AppSpacing.lg,
+    desktop: AppSpacing.xl,
+  );
 
   /// Retorna el ancho máximo del contenido principal (para tablets y desktop).
   ///
@@ -219,8 +219,7 @@ extension AppBreakpointsContext on BuildContext {
   int get columnCount => AppBreakpoints.columnCount(screenWidth);
 
   /// Padding horizontal estándar para el ancho de pantalla actual.
-  double get horizontalPadding =>
-      AppBreakpoints.horizontalPadding(screenWidth);
+  double get horizontalPadding => AppBreakpoints.horizontalPadding(screenWidth);
 
   /// Ancho máximo del contenido principal (720px en tablet/desktop).
   double get maxContentWidth => AppBreakpoints.maxContentWidth(screenWidth);
@@ -238,11 +237,7 @@ extension AppBreakpointsContext on BuildContext {
   ///   ),
   /// ),
   /// ```
-  T responsive<T>({
-    required T mobile,
-    T? tablet,
-    T? desktop,
-  }) =>
+  T responsive<T>({required T mobile, T? tablet, T? desktop}) =>
       AppBreakpoints.responsive(
         width: screenWidth,
         mobile: mobile,

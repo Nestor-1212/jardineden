@@ -33,12 +33,12 @@ abstract final class AppImageScale {
   /// Más generoso que AppIconScale — las imágenes son contenido, no
   /// controles de UI, y se benefician más del espacio extra de una tablet.
   static double factorFor(ScreenSize screenSize) => switch (screenSize) {
-        ScreenSize.compactPhone => 0.9,
-        ScreenSize.phone => 1.0,
-        ScreenSize.phablet => 1.1,
-        ScreenSize.tablet => 1.3,
-        ScreenSize.largeTablet => 1.5,
-      };
+    ScreenSize.compactPhone => 0.9,
+    ScreenSize.phone => 1.0,
+    ScreenSize.phablet => 1.1,
+    ScreenSize.tablet => 1.3,
+    ScreenSize.largeTablet => 1.5,
+  };
 
   /// Retorna [baseWidth] escalado para [screenSize]. Usar con una relación
   /// de aspecto conocida (AspectRatio widget) para calcular el alto.
@@ -83,10 +83,9 @@ extension AppImageScaleContext on BuildContext {
   ({int width, int height}) imageCacheSize({
     required double displayWidth,
     required double displayHeight,
-  }) =>
-      AppImageScale.cacheSize(
-        displayWidth: displayWidth,
-        displayHeight: displayHeight,
-        devicePixelRatio: MediaQuery.devicePixelRatioOf(this),
-      );
+  }) => AppImageScale.cacheSize(
+    displayWidth: displayWidth,
+    displayHeight: displayHeight,
+    devicePixelRatio: MediaQuery.devicePixelRatioOf(this),
+  );
 }

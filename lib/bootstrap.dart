@@ -56,6 +56,13 @@ import 'package:jardindeleden/l10n/generated/app_localizations.dart';
 /// Arranca la aplicación. Llamar desde cada entry point `lib/main_*.dart`
 /// (development, qa, staging, production).
 void bootstrap() {
+  // runZonedGuarded retorna Future<void>? (nullable porque el body es un
+  // callback async) — es el patrón oficial de bootstrap de Flutter para
+  // capturar errores async fuera de cualquier try/catch. Nada en main()
+  // necesita esperar a que la zona termine (vive mientras la app viva), así
+  // que el Future no se usa intencionalmente; unawaited() no aplica
+  // directamente por la nulabilidad del retorno.
+  // ignore: discarded_futures
   runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
@@ -105,7 +112,7 @@ class JardinDelEdenApp extends ConsumerWidget {
     // pantalla de carga dedicada).
     final accessibility =
         ref.watch(accessibilityControllerProvider).valueOrNull ??
-            const AccessibilitySettings();
+        const AccessibilitySettings();
 
     // ── Alto Contraste + Daltonismo ────────────────────────────────────────
     //
@@ -113,10 +120,12 @@ class JardinDelEdenApp extends ConsumerWidget {
     // alto contraste), luego se le aplica el ajuste de daltonismo si
     // corresponde — ver core/theme/app_high_contrast_colors.dart y
     // core/accessibility/color_blind_support.dart para el porqué de cada uno.
-    final baseLight =
-        accessibility.highContrastEnabled ? AppHighContrastTheme.light : AppTheme.light;
-    final baseDark =
-        accessibility.highContrastEnabled ? AppHighContrastTheme.dark : AppTheme.dark;
+    final baseLight = accessibility.highContrastEnabled
+        ? AppHighContrastTheme.light
+        : AppTheme.light;
+    final baseDark = accessibility.highContrastEnabled
+        ? AppHighContrastTheme.dark
+        : AppTheme.dark;
 
     var lightTheme = accessibility.colorBlindMode.isActive
         ? baseLight.copyWith(
@@ -145,9 +154,14 @@ class JardinDelEdenApp extends ConsumerWidget {
     // Se aplica directamente al ThemeData (no envolviendo con Theme() dentro
     // de builder) porque MaterialApp.builder no garantiza que Theme.of(context)
     // ya refleje `theme`/`darkTheme` en ese punto del árbol.
-    if (context.systemPrefersReducedMotion || accessibility.reduceMotionEnabled) {
-      lightTheme = lightTheme.copyWith(pageTransitionsTheme: appInstantPageTransitionsTheme);
-      darkTheme = darkTheme.copyWith(pageTransitionsTheme: appInstantPageTransitionsTheme);
+    if (context.systemPrefersReducedMotion ||
+        accessibility.reduceMotionEnabled) {
+      lightTheme = lightTheme.copyWith(
+        pageTransitionsTheme: appInstantPageTransitionsTheme,
+      );
+      darkTheme = darkTheme.copyWith(
+        pageTransitionsTheme: appInstantPageTransitionsTheme,
+      );
     }
 
     return MaterialApp.router(

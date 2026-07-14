@@ -114,14 +114,13 @@ final class PlayerProfileEntity {
 
   /// Retorna el límite diario de Luz para este perfil según su [ageTier].
   int get dailyLuzCeiling => switch (ageTier) {
-        AgeTier.querubin => 300,
-        AgeTier.discipulo => 500,
-        AgeTier.apostol => 750,
-      };
+    AgeTier.querubin => 300,
+    AgeTier.discipulo => 500,
+    AgeTier.apostol => 750,
+  };
 
   /// true si el jugador alcanzó el techo de Luz de hoy.
-  bool get hasReachedDailyLuzCeiling =>
-      totalLuzEarnedToday >= dailyLuzCeiling;
+  bool get hasReachedDailyLuzCeiling => totalLuzEarnedToday >= dailyLuzCeiling;
 
   /// Cuánta Luz puede ganar todavía hoy.
   int get remainingLuzToday =>
@@ -150,25 +149,24 @@ final class PlayerProfileEntity {
     int? longestStreak,
     bool? hasParentPin,
     bool? isActive,
-  }) =>
-      PlayerProfileEntity(
-        id: id ?? this.id,
-        name: name ?? this.name,
-        age: age ?? this.age,
-        ageTier: ageTier ?? this.ageTier,
-        avatarId: avatarId ?? this.avatarId,
-        createdAt: createdAt ?? this.createdAt,
-        lastActiveAt: lastActiveAt ?? this.lastActiveAt,
-        seedsOfLight: seedsOfLight ?? this.seedsOfLight,
-        scrollsOfWisdom: scrollsOfWisdom ?? this.scrollsOfWisdom,
-        stonesOfJordan: stonesOfJordan ?? this.stonesOfJordan,
-        starsOfAbraam: starsOfAbraam ?? this.starsOfAbraam,
-        totalLuzEarnedToday: totalLuzEarnedToday ?? this.totalLuzEarnedToday,
-        currentStreak: currentStreak ?? this.currentStreak,
-        longestStreak: longestStreak ?? this.longestStreak,
-        hasParentPin: hasParentPin ?? this.hasParentPin,
-        isActive: isActive ?? this.isActive,
-      );
+  }) => PlayerProfileEntity(
+    id: id ?? this.id,
+    name: name ?? this.name,
+    age: age ?? this.age,
+    ageTier: ageTier ?? this.ageTier,
+    avatarId: avatarId ?? this.avatarId,
+    createdAt: createdAt ?? this.createdAt,
+    lastActiveAt: lastActiveAt ?? this.lastActiveAt,
+    seedsOfLight: seedsOfLight ?? this.seedsOfLight,
+    scrollsOfWisdom: scrollsOfWisdom ?? this.scrollsOfWisdom,
+    stonesOfJordan: stonesOfJordan ?? this.stonesOfJordan,
+    starsOfAbraam: starsOfAbraam ?? this.starsOfAbraam,
+    totalLuzEarnedToday: totalLuzEarnedToday ?? this.totalLuzEarnedToday,
+    currentStreak: currentStreak ?? this.currentStreak,
+    longestStreak: longestStreak ?? this.longestStreak,
+    hasParentPin: hasParentPin ?? this.hasParentPin,
+    isActive: isActive ?? this.isActive,
+  );
 
   @override
   bool operator ==(Object other) =>

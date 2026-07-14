@@ -41,25 +41,20 @@ abstract final class AppBorderRadius {
   static const BorderRadius none = BorderRadius.zero;
 
   /// 8px — Chips, badges, tooltips, inputs compactos.
-  static const BorderRadius sm =
-      BorderRadius.all(Radius.circular(8));
+  static const BorderRadius sm = BorderRadius.all(Radius.circular(8));
 
   /// 16px — Tarjetas de contenido, botones, modales. El radio más usado.
-  static const BorderRadius md =
-      BorderRadius.all(Radius.circular(16));
+  static const BorderRadius md = BorderRadius.all(Radius.circular(16));
 
   /// 24px — Modales grandes, bottom sheets, paneles de personaje.
-  static const BorderRadius lg =
-      BorderRadius.all(Radius.circular(24));
+  static const BorderRadius lg = BorderRadius.all(Radius.circular(24));
 
   /// 32px — Elementos especiales de diseño, marcos decorativos.
-  static const BorderRadius xl =
-      BorderRadius.all(Radius.circular(32));
+  static const BorderRadius xl = BorderRadius.all(Radius.circular(32));
 
   /// 999px — Elementos perfectamente circulares o en píldora.
   /// Avatares, badges de moneda, contadores del HUD.
-  static const BorderRadius full =
-      BorderRadius.all(Radius.circular(999));
+  static const BorderRadius full = BorderRadius.all(Radius.circular(999));
 
   // ── Radios Asimétricos — Solo Arriba ─────────────────────────────────────
 
@@ -102,22 +97,19 @@ abstract final class AppBorderRadius {
   // ── Radios para Elementos Específicos del Juego ───────────────────────────
 
   /// Radio de tarjeta de mundo en el mapa.
-  static const BorderRadius worldCard =
-      BorderRadius.all(Radius.circular(20));
+  static const BorderRadius worldCard = BorderRadius.all(Radius.circular(20));
 
   /// Radio del avatar de perfil de jugador.
   static const BorderRadius avatar = full;
 
   /// Radio del contador de monedas en el HUD.
-  static const BorderRadius hudCoin =
-      BorderRadius.all(Radius.circular(12));
+  static const BorderRadius hudCoin = BorderRadius.all(Radius.circular(12));
 
   /// Radio del chip de rareza.
   static const BorderRadius rarityChip = full;
 
   /// Radio del botón del minijuego (más grande para ser más clicable).
-  static const BorderRadius gameButton =
-      BorderRadius.all(Radius.circular(20));
+  static const BorderRadius gameButton = BorderRadius.all(Radius.circular(20));
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -155,13 +147,13 @@ abstract final class AppBorderSide {
 
   /// Borde de tarjeta en modo claro. Línea sutil verde musgo.
   static BorderSide get cardLight => const BorderSide(
-        color: Color(0x332D6A4F), // gardenMoss 20%
-      );
+    color: Color(0x332D6A4F), // gardenMoss 20%
+  );
 
   /// Borde de tarjeta en modo oscuro. Línea verde jardín suave.
   static BorderSide get cardDark => const BorderSide(
-        color: Color(0x4052B788), // gardenMedium 25%
-      );
+    color: Color(0x4052B788), // gardenMedium 25%
+  );
 
   /// Borde de elemento seleccionado (modo claro y oscuro).
   static const BorderSide selected = BorderSide(
@@ -230,16 +222,16 @@ abstract final class AppBorderSide {
 abstract final class AppDecorations {
   /// Decoración estándar de tarjeta de contenido.
   static BoxDecoration card({required Brightness brightness}) => BoxDecoration(
-        color: brightness == Brightness.light
-            ? AppColors.surfaceLight
-            : AppColors.surfaceDark,
-        borderRadius: AppBorderRadius.md,
-        border: Border.all(
-          color: brightness == Brightness.light
-              ? const Color(0x332D6A4F) // gardenMoss 20%
-              : const Color(0x4052B788), // gardenMedium 25%
-        ),
-      );
+    color: brightness == Brightness.light
+        ? AppColors.surfaceLight
+        : AppColors.surfaceDark,
+    borderRadius: AppBorderRadius.md,
+    border: Border.all(
+      color: brightness == Brightness.light
+          ? const Color(0x332D6A4F) // gardenMoss 20%
+          : const Color(0x4052B788), // gardenMedium 25%
+    ),
+  );
 
   /// Decoración de tarjeta elevada (con sombra). Para tarjetas interactivas.
   static BoxDecoration cardElevated({required Brightness brightness}) =>
@@ -263,11 +255,11 @@ abstract final class AppDecorations {
 
   /// Decoración del panel del HUD superior.
   static BoxDecoration hud({required Brightness brightness}) => BoxDecoration(
-        color: brightness == Brightness.light
-            ? AppColors.gardenDeep
-            : const Color(0xFF0D1F17), // backgroundDark más oscuro
-        borderRadius: AppBorderRadius.bottomMd,
-      );
+    color: brightness == Brightness.light
+        ? AppColors.gardenDeep
+        : const Color(0xFF0D1F17), // backgroundDark más oscuro
+    borderRadius: AppBorderRadius.bottomMd,
+  );
 
   /// Decoración del fondo de un minijuego.
   static BoxDecoration minigameBackground({required Color worldColor}) =>
@@ -275,10 +267,7 @@ abstract final class AppDecorations {
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          colors: [
-            worldColor,
-            AppColors.gardenDeep,
-          ],
+          colors: [worldColor, AppColors.gardenDeep],
         ),
       );
 

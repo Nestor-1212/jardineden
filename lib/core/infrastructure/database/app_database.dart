@@ -77,24 +77,24 @@ class AppDatabase extends _$AppDatabase {
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
-        onCreate: (Migrator m) async {
-          await m.createAll();
-        },
-        onUpgrade: (Migrator m, int from, int to) async {
-          await onBeforeMigrate?.call(from, to);
+    onCreate: (Migrator m) async {
+      await m.createAll();
+    },
+    onUpgrade: (Migrator m, int from, int to) async {
+      await onBeforeMigrate?.call(from, to);
 
-          // Sprint de cada feature: agregar aquí las migraciones incrementales,
-          // en bloques secuenciales y SIN reordenar los ya existentes.
-          // Ejemplo (Sprint Auth, v1 -> v2):
-          //   if (from < 2) {
-          //     await m.createTable(playerProfiles);
-          //   }
-        },
-        beforeOpen: (OpeningDetails details) async {
-          // Debe ejecutarse en cada apertura (SQLite no persiste estas
-          // pragmas entre conexiones).
-          await customStatement('PRAGMA foreign_keys = ON;');
-          await customStatement('PRAGMA journal_mode = WAL;');
-        },
-      );
+      // Sprint de cada feature: agregar aquí las migraciones incrementales,
+      // en bloques secuenciales y SIN reordenar los ya existentes.
+      // Ejemplo (Sprint Auth, v1 -> v2):
+      //   if (from < 2) {
+      //     await m.createTable(playerProfiles);
+      //   }
+    },
+    beforeOpen: (OpeningDetails details) async {
+      // Debe ejecutarse en cada apertura (SQLite no persiste estas
+      // pragmas entre conexiones).
+      await customStatement('PRAGMA foreign_keys = ON;');
+      await customStatement('PRAGMA journal_mode = WAL;');
+    },
+  );
 }

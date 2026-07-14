@@ -82,8 +82,7 @@ abstract final class AppColorBlindAdjustment {
     if (rotation == 0) return color;
 
     final adjustedHue = (hsl.hue + rotation) % 360;
-    final adjustedLightness =
-        (hsl.lightness + _lightnessBoost).clamp(0.0, 1.0);
+    final adjustedLightness = (hsl.lightness + _lightnessBoost).clamp(0.0, 1.0);
 
     return hsl.withHue(adjustedHue).withLightness(adjustedLightness).toColor();
   }

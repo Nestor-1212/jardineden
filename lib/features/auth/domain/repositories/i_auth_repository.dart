@@ -36,8 +36,7 @@ abstract interface class IAuthRepository {
   /// Retorna todos los perfiles activos del dispositivo.
   ///
   /// Máximo 5 perfiles por dispositivo (AppConstants.maxProfilesPerDevice).
-  Future<Result<List<PlayerProfileEntity>, DatabaseException>>
-      getAllProfiles();
+  Future<Result<List<PlayerProfileEntity>, DatabaseException>> getAllProfiles();
 
   /// Retorna el perfil con el [id] dado.
   ///

@@ -46,8 +46,8 @@ final class SecurityServiceImpl implements SecurityService {
   SecurityServiceImpl({
     required FlutterSecureStorage secureStorage,
     required EncryptionService encryption,
-  })  : _secureStorage = secureStorage,
-        _encryption = encryption;
+  }) : _secureStorage = secureStorage,
+       _encryption = encryption;
 
   final FlutterSecureStorage _secureStorage;
   final EncryptionService _encryption;
@@ -91,7 +91,10 @@ final class SecurityServiceImpl implements SecurityService {
   }
 
   @override
-  Future<bool> verifyAssetIntegrity(String filePath, String expectedHash) async {
+  Future<bool> verifyAssetIntegrity(
+    String filePath,
+    String expectedHash,
+  ) async {
     final actualHash = await calculateAssetHash(filePath);
     return actualHash == expectedHash;
   }

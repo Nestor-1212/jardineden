@@ -23,7 +23,7 @@ import 'package:jardindeleden/core/permission/permission_service.dart';
 /// Implementación de [PermissionService] sobre flutter_local_notifications.
 final class PermissionServiceImpl implements PermissionService {
   PermissionServiceImpl({required FlutterLocalNotificationsPlugin plugin})
-      : _plugin = plugin;
+    : _plugin = plugin;
 
   final FlutterLocalNotificationsPlugin _plugin;
 
@@ -31,8 +31,10 @@ final class PermissionServiceImpl implements PermissionService {
   Future<AppPermissionStatus> checkPermission(AppPermission permission) async {
     switch (permission) {
       case AppPermission.notifications:
-        final androidPlugin = _plugin.resolvePlatformSpecificImplementation<
-            AndroidFlutterLocalNotificationsPlugin>();
+        final androidPlugin = _plugin
+            .resolvePlatformSpecificImplementation<
+              AndroidFlutterLocalNotificationsPlugin
+            >();
 
         if (androidPlugin != null) {
           final enabled = await androidPlugin.areNotificationsEnabled();
@@ -46,21 +48,27 @@ final class PermissionServiceImpl implements PermissionService {
   }
 
   @override
-  Future<AppPermissionStatus> requestPermission(AppPermission permission) async {
+  Future<AppPermissionStatus> requestPermission(
+    AppPermission permission,
+  ) async {
     switch (permission) {
       case AppPermission.notifications:
         final androidGranted = await _plugin
             .resolvePlatformSpecificImplementation<
-                AndroidFlutterLocalNotificationsPlugin>()
+              AndroidFlutterLocalNotificationsPlugin
+            >()
             ?.requestNotificationsPermission();
 
         final iosGranted = await _plugin
             .resolvePlatformSpecificImplementation<
-                IOSFlutterLocalNotificationsPlugin>()
+              IOSFlutterLocalNotificationsPlugin
+            >()
             ?.requestPermissions(alert: true, badge: true, sound: true);
 
         final granted = androidGranted ?? iosGranted ?? false;
-        return granted ? AppPermissionStatus.granted : AppPermissionStatus.denied;
+        return granted
+            ? AppPermissionStatus.granted
+            : AppPermissionStatus.denied;
     }
   }
 }

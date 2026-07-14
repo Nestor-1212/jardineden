@@ -63,28 +63,28 @@ abstract final class AppHighContrastColors {
 /// reemplazando su [ColorScheme] — ver limitación documentada arriba.
 abstract final class AppHighContrastTheme {
   static ThemeData get light => AppTheme.light.copyWith(
-        colorScheme: AppTheme.light.colorScheme.copyWith(
-          brightness: Brightness.light,
-          surface: AppHighContrastColors.surfaceLight,
-          onSurface: AppHighContrastColors.onSurfaceLight,
-          primary: AppHighContrastColors.primaryLight,
-          onPrimary: AppHighContrastColors.backgroundLight,
-          error: AppHighContrastColors.errorLight,
-          onError: AppHighContrastColors.backgroundLight,
-        ),
-        scaffoldBackgroundColor: AppHighContrastColors.backgroundLight,
-      );
+    colorScheme: AppTheme.light.colorScheme.copyWith(
+      brightness: Brightness.light,
+      surface: AppHighContrastColors.surfaceLight,
+      onSurface: AppHighContrastColors.onSurfaceLight,
+      primary: AppHighContrastColors.primaryLight,
+      onPrimary: AppHighContrastColors.backgroundLight,
+      error: AppHighContrastColors.errorLight,
+      onError: AppHighContrastColors.backgroundLight,
+    ),
+    scaffoldBackgroundColor: AppHighContrastColors.backgroundLight,
+  );
 
   static ThemeData get dark => AppTheme.dark.copyWith(
-        colorScheme: AppTheme.dark.colorScheme.copyWith(
-          brightness: Brightness.dark,
-          surface: AppHighContrastColors.surfaceDark,
-          onSurface: AppHighContrastColors.onSurfaceDark,
-          primary: AppHighContrastColors.primaryDark,
-          onPrimary: AppHighContrastColors.backgroundDark,
-          error: AppHighContrastColors.errorDark,
-          onError: AppHighContrastColors.backgroundDark,
-        ),
-        scaffoldBackgroundColor: AppHighContrastColors.backgroundDark,
-      );
+    colorScheme: AppTheme.dark.colorScheme.copyWith(
+      brightness: Brightness.dark,
+      surface: AppHighContrastColors.surfaceDark,
+      onSurface: AppHighContrastColors.onSurfaceDark,
+      primary: AppHighContrastColors.primaryDark,
+      onPrimary: AppHighContrastColors.backgroundDark,
+      error: AppHighContrastColors.errorDark,
+      onError: AppHighContrastColors.backgroundDark,
+    ),
+    scaffoldBackgroundColor: AppHighContrastColors.backgroundDark,
+  );
 }

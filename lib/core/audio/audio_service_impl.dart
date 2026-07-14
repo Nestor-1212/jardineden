@@ -24,8 +24,8 @@ final class AudioServiceImpl implements AudioService {
   AudioServiceImpl({
     required AudioPlayer bgmPlayer,
     required AudioPlayer sfxPlayer,
-  })  : _bgmPlayer = bgmPlayer,
-        _sfxPlayer = sfxPlayer;
+  }) : _bgmPlayer = bgmPlayer,
+       _sfxPlayer = sfxPlayer;
 
   final AudioPlayer _bgmPlayer;
   final AudioPlayer _sfxPlayer;

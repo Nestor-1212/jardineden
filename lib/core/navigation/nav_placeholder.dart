@@ -48,11 +48,7 @@ class NavPlaceholder extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              icon,
-              size: 64,
-              color: iconColor ?? AppColors.gardenMedium,
-            ),
+            Icon(icon, size: 64, color: iconColor ?? AppColors.gardenMedium),
             const SizedBox(height: AppSpacing.md),
             Text(
               title,

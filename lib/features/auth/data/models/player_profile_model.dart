@@ -79,7 +79,7 @@ final class PlayerProfileModel {
 
   // ── Flags ─────────────────────────────────────────────────────────────────
   final int hasParentPin; // 0 = false, 1 = true (SQLite no tiene BOOLEAN)
-  final int isActive;     // 0 = false, 1 = true
+  final int isActive; // 0 = false, 1 = true
 
   // ── Deserialización (DB → Model) ──────────────────────────────────────────
 
@@ -108,45 +108,45 @@ final class PlayerProfileModel {
 
   /// Convierte el modelo a un Map para insertar/actualizar en la base de datos.
   Map<String, dynamic> toMap() => {
-        'id': id,
-        'name': name,
-        'age': age,
-        'age_tier_index': ageTierIndex,
-        'avatar_id': avatarId,
-        'created_at': createdAt,
-        'last_active_at': lastActiveAt,
-        'seeds_of_light': seedsOfLight,
-        'scrolls_of_wisdom': scrollsOfWisdom,
-        'stones_of_jordan': stonesOfJordan,
-        'stars_of_abraam': starsOfAbraam,
-        'total_luz_earned_today': totalLuzEarnedToday,
-        'current_streak': currentStreak,
-        'longest_streak': longestStreak,
-        'has_parent_pin': hasParentPin,
-        'is_active': isActive,
-      };
+    'id': id,
+    'name': name,
+    'age': age,
+    'age_tier_index': ageTierIndex,
+    'avatar_id': avatarId,
+    'created_at': createdAt,
+    'last_active_at': lastActiveAt,
+    'seeds_of_light': seedsOfLight,
+    'scrolls_of_wisdom': scrollsOfWisdom,
+    'stones_of_jordan': stonesOfJordan,
+    'stars_of_abraam': starsOfAbraam,
+    'total_luz_earned_today': totalLuzEarnedToday,
+    'current_streak': currentStreak,
+    'longest_streak': longestStreak,
+    'has_parent_pin': hasParentPin,
+    'is_active': isActive,
+  };
 
   // ── Conversión hacia el Domain ────────────────────────────────────────────
 
   /// Convierte el modelo a la entidad de dominio pura.
   PlayerProfileEntity toEntity() => PlayerProfileEntity(
-        id: id,
-        name: name,
-        age: age,
-        ageTier: AgeTier.values[ageTierIndex],
-        avatarId: avatarId,
-        createdAt: DateTime.parse(createdAt),
-        lastActiveAt: DateTime.parse(lastActiveAt),
-        seedsOfLight: seedsOfLight,
-        scrollsOfWisdom: scrollsOfWisdom,
-        stonesOfJordan: stonesOfJordan,
-        starsOfAbraam: starsOfAbraam,
-        totalLuzEarnedToday: totalLuzEarnedToday,
-        currentStreak: currentStreak,
-        longestStreak: longestStreak,
-        hasParentPin: hasParentPin == 1,
-        isActive: isActive == 1,
-      );
+    id: id,
+    name: name,
+    age: age,
+    ageTier: AgeTier.values[ageTierIndex],
+    avatarId: avatarId,
+    createdAt: DateTime.parse(createdAt),
+    lastActiveAt: DateTime.parse(lastActiveAt),
+    seedsOfLight: seedsOfLight,
+    scrollsOfWisdom: scrollsOfWisdom,
+    stonesOfJordan: stonesOfJordan,
+    starsOfAbraam: starsOfAbraam,
+    totalLuzEarnedToday: totalLuzEarnedToday,
+    currentStreak: currentStreak,
+    longestStreak: longestStreak,
+    hasParentPin: hasParentPin == 1,
+    isActive: isActive == 1,
+  );
 
   // ── Conversión desde el Domain ────────────────────────────────────────────
 

@@ -29,12 +29,12 @@ abstract final class AppIconScale {
   /// íconos no necesitan crecer tanto como el texto para seguir siendo
   /// reconocibles (la forma, no el detalle fino, es lo que se lee).
   static double factorFor(ScreenSize screenSize) => switch (screenSize) {
-        ScreenSize.compactPhone => 0.9,
-        ScreenSize.phone => 1.0,
-        ScreenSize.phablet => 1.0,
-        ScreenSize.tablet => 1.15,
-        ScreenSize.largeTablet => 1.25,
-      };
+    ScreenSize.compactPhone => 0.9,
+    ScreenSize.phone => 1.0,
+    ScreenSize.phablet => 1.0,
+    ScreenSize.tablet => 1.15,
+    ScreenSize.largeTablet => 1.25,
+  };
 
   /// Retorna [baseSize] (usar una constante de AppSpacing.icon*) escalado
   /// para [screenSize].

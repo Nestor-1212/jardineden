@@ -52,18 +52,18 @@ final class AuditEntry {
   final Map<String, Object?> metadata;
 
   Map<String, Object?> toJson() => {
-        'timestamp': timestamp.toUtc().toIso8601String(),
-        'action': action.name,
-        'actor': actorAnonymousId,
-        if (target != null) 'target': target,
-        if (metadata.isNotEmpty) 'metadata': metadata,
-      };
+    'timestamp': timestamp.toUtc().toIso8601String(),
+    'action': action.name,
+    'actor': actorAnonymousId,
+    if (target != null) 'target': target,
+    if (metadata.isNotEmpty) 'metadata': metadata,
+  };
 
   factory AuditEntry.fromJson(Map<String, Object?> json) => AuditEntry(
-        timestamp: DateTime.parse(json['timestamp']! as String),
-        action: AuditAction.values.byName(json['action']! as String),
-        actorAnonymousId: json['actor']! as String,
-        target: json['target'] as String?,
-        metadata: (json['metadata'] as Map<String, Object?>?) ?? const {},
-      );
+    timestamp: DateTime.parse(json['timestamp']! as String),
+    action: AuditAction.values.byName(json['action']! as String),
+    actorAnonymousId: json['actor']! as String,
+    target: json['target'] as String?,
+    metadata: (json['metadata'] as Map<String, Object?>?) ?? const {},
+  );
 }

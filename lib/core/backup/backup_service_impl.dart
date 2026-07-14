@@ -42,9 +42,9 @@ final class BackupServiceImpl implements BackupService {
     required Directory documentsDirectory,
     required String databaseFileName,
     required int Function() currentSchemaVersion,
-  })  : _documentsDirectory = documentsDirectory,
-        _databaseFileName = databaseFileName,
-        _currentSchemaVersion = currentSchemaVersion;
+  }) : _documentsDirectory = documentsDirectory,
+       _databaseFileName = databaseFileName,
+       _currentSchemaVersion = currentSchemaVersion;
 
   final Directory _documentsDirectory;
   final String _databaseFileName;
@@ -69,9 +69,7 @@ final class BackupServiceImpl implements BackupService {
   Future<void> createSessionBackup() => _createBackup(BackupType.session);
 
   @override
-  Future<void> createMilestoneBackup({
-    required String milestoneDescription,
-  }) =>
+  Future<void> createMilestoneBackup({required String milestoneDescription}) =>
       _createBackup(BackupType.milestone, label: milestoneDescription);
 
   @override
@@ -92,14 +90,16 @@ final class BackupServiceImpl implements BackupService {
     await _backupsDir.create(recursive: true);
 
     final version = versionOverride ?? _currentSchemaVersion();
-    final timestamp = DateTime.now()
-        .toUtc()
-        .toIso8601String()
-        .replaceAll(RegExp(r'[:.]'), '-');
-    final sanitizedLabel =
-        label != null ? '_${_sanitizeForFileName(label)}' : '';
+    final timestamp = DateTime.now().toUtc().toIso8601String().replaceAll(
+      RegExp(r'[:.]'),
+      '-',
+    );
+    final sanitizedLabel = label != null
+        ? '_${_sanitizeForFileName(label)}'
+        : '';
 
-    final fileName = 'backup_${type.name}_v$version$sanitizedLabel'
+    final fileName =
+        'backup_${type.name}_v$version$sanitizedLabel'
         '_$timestamp$_backupExtension';
     final target = File(p.join(_backupsDir.path, fileName));
 

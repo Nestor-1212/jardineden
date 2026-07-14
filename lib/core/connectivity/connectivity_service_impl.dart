@@ -17,7 +17,7 @@ import 'package:jardindeleden/core/connectivity/connectivity_service.dart';
 /// Implementación de [ConnectivityService] sobre connectivity_plus.
 final class ConnectivityServiceImpl implements ConnectivityService {
   ConnectivityServiceImpl({required Connectivity connectivity})
-      : _connectivity = connectivity;
+    : _connectivity = connectivity;
 
   final Connectivity _connectivity;
 
@@ -35,8 +35,11 @@ final class ConnectivityServiceImpl implements ConnectivityService {
   /// ninguna interfaz activa; cualquier otro valor en la lista implica que
   /// al menos una interfaz de red está arriba.
   ConnectivityStatus _toStatus(List<ConnectivityResult> results) {
-    final hasActiveInterface =
-        results.any((result) => result != ConnectivityResult.none);
-    return hasActiveInterface ? ConnectivityStatus.online : ConnectivityStatus.offline;
+    final hasActiveInterface = results.any(
+      (result) => result != ConnectivityResult.none,
+    );
+    return hasActiveInterface
+        ? ConnectivityStatus.online
+        : ConnectivityStatus.offline;
   }
 }

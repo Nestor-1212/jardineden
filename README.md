@@ -44,10 +44,13 @@ flutter doctor
 # 4. Ejecutar en debug
 flutter run
 
-# 5. Ejecutar análisis estático (debe pasar con 0 warnings)
+# 5. Ejecutar análisis estático (debe pasar con 0 issues)
 flutter analyze
 
-# 6. Ejecutar tests
+# 6. Verificar formato (debe salir con código 0 antes de cada PR)
+dart format --set-exit-if-changed .
+
+# 7. Ejecutar tests
 flutter test
 ```
 
@@ -77,10 +80,15 @@ Consultar el **Flutter Technical Architecture Document** para el detalle complet
 
 - Archivos: `snake_case`
 - Clases: `UpperCamelCase`
-- `flutter analyze` debe pasar con **0 warnings** antes de cada PR
+- `flutter analyze` debe pasar con **0 issues** antes de cada PR
+- `dart format --set-exit-if-changed .` debe salir con código 0 antes de cada PR
 - Commits siguen **Conventional Commits**: `feat(economy): add daily Luz ceiling`
 - Rama principal: `main` (protegida)
 - Rama de desarrollo: `develop`
+
+Nomenclatura, organización de carpetas, documentación y métricas de calidad
+completas: [`lib/core/quality/code_conventions.dart`](lib/core/quality/code_conventions.dart).
+Convenciones de testing: [`test/test_conventions.dart`](test/test_conventions.dart).
 
 ---
 

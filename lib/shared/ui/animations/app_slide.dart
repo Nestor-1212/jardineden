@@ -13,6 +13,8 @@
 // DEPENDENCIAS PROHIBIDAS:   features, core/infrastructure, Riverpod.
 // ─────────────────────────────────────────────────────────────────────────────
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:jardindeleden/core/theme/app_animations.dart';
 import 'package:jardindeleden/core/theme/app_motion.dart';
@@ -57,17 +59,18 @@ class AppSlideIn extends StatefulWidget {
   static const Offset _fromTopOffset = Offset(0.0, -1.0);
 
   Offset get _beginOffset => switch (direction) {
-        AppSlideDirection.fromRight => AppTransitions.enterFromRight,
-        AppSlideDirection.fromLeft => AppTransitions.enterFromLeft,
-        AppSlideDirection.fromBottom => _fromBottomOffset,
-        AppSlideDirection.fromTop => _fromTopOffset,
-      };
+    AppSlideDirection.fromRight => AppTransitions.enterFromRight,
+    AppSlideDirection.fromLeft => AppTransitions.enterFromLeft,
+    AppSlideDirection.fromBottom => _fromBottomOffset,
+    AppSlideDirection.fromTop => _fromTopOffset,
+  };
 
   @override
   State<AppSlideIn> createState() => _AppSlideInState();
 }
 
-class _AppSlideInState extends State<AppSlideIn> with SingleTickerProviderStateMixin {
+class _AppSlideInState extends State<AppSlideIn>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   late final Animation<Offset> _offset;
 
@@ -79,17 +82,18 @@ class _AppSlideInState extends State<AppSlideIn> with SingleTickerProviderStateM
       appReduceMotionEnabled: widget.reduceMotion,
     );
     _controller = AnimationController(vsync: this, duration: duration);
-    _offset = Tween<Offset>(begin: widget._beginOffset, end: Offset.zero).animate(
-      CurvedAnimation(parent: _controller, curve: widget.curve),
-    );
+    _offset = Tween<Offset>(
+      begin: widget._beginOffset,
+      end: Offset.zero,
+    ).animate(CurvedAnimation(parent: _controller, curve: widget.curve));
 
     if (duration == Duration.zero) {
       _controller.value = 1.0;
     } else if (widget.delay == Duration.zero) {
-      _controller.forward();
+      unawaited(_controller.forward());
     } else {
       Future.delayed(widget.delay, () {
-        if (mounted) _controller.forward();
+        if (mounted) unawaited(_controller.forward());
       });
     }
   }

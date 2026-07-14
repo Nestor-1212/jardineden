@@ -18,7 +18,7 @@
 import 'package:jardindeleden/core/logging/log_level.dart';
 
 /// Una entrada de log completamente estructurada, ya sanitizada (ver
-/// core/logging/log_sanitizer.dart) — ningún [LogSink] debe volver a
+/// core/logging/log_sanitizer.dart) — ningún LogSink debe volver a
 /// inspeccionar [metadata] en busca de datos sensibles, eso ya se hizo
 /// antes de construir este objeto.
 final class LogEntry {
@@ -57,15 +57,15 @@ final class LogEntry {
 
   /// Representación JSON — el formato que usará cualquier sink remoto futuro.
   Map<String, Object?> toJson() => {
-        'timestamp': timestamp.toUtc().toIso8601String(),
-        'level': level.name,
-        'module': module,
-        'message': message,
-        if (sessionId != null) 'session_id': sessionId,
-        if (anonymousProfileId != null) 'profile_id': anonymousProfileId,
-        if (metadata.isNotEmpty) 'metadata': metadata,
-        if (cause != null) 'cause': cause.toString(),
-      };
+    'timestamp': timestamp.toUtc().toIso8601String(),
+    'level': level.name,
+    'module': module,
+    'message': message,
+    if (sessionId != null) 'session_id': sessionId,
+    if (anonymousProfileId != null) 'profile_id': anonymousProfileId,
+    if (metadata.isNotEmpty) 'metadata': metadata,
+    if (cause != null) 'cause': cause.toString(),
+  };
 
   @override
   String toString() => toJson().toString();

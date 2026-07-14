@@ -24,6 +24,8 @@
 // DEPENDENCIAS PROHIBIDAS:   features, core/infrastructure, Riverpod.
 // ─────────────────────────────────────────────────────────────────────────────
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:jardindeleden/core/theme/app_animations.dart';
 import 'package:jardindeleden/core/theme/app_motion.dart';
@@ -56,7 +58,8 @@ class AppFadeIn extends StatefulWidget {
   State<AppFadeIn> createState() => _AppFadeInState();
 }
 
-class _AppFadeInState extends State<AppFadeIn> with SingleTickerProviderStateMixin {
+class _AppFadeInState extends State<AppFadeIn>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   late final Animation<double> _opacity;
 
@@ -73,10 +76,10 @@ class _AppFadeInState extends State<AppFadeIn> with SingleTickerProviderStateMix
     if (duration == Duration.zero) {
       _controller.value = 1.0;
     } else if (widget.delay == Duration.zero) {
-      _controller.forward();
+      unawaited(_controller.forward());
     } else {
       Future.delayed(widget.delay, () {
-        if (mounted) _controller.forward();
+        if (mounted) unawaited(_controller.forward());
       });
     }
   }

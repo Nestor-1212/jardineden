@@ -26,11 +26,7 @@ final class NavigationLoggerImpl implements NavigationLogger {
     _logger.info(
       'route_change',
       module: LogModules.navigation,
-      metadata: {
-        'from': ?from,
-        'to': to,
-        ...?params,
-      },
+      metadata: {'from': ?from, 'to': to, ...?params},
     );
   }
 }

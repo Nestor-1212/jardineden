@@ -38,8 +38,7 @@ final class ValidationServiceImpl implements ValidationService {
   bool isUuid(String value) => _uuidPattern.hasMatch(value);
 
   @override
-  bool matchesPattern(String value, RegExp pattern) =>
-      pattern.hasMatch(value);
+  bool matchesPattern(String value, RegExp pattern) => pattern.hasMatch(value);
 
   @override
   bool isDigitsOnly(String value) => _digitsOnlyPattern.hasMatch(value);

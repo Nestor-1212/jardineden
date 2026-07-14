@@ -29,21 +29,21 @@ import 'package:jardindeleden/core/theme/app_spacing.dart';
 abstract final class AppResponsiveSpacing {
   /// Espacio entre elementos de una cuadrícula/lista (gutter) según [ScreenSize].
   static double gutter(ScreenSize screenSize) => switch (screenSize) {
-        ScreenSize.compactPhone => AppSpacing.sm,
-        ScreenSize.phone => AppSpacing.md,
-        ScreenSize.phablet => AppSpacing.md,
-        ScreenSize.tablet => AppSpacing.lg,
-        ScreenSize.largeTablet => AppSpacing.xl,
-      };
+    ScreenSize.compactPhone => AppSpacing.sm,
+    ScreenSize.phone => AppSpacing.md,
+    ScreenSize.phablet => AppSpacing.md,
+    ScreenSize.tablet => AppSpacing.lg,
+    ScreenSize.largeTablet => AppSpacing.xl,
+  };
 
   /// Espacio vertical entre secciones de una pantalla según [ScreenSize].
   static double sectionGap(ScreenSize screenSize) => switch (screenSize) {
-        ScreenSize.compactPhone => AppSpacing.lg,
-        ScreenSize.phone => AppSpacing.xl,
-        ScreenSize.phablet => AppSpacing.xl,
-        ScreenSize.tablet => AppSpacing.xxl,
-        ScreenSize.largeTablet => AppSpacing.xxxl,
-      };
+    ScreenSize.compactPhone => AppSpacing.lg,
+    ScreenSize.phone => AppSpacing.xl,
+    ScreenSize.phablet => AppSpacing.xl,
+    ScreenSize.tablet => AppSpacing.xxl,
+    ScreenSize.largeTablet => AppSpacing.xxxl,
+  };
 }
 
 /// Extensión de BuildContext para espaciado adaptable entre elementos.
@@ -52,5 +52,6 @@ extension AppResponsiveSpacingContext on BuildContext {
   double get responsiveGutter => AppResponsiveSpacing.gutter(screenSize);
 
   /// Espacio entre secciones para el tamaño de pantalla actual.
-  double get responsiveSectionGap => AppResponsiveSpacing.sectionGap(screenSize);
+  double get responsiveSectionGap =>
+      AppResponsiveSpacing.sectionGap(screenSize);
 }

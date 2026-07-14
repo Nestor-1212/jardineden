@@ -1,0 +1,45 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# dart_test.yaml
+#
+# Configuración de `flutter test` — define las tags que separan los tipos
+# de prueba del proyecto para poder ejecutarlos selectivamente. Ver
+# test/test_conventions.dart para la explicación completa de cuándo usar
+# cada tipo.
+#
+# USO:
+#   flutter test                       # todo (unit + widget + golden + accessibility)
+#   flutter test --tags unit           # solo unitarias — las más rápidas, correr en cada guardado
+#   flutter test --tags widget         # solo de widgets
+#   flutter test --tags golden         # solo golden (usar --update-goldens la primera vez)
+#   flutter test --tags accessibility  # solo de accesibilidad
+#   flutter test --exclude-tags golden # todo MENOS golden — para un CI rápido antes del merge
+#
+# Integración y rendimiento NO usan estas tags — corren con un runner
+# distinto (`flutter test integration_test/` / `flutter drive`), ver
+# test_driver/perf_driver.dart. dart_test.yaml solo aplica al runner de
+# `flutter test` sobre la carpeta test/.
+# ─────────────────────────────────────────────────────────────────────────────
+
+tags:
+  unit:
+    description: >-
+      Pruebas unitarias puras (test/core/, test/shared/) — sin widgets, sin
+      bindings de Flutter. Deben poder correr con `dart test`, no solo
+      `flutter test` (aunque este proyecto siempre usa flutter test por
+      uniformidad). Las más rápidas — sin costo de renderizado.
+  widget:
+    description: >-
+      Pruebas de widgets (test/features/) — usan WidgetTester y el helper
+      pumpApp() de test/helpers/pump_app.dart en vez de MaterialApp a mano.
+  golden:
+    description: >-
+      Comparan un widget renderizado contra una imagen de referencia en
+      test/golden/goldens/. Requieren regenerarse con --update-goldens
+      cuando un cambio de diseño es intencional — ver
+      test/helpers/golden_test_helper.dart.
+  accessibility:
+    description: >-
+      Verifican guidelines de accesibilidad (contraste de texto, tamaño de
+      objetivo táctil, etiquetado para lectores de pantalla) vía los
+      matchers nativos de flutter_test — ver
+      test/helpers/accessibility_test_helper.dart.

@@ -41,15 +41,21 @@ import 'package:jardindeleden/core/storage/storage_service.dart';
 /// [_inner]. Las lecturas NO se loguean (demasiado frecuentes, poco valor
 /// diagnóstico) salvo que un Sprint futuro lo requiera.
 final class LoggingStorageService implements StorageService {
-  LoggingStorageService({required StorageService inner, required AppLogger logger})
-      : _inner = inner,
-        _logger = logger;
+  LoggingStorageService({
+    required StorageService inner,
+    required AppLogger logger,
+  }) : _inner = inner,
+       _logger = logger;
 
   final StorageService _inner;
   final AppLogger _logger;
 
   void _logWrite(String operation, String key) {
-    _logger.debug('storage_$operation', module: LogModules.storage, metadata: {'key': key});
+    _logger.debug(
+      'storage_$operation',
+      module: LogModules.storage,
+      metadata: {'key': key},
+    );
   }
 
   @override

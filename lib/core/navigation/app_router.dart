@@ -60,11 +60,11 @@ import 'package:jardindeleden/core/navigation/app_routes.dart';
 import 'package:jardindeleden/core/navigation/app_shell.dart';
 import 'package:jardindeleden/core/navigation/navigation_error_screen.dart';
 import 'package:jardindeleden/features/chapter/chapter_screen.dart';
+import 'package:jardindeleden/features/collection/collection_screen.dart';
 import 'package:jardindeleden/features/diary/diary_screen.dart';
 import 'package:jardindeleden/features/home/home_screen.dart';
 import 'package:jardindeleden/features/library/library_screen.dart';
 import 'package:jardindeleden/features/missions/missions_screen.dart';
-import 'package:jardindeleden/features/collection/collection_screen.dart';
 import 'package:jardindeleden/features/onboarding/onboarding_screen.dart';
 import 'package:jardindeleden/features/parent/parent_panel_screen.dart';
 import 'package:jardindeleden/features/parent/parent_pin_screen.dart';
@@ -250,8 +250,7 @@ GoRouter _buildRouter({required NavigationLogger navigationLogger}) {
         path: '/chapter/:${RouteParams.chapterId}',
         name: RouteNames.chapter,
         builder: (context, state) {
-          final chapterId =
-              state.pathParameters[RouteParams.chapterId] ?? '';
+          final chapterId = state.pathParameters[RouteParams.chapterId] ?? '';
           return ChapterScreen(chapterId: chapterId);
         },
       ),

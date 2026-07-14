@@ -36,8 +36,7 @@ abstract final class AssetPaths {
 
   static const String imgLogoFull = '$_base/core/images/logos/logo_full.webp';
   static const String imgLogoIcon = '$_base/core/images/logos/logo_icon.webp';
-  static const String imgLogoWhite =
-      '$_base/core/images/logos/logo_white.webp';
+  static const String imgLogoWhite = '$_base/core/images/logos/logo_white.webp';
 
   static const String imgBgMenuMain =
       '$_base/core/images/backgrounds/bg_menu_main.webp';
@@ -89,8 +88,7 @@ abstract final class AssetPaths {
   static const String audioSfxSuccess = '$_base/core/audio/sfx/success.ogg';
   static const String audioSfxError = '$_base/core/audio/sfx/error.ogg';
   static const String audioSfxLevelUp = '$_base/core/audio/sfx/level_up.ogg';
-  static const String audioSfxPageTurn =
-      '$_base/core/audio/sfx/page_turn.ogg';
+  static const String audioSfxPageTurn = '$_base/core/audio/sfx/page_turn.ogg';
 
   // ── Core: Animaciones (Lottie + Rive) ─────────────────────────────────────
 

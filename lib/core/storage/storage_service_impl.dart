@@ -22,7 +22,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// Implementación de [StorageService] sobre [SharedPreferences].
 final class StorageServiceImpl implements StorageService {
   StorageServiceImpl({required SharedPreferences preferences})
-      : _preferences = preferences;
+    : _preferences = preferences;
 
   final SharedPreferences _preferences;
 

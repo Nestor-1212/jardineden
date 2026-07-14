@@ -42,6 +42,16 @@
 //
 // ─────────────────────────────────────────────────────────────────────────────
 
+// ignore_for_file: directives_ordering
+// Este barrel agrupa los exports por SECCIÓN semántica (Theme, luego
+// Accesibilidad — ver los comentarios "── " de más abajo), no
+// alfabéticamente. Es una excepción deliberada a la regla directives_ordering
+// (ver analysis_options.yaml y lib/core/quality/code_conventions.dart): en un
+// archivo barrel, el orden de lectura humana (agrupado por tema) importa más
+// que el orden alfabético — la regla se queda ACTIVA para el resto del
+// proyecto, donde si detecta valor real (ver el fix en core/navigation/app_router.dart
+// en este mismo sprint, un import realmente fuera de lugar).
+
 export 'package:jardindeleden/core/theme/app_animations.dart';
 export 'package:jardindeleden/core/theme/app_borders.dart';
 export 'package:jardindeleden/core/theme/app_breakpoints.dart';

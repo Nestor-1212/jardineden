@@ -129,7 +129,11 @@ abstract final class AppDateFormatter {
   /// Para horas < 24: "En 3 horas" / "In 3 hours"
   /// Para días  < 30: "Mañana"     / "Tomorrow"
   /// Para más:        "13 jul."    / "Jul 13"
-  static String formatNextReview(DateTime reviewDate, AppLocalizations l10n, String languageCode) {
+  static String formatNextReview(
+    DateTime reviewDate,
+    AppLocalizations l10n,
+    String languageCode,
+  ) {
     final hoursLeft = reviewDate.difference(DateTime.now()).inHours;
 
     if (hoursLeft <= 0) return l10n.s44DueNow;
@@ -164,7 +168,11 @@ abstract final class AppDateFormatter {
   // en el formatter en vez de añadir 6+ keys al ARB para casos de horas.
   // Si en el futuro se necesitan en más idiomas, se promueven a ARB.
   static String _oneHourLabel(AppLocalizations l10n) =>
-      l10n.languageCode == 'en' ? '1 hour' : l10n.languageCode == 'pt' ? '1 hora' : '1 hora';
+      l10n.languageCode == 'en'
+      ? '1 hour'
+      : l10n.languageCode == 'pt'
+      ? '1 hora'
+      : '1 hora';
 
   static String _twoHoursLabel(AppLocalizations l10n) =>
       l10n.languageCode == 'en' ? '2 hours' : '2 horas';

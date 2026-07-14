@@ -116,7 +116,7 @@ abstract final class AppDI {
   /// Crea los overrides para tests unitarios.
   ///
   /// Permite reemplazar cualquier provider de infraestructura con un fake.
-  /// Sprint DB: agregar override para [appDatabaseProvider] con DB en memoria.
+  /// Sprint DB: agregar override para appDatabaseProvider con DB en memoria.
   ///
   /// ```dart
   /// // test/features/profiles/profile_test.dart
@@ -130,9 +130,7 @@ abstract final class AppDI {
   /// );
   /// addTearDown(container.dispose);
   /// ```
-  static List<Override> testOverrides({
-    SharedPreferences? sharedPrefs,
-  }) {
+  static List<Override> testOverrides({SharedPreferences? sharedPrefs}) {
     return [
       if (sharedPrefs != null)
         sharedPreferencesProvider.overrideWith((_) async => sharedPrefs),

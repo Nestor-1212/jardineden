@@ -31,8 +31,7 @@ extension DateTimeExtensions on DateTime {
   DateTime get startOfDay => DateTime(year, month, day);
 
   /// Retorna este DateTime al final del día (23:59:59.999).
-  DateTime get endOfDay =>
-      DateTime(year, month, day, 23, 59, 59, 999);
+  DateTime get endOfDay => DateTime(year, month, day, 23, 59, 59, 999);
 
   /// Diferencia en días completos desde [other] hasta este DateTime.
   ///

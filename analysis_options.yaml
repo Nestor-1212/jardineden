@@ -1,48 +1,98 @@
-﻿# ============================================================
-# JARDÍN DEL EDÉN — Configuración de Análisis Estático
-# ============================================================
-# Extiende las reglas oficiales de Flutter y agrega reglas
-# adicionales que garantizan la calidad del código en un
-# proyecto de escala empresarial mantenido durante 10+ años.
+# ═══════════════════════════════════════════════════════════════════════════
+# JARDÍN DEL EDÉN — Configuración de Calidad Estática
+# ═══════════════════════════════════════════════════════════════════════════
+# Extiende las reglas oficiales de Flutter (flutter_lints) y agrega:
+#   1. Reglas personalizadas organizadas por categoría (ver linter.rules).
+#   2. Configuración de formato automático (ver formatter, más abajo).
+#   3. Elevación de warnings a errores para las categorías más críticas.
 #
-# REGLA DE ORO: flutter analyze debe pasar con 0 warnings
-# en la rama principal. Cualquier PR que introduzca warnings
-# es rechazado automáticamente por el pipeline de CI/CD.
-# ============================================================
+# Convenciones de nomenclatura, organización de carpetas, documentación y
+# métricas de calidad (lo que NO es expresable como regla de analyzer) viven
+# en lib/core/quality/code_conventions.dart — este archivo es solo la parte
+# MECÁNICA (lo que el analyzer/formatter pueden verificar automáticamente).
+#
+# REGLA DE ORO: `flutter analyze` debe pasar con 0 issues y
+# `dart format --set-exit-if-changed .` debe salir con código 0 antes de
+# cada PR. Cualquier PR que no cumpla esto es rechazado por el pipeline de
+# CI/CD (ver core/config/app_environment.dart para los ambientes de CI).
+# ═══════════════════════════════════════════════════════════════════════════
 
 include: package:flutter_lints/flutter.yaml
 
+# ─────────────────────────────────────────────────────────────────────────────
+# FORMATO AUTOMÁTICO (dart format)
+# ─────────────────────────────────────────────────────────────────────────────
+# Desde que el analyzer reconoce esta clave (verificado empíricamente contra
+# el SDK instalado — Dart 3.11.5 — antes de confiar en ella), `dart format`
+# SIN NINGÚN FLAG usa estos valores. Esto es lo que hace que "dart format ."
+# produzca el MISMO resultado en la máquina de cualquier desarrollador y en
+# CI, sin depender de que todos recuerden pasar los mismos flags a mano.
+#
+# page_width: 80 — el valor por defecto de dart_style, declarado aquí de
+# forma EXPLÍCITA (no implícita) para que quede documentado como una
+# decisión, no un olvido. Se evaluó subirlo a 100/120 (común en proyectos
+# Flutter con árboles de widgets profundamente anidados), pero se descartó
+# por ahora: cambiar page_width reformatea TODO archivo existente del
+# proyecto en el primer `dart format .` que se corra después del cambio — un
+# diff masivo sin relación con ningún cambio funcional, que además pisa
+# cualquier PR abierto en ese momento. Si el equipo lo pide explícitamente
+# más adelante, es un cambio de una sola línea aquí + un commit dedicado
+# "chore: reformat to page-width 100" sin mezclar con otro trabajo.
+#
+# trailing_commas: automate — el formatter decide por sí mismo cuándo una
+# coma final fuerza el multi-línea, en vez de que el desarrollador tenga que
+# recordar agregarla a mano para "fijar" el formato de una lista de
+# argumentos (patrón muy usado en este proyecto: constructores de widgets
+# con muchos parámetros nombrados).
+formatter:
+  page_width: 80
+  trailing_commas: automate
+
 analyzer:
-  # custom_lint: Motor para ejecutar riverpod_lint y futuros plugins de lint.
-  # Detecta errores de Riverpod en tiempo de análisis (no en runtime).
+  # custom_lint: motor para ejecutar riverpod_lint (y futuros plugins).
+  # Detecta errores específicos de Riverpod en tiempo de análisis, no en
+  # runtime — providers no observados, ref.listen mal usado, dependencias
+  # circulares. No se agregó un plugin de custom_lint ESCRITO PARA ESTE
+  # proyecto (una regla propia requeriría mantener un paquete de analyzer
+  # aparte) — las categorías que un plugin propio cubriría (nomenclatura,
+  # organización de capas) ya están cubiertas por las reglas nativas de
+  # abajo + la revisión humana guiada por code_conventions.dart. Si en el
+  # futuro aparece una regla mecánica y repetitiva que ningún lint nativo
+  # cubra (ej. "todo Notifier debe vivir en un archivo *_notifier.dart"),
+  # esa sería la señal concreta para escribir un plugin propio — no antes.
   plugins:
     - custom_lint
 
-  # Habilitar el modo de análisis de tipos fuerte.
-  # Obliga a que todas las variables tengan tipos explícitos
-  # o puedan ser inferidos de forma no ambigua.
+  # Modo de tipos estricto — obliga a que todo tenga un tipo explícito o
+  # inferible sin ambigüedad. Sin esto, `var x = algunaFuncionGenerica()`
+  # puede terminar siendo `dynamic` en silencio.
   language:
     strict-casts: true
     strict-inference: true
     strict-raw-types: true
 
-  # Elevar warnings a errores para las categorías más críticas.
+  # Elevar de warning a error las categorías que SIEMPRE deben bloquear un
+  # build — evita que un desarrollador ignore un warning "de siempre" hasta
+  # que se acumulan cientos y ya nadie los lee.
   errors:
-    # Un import sin usar es un warning que se vuelve error.
-    # Mantiene el código limpio de imports fantasma.
     unused_import: error
-    # Un campo, variable o parámetro sin usar es error.
     unused_element: error
-    # Tipo 'dead code' (código inalcanzable) es error.
+    unused_field: error
+    unused_local_variable: error
     dead_code: error
-    # Uso de tipo deprecated es warning (no error, para no
-    # bloquear actualizaciones graduales de dependencias).
+    # deprecated_member_use se queda en warning (no error) para no bloquear
+    # el build mientras se migra gradualmente de una API deprecada a otra
+    # (ej. cuando Flutter marca algo deprecated en un SDK nuevo, el equipo
+    # necesita una ventana para migrar sin que CI se rompa de inmediato).
     deprecated_member_use: warning
+    # Un comentario doc que referencia un símbolo que no existe (ver regla
+    # comment_references más abajo) es un error: significa que la
+    # documentación describe algo que ya no es cierto — peor que no
+    # documentar nada.
+    comment_references: error
 
   exclude:
-    # Los archivos generados automáticamente por build_runner,
-    # flutter gen-l10n, y Drift no deben analizarse.
-    # Se agregan en el sprint donde se instalan las dependencias.
+    # Código autogenerado — nunca se analiza ni se formatea a mano.
     - '**/*.g.dart'
     - '**/*.freezed.dart'
     - '**/*.gen.dart'
@@ -50,54 +100,149 @@ analyzer:
 
 linter:
   rules:
-    # ── PROHIBICIONES ABSOLUTAS ──────────────────────────
-    # print() no existe en el proyecto. Todo va al LoggingService.
+    # ── PROHIBICIONES ABSOLUTAS ────────────────────────────────────────────
+    # print() no existe en el proyecto. Todo va al LoggingService (ver
+    # core/infrastructure/logging/) — un print() en producción no aparece en
+    # ninguna herramienta de monitoreo real.
     avoid_print: true
 
-    # dynamic no tiene lugar en código de producción.
-    # Usa tipos específicos o genéricos.
+    # dynamic no tiene lugar en código de producción. Usa tipos específicos
+    # o genéricos — pairing con strict-raw-types/strict-inference de arriba.
     avoid_dynamic_calls: true
 
-    # Nunca usar Object? cuando se puede ser más específico.
     avoid_returning_null_for_void: true
 
-    # ── IMPORTS ─────────────────────────────────────────
-    # Todos los imports usan el formato package: sin paths relativos.
-    # Garantiza consistencia independientemente de desde dónde se importe.
+    # ── IMPORTS ─────────────────────────────────────────────────────────────
+    # Todos los imports usan el formato package:, nunca paths relativos —
+    # garantiza que un archivo se pueda mover de carpeta sin romper imports.
     always_use_package_imports: true
 
-    # ── CONST Y FINAL ───────────────────────────────────
-    # Maximizar el uso de const para que Flutter optimice el árbol de widgets.
+    # dart: antes que package: antes que el resto, alfabetizados dentro de
+    # cada grupo — hace que dos PRs que agregan imports distintos casi nunca
+    # choquen en el mismo lugar del archivo.
+    directives_ordering: true
+
+    # show/hide ordenados alfabéticamente dentro de un mismo import.
+    combinators_ordering: true
+
+    # ── CONST Y FINAL ─────────────────────────────────────────────────────
+    # Maximizar const para que Flutter salte la reconstrucción de esos
+    # widgets — el proyecto tiene HUD y animaciones que corren cada frame,
+    # cada const evitable es trabajo de más en el árbol de widgets.
     prefer_const_constructors: true
     prefer_const_constructors_in_immutables: true
     prefer_const_declarations: true
     prefer_const_literals_to_create_immutables: true
 
-    # Variables que no se reasignan son final.
     prefer_final_locals: true
     prefer_final_fields: true
+    # Un campo/variable privada que solo se asigna una vez desde el
+    # constructor y nunca se reasigna debe ser `late final`, no `late` — dice
+    # explícitamente "esto no cambia después de inicializado".
+    use_late_for_private_fields_and_variables: true
 
-    # ── STRINGS ─────────────────────────────────────────
+    # ── STRINGS ─────────────────────────────────────────────────────────────
     prefer_single_quotes: true
 
-    # ── TIPOS ───────────────────────────────────────────
-    # Usar el tipo correcto, no el supertipo más genérico.
+    # ── TIPOS Y NULL-SAFETY ─────────────────────────────────────────────────
     avoid_types_as_parameter_names: true
+    unnecessary_null_checks: true
+    prefer_null_aware_operators: true
 
-    # ── COLECCIONES ─────────────────────────────────────
+    # `obj as NoNullable` sobre un valor que el compilador ya sabe no-nulo es
+    # ruido — y si el valor SÍ puede ser null, esconde un bug real (el cast
+    # lanza en runtime en vez de que el tipo lo prevenga en compile time).
+    cast_nullable_to_non_nullable: true
+
+    # Un parámetro de constructor `this.x` no debería tener un tipo MÁS
+    # AMPLIO que el campo que inicializa (ej. `Object x` inicializando un
+    # `final String x`) — el tipo del parámetro debe reflejar el campo real.
+    tighten_type_of_initializing_formals: true
+
+    # ── COLECCIONES ─────────────────────────────────────────────────────────
     prefer_collection_literals: true
     prefer_is_empty: true
     prefer_is_not_empty: true
 
-    # ── FUNCIONES ───────────────────────────────────────
+    # ── FUNCIONES Y EXPRESIONES ─────────────────────────────────────────────
     avoid_redundant_argument_values: true
+    # Un lambda que solo reenvía sus argumentos a otra función
+    # (`(x) => otraFuncion(x)`) se reemplaza por una tear-off (`otraFuncion`)
+    # — menos indirección para leer.
+    unnecessary_lambdas: true
+    unnecessary_parenthesis: true
 
-    # ── WIDGETS FLUTTER ─────────────────────────────────
-    # Un widget con muchos parámetros posicionales es difícil de leer.
+    # ── ASINCRONÍA Y RECURSOS ────────────────────────────────────────────────
+    # Un Future al que nadie hace `await` ni `.then` desaparece en silencio —
+    # si lanza una excepción, esa excepción NO llega a ningún try/catch ni al
+    # GlobalErrorHandler (ver core/error/global_error_handler.dart), se
+    # pierde como un unhandled error de zona. Este es el error más peligroso
+    # que un linter puede prevenir en una app con tanta I/O asíncrona
+    # (storage, DB, audio, notificaciones).
+    unawaited_futures: true
+
+    # Una función que retorna Future pero se llama sin usar ese resultado de
+    # ninguna forma (ni await, ni return, ni asignar a una variable) — mismo
+    # riesgo que unawaited_futures, pero detectado en la firma de la función
+    # en vez de en el call site.
+    discarded_futures: true
+
+    # Una función `async` que retorna `void` (en vez de `Future<void>`) no se
+    # puede await — el caller no tiene forma de saber cuándo termina ni de
+    # capturar una excepción que lance. Casi siempre un bug, no una decisión
+    # intencional (la única excepción legítima son los callbacks de
+    # framework como `onPressed`, que el linter ya reconoce como caso válido).
+    avoid_void_async: true
+
+    # Un StreamSubscription sin cancelar sigue escuchando después de que el
+    # widget/servicio que lo creó ya no existe — memory leak clásico.
+    # Relevante para AudioService/ConnectivityService (streams de larga vida).
+    cancel_subscriptions: true
+
+    # Mismo problema que cancel_subscriptions, para StreamController/Sink.
+    close_sinks: true
+
+    # ── WIDGETS FLUTTER ──────────────────────────────────────────────────────
     always_put_required_named_parameters_first: true
 
+    # Container que solo cambia el color de fondo carga TODA la maquinaria de
+    # Container (padding, margin, decoration, constraints) para un caso que
+    # ColoredBox resuelve con un RenderObject mucho más simple.
+    use_colored_box: true
 
-    # ── NULLSAFETY ──────────────────────────────────────
-    unnecessary_null_checks: true
-    prefer_null_aware_operators: true
+    # Igual que use_colored_box, pero para el caso de una BoxDecoration sin
+    # color plano (bordes, gradientes) — DecoratedBox evita el layout extra
+    # de Container cuando no se necesita padding/margin/constraints.
+    use_decorated_box: true
 
+    # ── ORGANIZACIÓN DEL CÓDIGO DENTRO DE UNA CLASE ─────────────────────────
+    # NO se activaron sort_constructors_first / sort_unnamed_constructors_first
+    # (exigen que TODOS los constructores vayan antes que cualquier otro
+    # miembro). Se evaluaron y se descartaron tras verificar contra el código
+    # real del proyecto: 10+ clases existentes (ej.
+    # core/accessibility/accessibility_settings.dart) ya siguen, de forma
+    # consistente y deliberada, un patrón distinto — factory constructors
+    # secundarios (presets, variantes) se ubican junto a su documentación
+    # semántica relacionada, no todos apilados arriba. Forzar la regla
+    # habría requerido reordenar ese código existente en decenas de archivos
+    # sin ganancia real (es un reordenamiento puramente estético). El orden
+    # recomendado para código NUEVO igual se documenta como convención en
+    # lib/core/quality/code_conventions.dart — se aplica por revisión de
+    # código, no por el analyzer.
+    #
+    # ── DOCUMENTACIÓN ────────────────────────────────────────────────────────
+    # Todo símbolo entre [corchetes] dentro de un comentario /// debe existir
+    # de verdad y ser resoluble — evita que un rename deje una doc comment
+    # apuntando a un método que ya no existe. Elevado a error en
+    # analyzer.errors (arriba) porque una referencia rota en un comentario
+    # /// es peor que no documentar: activamente desinforma.
+    #
+    # NO se activó `public_member_api_docs` (exigir /// en TODO miembro
+    # público): ese lint está pensado para paquetes PUBLICADOS en pub.dev,
+    # donde cada símbolo público es parte de un contrato externo. Este es un
+    # proyecto de aplicación, no un paquete — obligar /// en cada getter
+    # trivial de cada widget habría generado ruido masivo sin valor real.
+    # La convención real del proyecto (documentar el PORQUÉ en el
+    # encabezado de cada archivo, no el QUÉ de cada línea) se explica en
+    # lib/core/quality/code_conventions.dart.
+    comment_references: true

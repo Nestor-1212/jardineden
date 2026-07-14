@@ -49,7 +49,8 @@ abstract final class DateUtils {
   /// Serializa un DateTime a string ISO 8601 en UTC para persistencia.
   ///
   /// Siempre convierte a UTC antes de serializar para evitar problemas de zona.
-  static String toStorageString(DateTime date) => date.toUtc().toIso8601String();
+  static String toStorageString(DateTime date) =>
+      date.toUtc().toIso8601String();
 
   /// Retorna cuántas horas faltan hasta [target] desde ahora.
   ///

@@ -58,9 +58,8 @@ Future<AppDatabase> appDatabase(AppDatabaseRef ref) async {
 
   final db = AppDatabase(
     connection,
-    onBeforeMigrate: (from, to) => backup.createPreMigrationBackup(
-      fromVersion: from,
-    ),
+    onBeforeMigrate: (from, to) =>
+        backup.createPreMigrationBackup(fromVersion: from),
   );
   ref.onDispose(db.close);
 

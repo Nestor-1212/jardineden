@@ -66,11 +66,7 @@
 /// - [message]: mensaje descriptivo para logs internos (NO para el usuario).
 /// - [cause]: la excepción original que causó este error, si existe.
 sealed class AppException implements Exception {
-  const AppException({
-    required this.code,
-    required this.message,
-    this.cause,
-  });
+  const AppException({required this.code, required this.message, this.cause});
 
   /// Identificador del error. Ejemplo: 'DATABASE_WRITE_FAILED'
   final String code;
@@ -99,25 +95,25 @@ sealed class DatabaseException extends AppException {
 /// Fallo al leer datos de la base de datos.
 final class DatabaseReadException extends DatabaseException {
   const DatabaseReadException({required super.message, super.cause})
-      : super(code: 'DATABASE_READ_FAILED');
+    : super(code: 'DATABASE_READ_FAILED');
 }
 
 /// Fallo al escribir datos en la base de datos.
 final class DatabaseWriteException extends DatabaseException {
   const DatabaseWriteException({required super.message, super.cause})
-      : super(code: 'DATABASE_WRITE_FAILED');
+    : super(code: 'DATABASE_WRITE_FAILED');
 }
 
 /// Fallo durante la ejecución de una migración de esquema.
 final class DatabaseMigrationException extends DatabaseException {
   const DatabaseMigrationException({required super.message, super.cause})
-      : super(code: 'DATABASE_MIGRATION_FAILED');
+    : super(code: 'DATABASE_MIGRATION_FAILED');
 }
 
 /// Base de datos corrupta o clave de cifrado incorrecta.
 final class DatabaseCorruptionException extends DatabaseException {
   const DatabaseCorruptionException({required super.message, super.cause})
-      : super(code: 'DATABASE_CORRUPTED');
+    : super(code: 'DATABASE_CORRUPTED');
 }
 
 // ── Errores de Assets ────────────────────────────────────────────────────────
@@ -134,19 +130,19 @@ sealed class AssetException extends AppException {
 /// Asset no encontrado en el sistema de archivos local.
 final class AssetNotFoundException extends AssetException {
   const AssetNotFoundException({required super.message, super.cause})
-      : super(code: 'ASSET_NOT_FOUND');
+    : super(code: 'ASSET_NOT_FOUND');
 }
 
 /// Hash SHA-256 del asset no coincide con el registrado en la base de datos.
 final class AssetIntegrityException extends AssetException {
   const AssetIntegrityException({required super.message, super.cause})
-      : super(code: 'ASSET_INTEGRITY_FAILED');
+    : super(code: 'ASSET_INTEGRITY_FAILED');
 }
 
 /// Fallo al descargar un asset desde el CDN.
 final class AssetDownloadException extends AssetException {
   const AssetDownloadException({required super.message, super.cause})
-      : super(code: 'ASSET_DOWNLOAD_FAILED');
+    : super(code: 'ASSET_DOWNLOAD_FAILED');
 }
 
 // ── Errores de Dominio (Reglas de Negocio) ───────────────────────────────────
@@ -163,32 +159,32 @@ sealed class DomainException extends AppException {
 /// El jugador no tiene suficientes monedas para la transacción solicitada.
 final class InsufficientCurrencyException extends DomainException {
   const InsufficientCurrencyException({required super.message})
-      : super(code: 'INSUFFICIENT_CURRENCY');
+    : super(code: 'INSUFFICIENT_CURRENCY');
 }
 
 /// El capítulo solicitado está bloqueado por el Muro de Sabiduría
 /// o por no haber completado los capítulos anteriores.
 final class ChapterLockedException extends DomainException {
   const ChapterLockedException({required super.message})
-      : super(code: 'CHAPTER_LOCKED');
+    : super(code: 'CHAPTER_LOCKED');
 }
 
 /// El perfil de jugador es inválido o no existe.
 final class InvalidProfileException extends DomainException {
   const InvalidProfileException({required super.message})
-      : super(code: 'INVALID_PROFILE');
+    : super(code: 'INVALID_PROFILE');
 }
 
 /// La sesión activa expiró o fue invalidada.
 final class SessionExpiredException extends DomainException {
   const SessionExpiredException({required super.message})
-      : super(code: 'SESSION_EXPIRED');
+    : super(code: 'SESSION_EXPIRED');
 }
 
 /// Se alcanzó el límite máximo de perfiles por dispositivo.
 final class MaxProfilesReachedException extends DomainException {
   const MaxProfilesReachedException({required super.message})
-      : super(code: 'MAX_PROFILES_REACHED');
+    : super(code: 'MAX_PROFILES_REACHED');
 }
 
 // ── Errores de Seguridad ─────────────────────────────────────────────────────
@@ -205,19 +201,19 @@ sealed class SecurityException extends AppException {
 /// PIN del Panel de Padres incorrecto.
 final class InvalidPinException extends SecurityException {
   const InvalidPinException({required super.message})
-      : super(code: 'INVALID_PIN');
+    : super(code: 'INVALID_PIN');
 }
 
 /// Error en las operaciones de cifrado/descifrado de la base de datos.
 final class EncryptionException extends SecurityException {
   const EncryptionException({required super.message, super.cause})
-      : super(code: 'ENCRYPTION_FAILED');
+    : super(code: 'ENCRYPTION_FAILED');
 }
 
 /// Intento de acceder a una funcionalidad sin los permisos requeridos.
 final class UnauthorizedAccessException extends SecurityException {
   const UnauthorizedAccessException({required super.message})
-      : super(code: 'UNAUTHORIZED_ACCESS');
+    : super(code: 'UNAUTHORIZED_ACCESS');
 }
 
 // ── Errores de Archivos ──────────────────────────────────────────────────────
@@ -240,25 +236,25 @@ sealed class FileException extends AppException {
 /// El archivo solicitado no existe en la ruta indicada.
 final class FileNotFoundException extends FileException {
   const FileNotFoundException({required super.message, super.cause})
-      : super(code: 'FILE_NOT_FOUND');
+    : super(code: 'FILE_NOT_FOUND');
 }
 
 /// Fallo al leer un archivo (permisos, disco desmontado, archivo bloqueado).
 final class FileReadException extends FileException {
   const FileReadException({required super.message, super.cause})
-      : super(code: 'FILE_READ_FAILED');
+    : super(code: 'FILE_READ_FAILED');
 }
 
 /// Fallo al escribir un archivo (disco lleno, permisos, ruta inválida).
 final class FileWriteException extends FileException {
   const FileWriteException({required super.message, super.cause})
-      : super(code: 'FILE_WRITE_FAILED');
+    : super(code: 'FILE_WRITE_FAILED');
 }
 
 /// Fallo al eliminar un archivo o directorio.
 final class FileDeleteException extends FileException {
   const FileDeleteException({required super.message, super.cause})
-      : super(code: 'FILE_DELETE_FAILED');
+    : super(code: 'FILE_DELETE_FAILED');
 }
 
 // ── Errores de Validación ────────────────────────────────────────────────────
@@ -281,19 +277,19 @@ sealed class ValidationException extends AppException {
 /// El valor no tiene el formato esperado (email, UUID, color hex, etc.).
 final class InvalidFormatException extends ValidationException {
   const InvalidFormatException({required super.message})
-      : super(code: 'INVALID_FORMAT');
+    : super(code: 'INVALID_FORMAT');
 }
 
 /// Un campo requerido llegó vacío o nulo.
 final class RequiredFieldException extends ValidationException {
   const RequiredFieldException({required super.message})
-      : super(code: 'REQUIRED_FIELD_MISSING');
+    : super(code: 'REQUIRED_FIELD_MISSING');
 }
 
 /// Un valor numérico o de longitud está fuera del rango permitido.
 final class OutOfRangeException extends ValidationException {
   const OutOfRangeException({required super.message})
-      : super(code: 'OUT_OF_RANGE');
+    : super(code: 'OUT_OF_RANGE');
 }
 
 // ── Errores Inesperados ───────────────────────────────────────────────────────
@@ -308,5 +304,5 @@ final class OutOfRangeException extends ValidationException {
 /// que el error en sí sea aceptable.
 final class UnexpectedException extends AppException {
   const UnexpectedException({required super.message, super.cause})
-      : super(code: 'UNEXPECTED_ERROR');
+    : super(code: 'UNEXPECTED_ERROR');
 }

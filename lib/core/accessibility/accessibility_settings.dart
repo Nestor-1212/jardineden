@@ -36,10 +36,10 @@ enum TextScaleMode {
 
   /// Multiplicador de fontSize aplicado sobre los estilos base de AppTextStyles.
   double get factor => switch (this) {
-        TextScaleMode.normal => 1.0,
-        TextScaleMode.large => 1.2,
-        TextScaleMode.extraLarge => 1.45,
-      };
+    TextScaleMode.normal => 1.0,
+    TextScaleMode.large => 1.2,
+    TextScaleMode.extraLarge => 1.45,
+  };
 }
 
 /// Tipo de daltonismo a corregir. `none` es el valor por defecto (sin ajuste).
@@ -142,7 +142,8 @@ final class AccessibilitySettings {
   /// ajustes para necesidades visuales específicas, no una función de la
   /// edad. Mezclar "edad" con "discapacidad visual" sería un supuesto
   /// incorrecto y potencialmente ofensivo del sistema.
-  factory AccessibilitySettings.youngChildPreset() => const AccessibilitySettings(
+  factory AccessibilitySettings.youngChildPreset() =>
+      const AccessibilitySettings(
         textScaleMode: TextScaleMode.large,
         largeButtonsEnabled: true,
         simplifiedNavigationEnabled: true,
@@ -150,20 +151,21 @@ final class AccessibilitySettings {
       );
 
   /// Preset para [AccessibilityProfile.lowVision].
-  factory AccessibilitySettings.lowVisionPreset() => const AccessibilitySettings(
+  factory AccessibilitySettings.lowVisionPreset() =>
+      const AccessibilitySettings(
         textScaleMode: TextScaleMode.extraLarge,
         highContrastEnabled: true,
         largeButtonsEnabled: true,
       );
 
   /// Retorna el preset correspondiente a [profile].
-  factory AccessibilitySettings.forProfile(AccessibilityProfile profile) =>
-      switch (profile) {
-        AccessibilityProfile.standard => const AccessibilitySettings(),
-        AccessibilityProfile.youngChild =>
-          AccessibilitySettings.youngChildPreset(),
-        AccessibilityProfile.lowVision => AccessibilitySettings.lowVisionPreset(),
-      };
+  factory AccessibilitySettings.forProfile(
+    AccessibilityProfile profile,
+  ) => switch (profile) {
+    AccessibilityProfile.standard => const AccessibilitySettings(),
+    AccessibilityProfile.youngChild => AccessibilitySettings.youngChildPreset(),
+    AccessibilityProfile.lowVision => AccessibilitySettings.lowVisionPreset(),
+  };
 
   @override
   bool operator ==(Object other) =>
@@ -180,12 +182,12 @@ final class AccessibilitySettings {
 
   @override
   int get hashCode => Object.hash(
-        textScaleMode,
-        highContrastEnabled,
-        colorBlindMode,
-        reduceMotionEnabled,
-        simplifiedNavigationEnabled,
-        largeButtonsEnabled,
-        narrationEnabled,
-      );
+    textScaleMode,
+    highContrastEnabled,
+    colorBlindMode,
+    reduceMotionEnabled,
+    simplifiedNavigationEnabled,
+    largeButtonsEnabled,
+    narrationEnabled,
+  );
 }

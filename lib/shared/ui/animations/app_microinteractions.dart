@@ -23,6 +23,8 @@
 // DEPENDENCIAS PROHIBIDAS:   features, core/infrastructure, Riverpod.
 // ─────────────────────────────────────────────────────────────────────────────
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:jardindeleden/core/theme/app_animations.dart';
 import 'package:jardindeleden/core/theme/app_motion.dart';
@@ -77,11 +79,17 @@ class _AppCorrectFeedbackState extends State<AppCorrectFeedback>
     // Ida y vuelta: 1.0 → peakScale → 1.0, ambas mitades con la misma curva.
     return TweenSequence<double>([
       TweenSequenceItem(
-        tween: Tween(begin: 1.0, end: widget.peakScale).chain(CurveTween(curve: widget.curve)),
+        tween: Tween(
+          begin: 1.0,
+          end: widget.peakScale,
+        ).chain(CurveTween(curve: widget.curve)),
         weight: 50,
       ),
       TweenSequenceItem(
-        tween: Tween(begin: widget.peakScale, end: 1.0).chain(CurveTween(curve: widget.curve)),
+        tween: Tween(
+          begin: widget.peakScale,
+          end: 1.0,
+        ).chain(CurveTween(curve: widget.curve)),
         weight: 50,
       ),
     ]).animate(_controller);
@@ -90,8 +98,9 @@ class _AppCorrectFeedbackState extends State<AppCorrectFeedback>
   @override
   void didUpdateWidget(AppCorrectFeedback oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.trigger != oldWidget.trigger && _controller.duration != Duration.zero) {
-      _controller.forward(from: 0);
+    if (widget.trigger != oldWidget.trigger &&
+        _controller.duration != Duration.zero) {
+      unawaited(_controller.forward(from: 0));
     }
   }
 
@@ -126,10 +135,6 @@ class AppIncorrectFeedback extends StatelessWidget {
   Widget build(BuildContext context) {
     // duration/curve no se pasan explícitos — AppShake ya usa
     // AppDurations.incorrectFeedback/AppCurves.shakeVibrate por defecto.
-    return AppShake(
-      trigger: trigger,
-      reduceMotion: reduceMotion,
-      child: child,
-    );
+    return AppShake(trigger: trigger, reduceMotion: reduceMotion, child: child);
   }
 }

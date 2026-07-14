@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jardindeleden/core/navigation/app_routes.dart';
@@ -22,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    _navigateAfterDelay();
+    unawaited(_navigateAfterDelay());
   }
 
   Future<void> _navigateAfterDelay() async {

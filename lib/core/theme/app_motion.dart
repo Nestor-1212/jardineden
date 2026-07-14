@@ -79,23 +79,26 @@ extension AppMotionContext on BuildContext {
   /// Resuelve [base] combinando la señal del sistema con
   /// [appReduceMotionEnabled] (pasar `accessibility.reduceMotionEnabled`
   /// desde AccessibilityController en el widget que llama).
-  Duration motionDuration(Duration base, {bool appReduceMotionEnabled = false}) =>
-      AppMotion.resolve(
-        base: base,
-        systemPrefersReducedMotion: systemPrefersReducedMotion,
-        appReduceMotionEnabled: appReduceMotionEnabled,
-      );
+  Duration motionDuration(
+    Duration base, {
+    bool appReduceMotionEnabled = false,
+  }) => AppMotion.resolve(
+    base: base,
+    systemPrefersReducedMotion: systemPrefersReducedMotion,
+    appReduceMotionEnabled: appReduceMotionEnabled,
+  );
 }
 
 /// [PageTransitionsTheme] sin animación — todas las plataformas usan
 /// [AppInstantPageTransitionsBuilder]. Para usar cuando corresponde reducir
 /// movimiento a nivel de MaterialApp completo (ver wiring en main.dart).
-final PageTransitionsTheme appInstantPageTransitionsTheme = PageTransitionsTheme(
-  builders: {
-    for (final platform in TargetPlatform.values)
-      platform: const AppInstantPageTransitionsBuilder(),
-  },
-);
+final PageTransitionsTheme appInstantPageTransitionsTheme =
+    PageTransitionsTheme(
+      builders: {
+        for (final platform in TargetPlatform.values)
+          platform: const AppInstantPageTransitionsBuilder(),
+      },
+    );
 
 /// [PageTransitionsBuilder] que no anima — la pantalla nueva aparece
 /// instantáneamente. Usado por [appInstantPageTransitionsTheme].

@@ -35,11 +35,7 @@ class NavigationErrorScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(
-                AppIcons.close,
-                size: 64,
-                color: AppColors.error,
-              ),
+              const Icon(AppIcons.close, size: 64, color: AppColors.error),
               const SizedBox(height: AppSpacing.md),
               Text(
                 'Oops, esta pantalla no existe',

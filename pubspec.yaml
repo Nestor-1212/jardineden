@@ -205,6 +205,14 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  # integration_test: Paquete OFICIAL de Flutter para tests de integración
+  # (app completa, de punta a punta) y de rendimiento (captura de timeline
+  # vía IntegrationTestWidgetsFlutterBinding). Ver integration_test/ y
+  # test_driver/perf_driver.dart. No requiere versión — se resuelve contra
+  # el SDK de Flutter instalado, igual que flutter_test.
+  integration_test:
+    sdk: flutter
+
   # flutter_lints: Reglas oficiales de lint de Flutter (extendidas en
   # analysis_options.yaml con reglas adicionales del proyecto).
   flutter_lints: ^6.0.0

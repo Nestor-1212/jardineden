@@ -35,7 +35,7 @@ part 'audio_service_provider.g.dart';
 /// [AudioPlayer] dedicado a la música de fondo (BGM).
 ///
 /// Configurado para looping continuo y control de volumen independiente.
-/// Sprint Audio: aquí se configurará [AudioSession] con categoría playback.
+/// Sprint Audio: aquí se configurará AudioSession con categoría playback.
 @Riverpod(keepAlive: true)
 AudioPlayer bgmPlayer(BgmPlayerRef ref) {
   final player = AudioPlayer();

@@ -29,7 +29,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'log_sinks_provider.g.dart';
 
-/// Lista de [LogSink] activos, en el orden en que reciben cada [LogEntry].
+/// Lista de [LogSink] activos, en el orden en que reciben cada LogEntry.
 @Riverpod(keepAlive: true)
 List<LogSink> logSinks(LogSinksRef ref) {
   return const [

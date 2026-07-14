@@ -22,7 +22,7 @@ import 'package:timezone/timezone.dart' as tz;
 /// Implementación de [NotificationService] sobre flutter_local_notifications.
 final class NotificationServiceImpl implements NotificationService {
   NotificationServiceImpl({required FlutterLocalNotificationsPlugin plugin})
-      : _plugin = plugin;
+    : _plugin = plugin;
 
   final FlutterLocalNotificationsPlugin _plugin;
 
@@ -39,7 +39,9 @@ final class NotificationServiceImpl implements NotificationService {
 
     tzdata.initializeTimeZones();
 
-    const androidSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
+    const androidSettings = AndroidInitializationSettings(
+      '@mipmap/ic_launcher',
+    );
     const iosSettings = DarwinInitializationSettings();
     const settings = InitializationSettings(
       android: androidSettings,
@@ -90,11 +92,11 @@ final class NotificationServiceImpl implements NotificationService {
   Future<void> cancelAll() => _plugin.cancelAll();
 
   NotificationDetails _details() => const NotificationDetails(
-        android: AndroidNotificationDetails(
-          _channelId,
-          _channelName,
-          channelDescription: _channelDescription,
-        ),
-        iOS: DarwinNotificationDetails(),
-      );
+    android: AndroidNotificationDetails(
+      _channelId,
+      _channelName,
+      channelDescription: _channelDescription,
+    ),
+    iOS: DarwinNotificationDetails(),
+  );
 }

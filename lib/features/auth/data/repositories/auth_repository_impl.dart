@@ -50,9 +50,9 @@ final class AuthRepositoryImpl implements IAuthRepository {
     required IAuthLocalDataSource localDataSource,
     required SecurityService securityService,
     required PreferencesService preferencesService,
-  })  : _localDataSource = localDataSource,
-        _securityService = securityService,
-        _preferencesService = preferencesService;
+  }) : _localDataSource = localDataSource,
+       _securityService = securityService,
+       _preferencesService = preferencesService;
 
   final IAuthLocalDataSource _localDataSource;
   final SecurityService _securityService;
@@ -60,11 +60,11 @@ final class AuthRepositoryImpl implements IAuthRepository {
 
   @override
   Future<Result<List<PlayerProfileEntity>, DatabaseException>>
-      getAllProfiles() async {
+  getAllProfiles() async {
     final result = await _localDataSource.getAllProfiles();
     return result.fold(
       onSuccess: (models) => Success(models.map((m) => m.toEntity()).toList()),
-      onFailure: (e) => Failure(e),
+      onFailure: Failure.new,
     );
   }
 
@@ -75,7 +75,7 @@ final class AuthRepositoryImpl implements IAuthRepository {
     final result = await _localDataSource.getProfileById(id);
     return result.fold(
       onSuccess: (model) => Success(model.toEntity()),
-      onFailure: (e) => Failure(e),
+      onFailure: Failure.new,
     );
   }
 
@@ -87,7 +87,7 @@ final class AuthRepositoryImpl implements IAuthRepository {
     final result = await _localDataSource.insertProfile(model);
     return result.fold(
       onSuccess: (_) => Success(profile),
-      onFailure: (e) => Failure(e),
+      onFailure: Failure.new,
     );
   }
 
@@ -99,7 +99,7 @@ final class AuthRepositoryImpl implements IAuthRepository {
     final result = await _localDataSource.updateProfile(model);
     return result.fold(
       onSuccess: (_) => Success(profile),
-      onFailure: (e) => Failure(e),
+      onFailure: Failure.new,
     );
   }
 
@@ -123,9 +123,7 @@ final class AuthRepositoryImpl implements IAuthRepository {
   }
 
   @override
-  Future<Result<void, DatabaseException>> setActiveProfileId(
-    String? id,
-  ) async {
+  Future<Result<void, DatabaseException>> setActiveProfileId(String? id) async {
     try {
       if (id == null) {
         await _preferencesService.clearActiveProfileId();

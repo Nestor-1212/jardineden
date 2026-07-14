@@ -35,8 +35,8 @@ import 'package:jardindeleden/core/logging/log_sink.dart';
 /// Implementación de [AppLogger] con fan-out a una lista de [LogSink].
 final class AppLoggerImpl implements AppLogger {
   AppLoggerImpl({required LogLevel minimumLevel, required List<LogSink> sinks})
-      : _minimumLevel = minimumLevel,
-        _sinks = sinks;
+    : _minimumLevel = minimumLevel,
+      _sinks = sinks;
 
   final LogLevel _minimumLevel;
   final List<LogSink> _sinks;
@@ -52,16 +52,25 @@ final class AppLoggerImpl implements AppLogger {
       _anonymousProfileId = anonymousId;
 
   @override
-  void verbose(String message, {required String module, Map<String, Object?>? metadata}) =>
-      _log(LogLevel.verbose, message, module: module, metadata: metadata);
+  void verbose(
+    String message, {
+    required String module,
+    Map<String, Object?>? metadata,
+  }) => _log(LogLevel.verbose, message, module: module, metadata: metadata);
 
   @override
-  void debug(String message, {required String module, Map<String, Object?>? metadata}) =>
-      _log(LogLevel.debug, message, module: module, metadata: metadata);
+  void debug(
+    String message, {
+    required String module,
+    Map<String, Object?>? metadata,
+  }) => _log(LogLevel.debug, message, module: module, metadata: metadata);
 
   @override
-  void info(String message, {required String module, Map<String, Object?>? metadata}) =>
-      _log(LogLevel.info, message, module: module, metadata: metadata);
+  void info(
+    String message, {
+    required String module,
+    Map<String, Object?>? metadata,
+  }) => _log(LogLevel.info, message, module: module, metadata: metadata);
 
   @override
   void warning(
@@ -69,8 +78,13 @@ final class AppLoggerImpl implements AppLogger {
     required String module,
     Map<String, Object?>? metadata,
     Object? cause,
-  }) =>
-      _log(LogLevel.warning, message, module: module, metadata: metadata, cause: cause);
+  }) => _log(
+    LogLevel.warning,
+    message,
+    module: module,
+    metadata: metadata,
+    cause: cause,
+  );
 
   @override
   void error(
@@ -79,15 +93,14 @@ final class AppLoggerImpl implements AppLogger {
     Map<String, Object?>? metadata,
     Object? cause,
     StackTrace? stackTrace,
-  }) =>
-      _log(
-        LogLevel.error,
-        message,
-        module: module,
-        metadata: metadata,
-        cause: cause,
-        stackTrace: stackTrace,
-      );
+  }) => _log(
+    LogLevel.error,
+    message,
+    module: module,
+    metadata: metadata,
+    cause: cause,
+    stackTrace: stackTrace,
+  );
 
   void _log(
     LogLevel level,

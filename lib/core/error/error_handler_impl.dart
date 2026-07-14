@@ -90,7 +90,12 @@ final class ErrorHandlerImpl implements ErrorHandler {
         final isLastAttempt = attempt >= maxAttempts;
 
         if (!_isTransient(exception) || isLastAttempt) {
-          _logError(exception, module: module, stackTrace: stackTrace, attempt: attempt);
+          _logError(
+            exception,
+            module: module,
+            stackTrace: stackTrace,
+            attempt: attempt,
+          );
           return Failure(exception);
         }
 
@@ -117,10 +122,7 @@ final class ErrorHandlerImpl implements ErrorHandler {
       module: module,
       cause: exception.cause ?? exception,
       stackTrace: stackTrace,
-      metadata: {
-        'code': exception.code,
-        'attempt': ?attempt,
-      },
+      metadata: {'code': exception.code, 'attempt': ?attempt},
     );
   }
 
@@ -161,7 +163,9 @@ final class ErrorHandlerImpl implements ErrorHandler {
     if (message.contains('delete') || message.contains('remove')) {
       return FileDeleteException(message: error.toString(), cause: error);
     }
-    if (message.contains('write') || message.contains('creat') || message.contains('rename')) {
+    if (message.contains('write') ||
+        message.contains('creat') ||
+        message.contains('rename')) {
       return FileWriteException(message: error.toString(), cause: error);
     }
     return FileReadException(message: error.toString(), cause: error);
@@ -170,48 +174,49 @@ final class ErrorHandlerImpl implements ErrorHandler {
   /// true si reintentar [exception] tiene sentido — solo contención
   /// momentánea de I/O, nunca corrupción/validación/dominio/seguridad.
   bool _isTransient(AppException exception) => switch (exception) {
-        DatabaseReadException() => true,
-        DatabaseWriteException() => true,
-        FileReadException() => true,
-        FileWriteException() => true,
-        DatabaseMigrationException() => false,
-        DatabaseCorruptionException() => false,
-        AssetException() => false,
-        FileException() => false,
-        ValidationException() => false,
-        DomainException() => false,
-        SecurityException() => false,
-        UnexpectedException() => false,
-      };
+    DatabaseReadException() => true,
+    DatabaseWriteException() => true,
+    FileReadException() => true,
+    FileWriteException() => true,
+    DatabaseMigrationException() => false,
+    DatabaseCorruptionException() => false,
+    AssetException() => false,
+    FileException() => false,
+    ValidationException() => false,
+    DomainException() => false,
+    SecurityException() => false,
+    UnexpectedException() => false,
+  };
 
   @override
   domain.Failure toFailure(AppException exception) => switch (exception) {
-        SessionExpiredException() => domain.AuthFailure(
-            message: exception.message,
-            cause: exception,
-          ),
-        DatabaseException() => domain.DatabaseFailure(
-            message: exception.message,
-            cause: exception.cause ?? exception,
-          ),
-        AssetException() => domain.FileFailure(
-            message: exception.message,
-            cause: exception.cause ?? exception,
-          ),
-        FileException() => domain.FileFailure(
-            message: exception.message,
-            cause: exception.cause ?? exception,
-          ),
-        ValidationException() =>
-          domain.ValidationFailure(message: exception.message),
-        DomainException() => domain.DomainFailure(message: exception.message),
-        SecurityException() => domain.AuthFailure(
-            message: exception.message,
-            cause: exception.cause ?? exception,
-          ),
-        UnexpectedException() => domain.UnexpectedFailure(
-            message: exception.message,
-            cause: exception.cause ?? exception,
-          ),
-      };
+    SessionExpiredException() => domain.AuthFailure(
+      message: exception.message,
+      cause: exception,
+    ),
+    DatabaseException() => domain.DatabaseFailure(
+      message: exception.message,
+      cause: exception.cause ?? exception,
+    ),
+    AssetException() => domain.FileFailure(
+      message: exception.message,
+      cause: exception.cause ?? exception,
+    ),
+    FileException() => domain.FileFailure(
+      message: exception.message,
+      cause: exception.cause ?? exception,
+    ),
+    ValidationException() => domain.ValidationFailure(
+      message: exception.message,
+    ),
+    DomainException() => domain.DomainFailure(message: exception.message),
+    SecurityException() => domain.AuthFailure(
+      message: exception.message,
+      cause: exception.cause ?? exception,
+    ),
+    UnexpectedException() => domain.UnexpectedFailure(
+      message: exception.message,
+      cause: exception.cause ?? exception,
+    ),
+  };
 }

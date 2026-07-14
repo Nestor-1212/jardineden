@@ -20,7 +20,8 @@ import 'package:jardindeleden/core/storage/storage_service.dart';
 
 /// Implementación de [PreferencesService] sobre [StorageService].
 final class PreferencesServiceImpl implements PreferencesService {
-  PreferencesServiceImpl({required StorageService storage}) : _storage = storage;
+  PreferencesServiceImpl({required StorageService storage})
+    : _storage = storage;
 
   final StorageService _storage;
 

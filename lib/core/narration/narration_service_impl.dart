@@ -17,6 +17,8 @@
 // DEPENDENCIAS PERMITIDAS:   just_audio, core/narration/ (contrato)
 // ─────────────────────────────────────────────────────────────────────────────
 
+import 'dart:async';
+
 import 'package:jardindeleden/core/narration/narration_service.dart';
 import 'package:just_audio/just_audio.dart';
 
@@ -26,11 +28,11 @@ final class NarrationServiceImpl implements NarrationService {
     required AudioPlayer narrationPlayer,
     required AudioPlayer bgmPlayer,
     this.duckFactor = 0.3,
-  })  : _narrationPlayer = narrationPlayer,
-        _bgmPlayer = bgmPlayer {
+  }) : _narrationPlayer = narrationPlayer,
+       _bgmPlayer = bgmPlayer {
     _narrationPlayer.processingStateStream.listen((state) {
       if (state == ProcessingState.completed) {
-        _restoreBgmVolume();
+        unawaited(_restoreBgmVolume());
       }
     });
   }
@@ -67,7 +69,7 @@ final class NarrationServiceImpl implements NarrationService {
 
   void _duckBgm() {
     _bgmVolumeBeforeDucking ??= _bgmPlayer.volume;
-    _bgmPlayer.setVolume(_bgmVolumeBeforeDucking! * duckFactor);
+    unawaited(_bgmPlayer.setVolume(_bgmVolumeBeforeDucking! * duckFactor));
   }
 
   Future<void> _restoreBgmVolume() async {

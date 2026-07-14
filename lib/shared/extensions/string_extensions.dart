@@ -58,7 +58,8 @@ extension StringExtensions on String {
   /// Ejemplo: 'Génesis' → 'Genesis'
   String get withoutDiacritics {
     const diacritics = 'ÀÁÂÃÄÅàáâãäåÈÉÊËèéêëÌÍÎÏìíîïÒÓÔÕÖØòóôõöøÙÚÛÜùúûüÝýÑñÇç';
-    const replacement = 'AAAAAAaaaaaaEEEEeeeeIIIIiiiiOOOOOOooooooUUUUuuuuYyNnCc';
+    const replacement =
+        'AAAAAAaaaaaaEEEEeeeeIIIIiiiiOOOOOOooooooUUUUuuuuYyNnCc';
     var result = this;
     for (var i = 0; i < diacritics.length; i++) {
       result = result.replaceAll(diacritics[i], replacement[i]);

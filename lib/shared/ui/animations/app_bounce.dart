@@ -18,6 +18,7 @@
 // DEPENDENCIAS PROHIBIDAS:   features, core/infrastructure, Riverpod.
 // ─────────────────────────────────────────────────────────────────────────────
 
+import 'dart:async';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
@@ -56,7 +57,8 @@ class AppBounceIn extends StatefulWidget {
   State<AppBounceIn> createState() => _AppBounceInState();
 }
 
-class _AppBounceInState extends State<AppBounceIn> with SingleTickerProviderStateMixin {
+class _AppBounceInState extends State<AppBounceIn>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   late final Animation<double> _drop;
   late final Animation<double> _opacity;
@@ -70,18 +72,24 @@ class _AppBounceInState extends State<AppBounceIn> with SingleTickerProviderStat
     );
     _controller = AnimationController(vsync: this, duration: duration);
     final curved = CurvedAnimation(parent: _controller, curve: widget.curve);
-    _drop = Tween<double>(begin: -widget.dropDistance, end: 0.0).animate(curved);
+    _drop = Tween<double>(
+      begin: -widget.dropDistance,
+      end: 0.0,
+    ).animate(curved);
     // El fade usa una curva más corta y neutra — el rebote de la posición
     // ya transmite la energía; la opacidad solo necesita dejar de ser 0.
-    _opacity = CurvedAnimation(parent: _controller, curve: const Interval(0.0, 0.4));
+    _opacity = CurvedAnimation(
+      parent: _controller,
+      curve: const Interval(0.0, 0.4),
+    );
 
     if (duration == Duration.zero) {
       _controller.value = 1.0;
     } else if (widget.delay == Duration.zero) {
-      _controller.forward();
+      unawaited(_controller.forward());
     } else {
       Future.delayed(widget.delay, () {
-        if (mounted) _controller.forward();
+        if (mounted) unawaited(_controller.forward());
       });
     }
   }
@@ -98,7 +106,10 @@ class _AppBounceInState extends State<AppBounceIn> with SingleTickerProviderStat
       animation: _controller,
       builder: (context, child) => Opacity(
         opacity: _opacity.value,
-        child: Transform.translate(offset: Offset(0, _drop.value), child: child),
+        child: Transform.translate(
+          offset: Offset(0, _drop.value),
+          child: child,
+        ),
       ),
       child: widget.child,
     );
@@ -125,7 +136,7 @@ class AppShake extends StatefulWidget {
   final Widget child;
 
   /// Cualquier valor que cambie de identidad dispara el shake — ver
-  /// [didUpdateWidget].
+  /// [State.didUpdateWidget].
   final Object? trigger;
 
   final Duration duration;
@@ -138,7 +149,8 @@ class AppShake extends StatefulWidget {
   State<AppShake> createState() => _AppShakeState();
 }
 
-class _AppShakeState extends State<AppShake> with SingleTickerProviderStateMixin {
+class _AppShakeState extends State<AppShake>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
 
   @override
@@ -156,8 +168,9 @@ class _AppShakeState extends State<AppShake> with SingleTickerProviderStateMixin
   @override
   void didUpdateWidget(AppShake oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.trigger != oldWidget.trigger && _controller.duration != Duration.zero) {
-      _controller.forward(from: 0);
+    if (widget.trigger != oldWidget.trigger &&
+        _controller.duration != Duration.zero) {
+      unawaited(_controller.forward(from: 0));
     }
   }
 
@@ -174,7 +187,8 @@ class _AppShakeState extends State<AppShake> with SingleTickerProviderStateMixin
       builder: (context, child) {
         final progress = widget.curve.transform(_controller.value);
         final decay = 1 - progress;
-        final offsetX = widget.amplitude *
+        final offsetX =
+            widget.amplitude *
             decay *
             math.sin(progress * widget.oscillations * 2 * math.pi);
         return Transform.translate(offset: Offset(offsetX, 0), child: child);

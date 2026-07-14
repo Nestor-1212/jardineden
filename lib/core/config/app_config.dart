@@ -34,11 +34,11 @@ abstract final class AppConfig {
   /// el applicationId real de cada instalación. Solo producción no lleva
   /// sufijo — es el único id que se publica en las tiendas.
   static String get packageName => switch (environment) {
-        AppEnvironment.dev => 'com.jardindeleden.app.dev',
-        AppEnvironment.qa => 'com.jardindeleden.app.qa',
-        AppEnvironment.staging => 'com.jardindeleden.app.staging',
-        AppEnvironment.prod => 'com.jardindeleden.app',
-      };
+    AppEnvironment.dev => 'com.jardindeleden.app.dev',
+    AppEnvironment.qa => 'com.jardindeleden.app.qa',
+    AppEnvironment.staging => 'com.jardindeleden.app.staging',
+    AppEnvironment.prod => 'com.jardindeleden.app',
+  };
 
   // ── Ambiente Activo ───────────────────────────────────────────────────────
 
@@ -68,11 +68,11 @@ abstract final class AppConfig {
   /// Nivel mínimo de log que se registra.
   /// dev: verbose | qa/staging: debug | prod: info
   static String get minimumLogLevel => switch (environment) {
-        AppEnvironment.dev => 'verbose',
-        AppEnvironment.qa => 'debug',
-        AppEnvironment.staging => 'debug',
-        AppEnvironment.prod => 'info',
-      };
+    AppEnvironment.dev => 'verbose',
+    AppEnvironment.qa => 'debug',
+    AppEnvironment.staging => 'debug',
+    AppEnvironment.prod => 'info',
+  };
 
   // ── Sistema 44 (Repetición Espaciada) ────────────────────────────────────
 
@@ -85,11 +85,11 @@ abstract final class AppConfig {
   /// staging), pero sin ser tan instantáneo como dev, que dificultaría
   /// notar bugs de timing que sí aparecerían con staging/producción.
   static int get sistema44TimeAccelerationFactor => switch (environment) {
-        AppEnvironment.dev => 1440,
-        AppEnvironment.qa => 120,
-        AppEnvironment.staging => 24,
-        AppEnvironment.prod => 1,
-      };
+    AppEnvironment.dev => 1440,
+    AppEnvironment.qa => 120,
+    AppEnvironment.staging => 24,
+    AppEnvironment.prod => 1,
+  };
 
   // ── Sincronización Futura ─────────────────────────────────────────────────
 
