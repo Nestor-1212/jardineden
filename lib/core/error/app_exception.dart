@@ -25,15 +25,36 @@
 //   │   ├── AssetNotFoundException
 //   │   ├── AssetIntegrityException
 //   │   └── AssetDownloadException
+//   ├── FileException
+//   │   ├── FileNotFoundException
+//   │   ├── FileReadException
+//   │   ├── FileWriteException
+//   │   └── FileDeleteException
+//   ├── ValidationException
+//   │   ├── InvalidFormatException
+//   │   ├── RequiredFieldException
+//   │   └── OutOfRangeException
 //   ├── DomainException
 //   │   ├── InsufficientCurrencyException
 //   │   ├── ChapterLockedException
 //   │   ├── InvalidProfileException
-//   │   └── SessionExpiredException
-//   └── SecurityException
-//       ├── InvalidPinException
-//       ├── EncryptionException
-//       └── UnauthorizedAccessException
+//   │   ├── SessionExpiredException
+//   │   └── MaxProfilesReachedException
+//   ├── SecurityException
+//   │   ├── InvalidPinException
+//   │   ├── EncryptionException
+//   │   └── UnauthorizedAccessException
+//   └── UnexpectedException
+//       (catch-all para cualquier error no clasificado — ver ErrorHandler
+//       en core/error/error_handler.dart. NUNCA debería usarse a propósito
+//       desde código de features; es la red de seguridad del sistema.)
+//
+// CÓMO SE USA ESTA JERARQUÍA (ver core/error/error_handler.dart):
+//   El código de infraestructura (data sources, servicios) puede lanzar
+//   directamente el subtipo específico que conoce (ej: SecurityServiceImpl
+//   lanza EncryptionException). Cualquier excepción NO reconocida que llegue
+//   a ErrorHandler.guard() se clasifica automáticamente en el subtipo más
+//   apropiado, o en UnexpectedException si no encaja en ninguno.
 //
 // IMPLEMENTA EN SPRINT:   Sprint del Módulo Core
 // ─────────────────────────────────────────────────────────────────────────────
@@ -197,4 +218,95 @@ final class EncryptionException extends SecurityException {
 final class UnauthorizedAccessException extends SecurityException {
   const UnauthorizedAccessException({required super.message})
       : super(code: 'UNAUTHORIZED_ACCESS');
+}
+
+// ── Errores de Archivos ──────────────────────────────────────────────────────
+
+/// Categoría de errores del sistema de archivos (ver core/file/FileService).
+///
+/// Distinta de [AssetException]: AssetException es sobre el CONTENIDO del
+/// juego (versículos, imágenes de mundos) y su integridad. FileException es
+/// sobre la OPERACIÓN de I/O en sí (el archivo no existe, no se pudo leer/
+/// escribir/borrar) — aplica a backups, exports, y cualquier archivo que no
+/// sea un asset de contenido.
+sealed class FileException extends AppException {
+  const FileException({
+    required super.code,
+    required super.message,
+    super.cause,
+  });
+}
+
+/// El archivo solicitado no existe en la ruta indicada.
+final class FileNotFoundException extends FileException {
+  const FileNotFoundException({required super.message, super.cause})
+      : super(code: 'FILE_NOT_FOUND');
+}
+
+/// Fallo al leer un archivo (permisos, disco desmontado, archivo bloqueado).
+final class FileReadException extends FileException {
+  const FileReadException({required super.message, super.cause})
+      : super(code: 'FILE_READ_FAILED');
+}
+
+/// Fallo al escribir un archivo (disco lleno, permisos, ruta inválida).
+final class FileWriteException extends FileException {
+  const FileWriteException({required super.message, super.cause})
+      : super(code: 'FILE_WRITE_FAILED');
+}
+
+/// Fallo al eliminar un archivo o directorio.
+final class FileDeleteException extends FileException {
+  const FileDeleteException({required super.message, super.cause})
+      : super(code: 'FILE_DELETE_FAILED');
+}
+
+// ── Errores de Validación ────────────────────────────────────────────────────
+
+/// Categoría de errores de validación de FORMATO de datos de entrada.
+///
+/// Distinta de las reglas de negocio en [DomainException]: ValidationException
+/// es sobre la FORMA del dato (¿es un email válido? ¿está en el rango
+/// permitido?), no sobre si la operación tiene sentido en el juego. Ver
+/// core/validation/ValidationService para los checks que alimentan estas
+/// excepciones cuando se lanzan explícitamente.
+sealed class ValidationException extends AppException {
+  const ValidationException({
+    required super.code,
+    required super.message,
+    super.cause,
+  });
+}
+
+/// El valor no tiene el formato esperado (email, UUID, color hex, etc.).
+final class InvalidFormatException extends ValidationException {
+  const InvalidFormatException({required super.message})
+      : super(code: 'INVALID_FORMAT');
+}
+
+/// Un campo requerido llegó vacío o nulo.
+final class RequiredFieldException extends ValidationException {
+  const RequiredFieldException({required super.message})
+      : super(code: 'REQUIRED_FIELD_MISSING');
+}
+
+/// Un valor numérico o de longitud está fuera del rango permitido.
+final class OutOfRangeException extends ValidationException {
+  const OutOfRangeException({required super.message})
+      : super(code: 'OUT_OF_RANGE');
+}
+
+// ── Errores Inesperados ───────────────────────────────────────────────────────
+
+/// Cualquier error que ErrorHandler.classify() no pudo ubicar en ninguna
+/// categoría anterior. Es la red de seguridad final: garantiza que SIEMPRE
+/// hay un AppException que representar y loguear, nunca una excepción cruda
+/// sin clasificar propagándose por la app.
+///
+/// Si este tipo aparece con frecuencia en los logs de producción, es una
+/// señal de que falta una categoría específica en esta jerarquía — no de
+/// que el error en sí sea aceptable.
+final class UnexpectedException extends AppException {
+  const UnexpectedException({required super.message, super.cause})
+      : super(code: 'UNEXPECTED_ERROR');
 }

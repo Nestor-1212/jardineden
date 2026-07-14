@@ -38,28 +38,30 @@
 abstract interface class PreferencesService {
   // ── Claves de Preferencias ────────────────────────────────────────────────
 
-  static const String _keyActiveProfileId = 'jde_active_profile_id';
-  static const String _keyLanguage = 'jde_language';
-  static const String _keyMusicVolume = 'jde_music_volume';
-  static const String _keySfxVolume = 'jde_sfx_volume';
-  static const String _keyDarkMode = 'jde_dark_mode';
-  static const String _keyAccessibilityFontSize = 'jde_accessibility_font';
-  static const String _keyHighContrast = 'jde_high_contrast';
-  static const String _keyTutorialCompleted = 'jde_tutorial_completed';
-  static const String _keyFirstLaunch = 'jde_first_launch';
+  // Públicas (no privadas al archivo) a propósito: PreferencesServiceImpl
+  // vive en un archivo separado (preferences_service_impl.dart, siguiendo
+  // la convención contrato/implementación del resto del Core) y necesita
+  // referenciarlas sin duplicar los literales — una sola fuente de verdad.
+  static const String keyActiveProfileId = 'jde_active_profile_id';
+  static const String keyLanguage = 'jde_language';
+  static const String keyMusicVolume = 'jde_music_volume';
+  static const String keySfxVolume = 'jde_sfx_volume';
+  static const String keyDarkMode = 'jde_dark_mode';
+  static const String keyAccessibilityFontSize = 'jde_accessibility_font';
+  static const String keyHighContrast = 'jde_high_contrast';
+  static const String keyTutorialCompleted = 'jde_tutorial_completed';
+  static const String keyFirstLaunch = 'jde_first_launch';
 
-  // Las claves son privadas a la implementación pero se documentan aquí
-  // para que el equipo sepa qué prefijos existen en SharedPreferences.
   static final List<String> allKeys = [
-    _keyActiveProfileId,
-    _keyLanguage,
-    _keyMusicVolume,
-    _keySfxVolume,
-    _keyDarkMode,
-    _keyAccessibilityFontSize,
-    _keyHighContrast,
-    _keyTutorialCompleted,
-    _keyFirstLaunch,
+    keyActiveProfileId,
+    keyLanguage,
+    keyMusicVolume,
+    keySfxVolume,
+    keyDarkMode,
+    keyAccessibilityFontSize,
+    keyHighContrast,
+    keyTutorialCompleted,
+    keyFirstLaunch,
   ];
 
   // ── Perfil Activo ─────────────────────────────────────────────────────────

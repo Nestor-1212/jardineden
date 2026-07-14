@@ -25,6 +25,8 @@
 // DEPENDENCIAS PERMITIDAS:   riverpod_annotation, just_audio.
 // ─────────────────────────────────────────────────────────────────────────────
 
+import 'package:jardindeleden/core/audio/audio_service.dart';
+import 'package:jardindeleden/core/audio/audio_service_impl.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -50,4 +52,16 @@ AudioPlayer sfxPlayer(SfxPlayerRef ref) {
   final player = AudioPlayer();
   ref.onDispose(player.dispose);
   return player;
+}
+
+/// Fachada [AudioService] sobre [bgmPlayer] y [sfxPlayer].
+///
+/// El resto del proyecto depende de esta interfaz, nunca de AudioPlayer
+/// directamente — permite reemplazar just_audio sin tocar features.
+@Riverpod(keepAlive: true)
+AudioService audioService(AudioServiceRef ref) {
+  return AudioServiceImpl(
+    bgmPlayer: ref.watch(bgmPlayerProvider),
+    sfxPlayer: ref.watch(sfxPlayerProvider),
+  );
 }

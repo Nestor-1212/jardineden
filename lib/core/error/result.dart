@@ -10,14 +10,34 @@
 //   Success<S> — La operación fue exitosa. Contiene el valor de tipo S.
 //   Failure<F> — La operación falló. Contiene el error de tipo F.
 //
-// FIRMA ESTÁNDAR DE UN CASO DE USO:
-//   Future<Result<ChapterEntity, AppException>> execute(String chapterId);
+// DOS FRONTERAS, DOS INSTANCIACIONES DE F (ver core/error/error_handler.dart):
+//   Este tipo es completamente genérico a propósito — el proyecto lo
+//   instancia con DOS vocabularios de error distintos según la frontera:
+//
+//   1. Datos → Dominio:      Result<T, AppException>
+//      Los repositorios usan ErrorHandler.guard() para envolver operaciones
+//      de infraestructura (Drift, dart:io, plugins). Cualquier excepción se
+//      clasifica en un AppException (core/error/app_exception.dart) — el
+//      vocabulario TÉCNICO del error.
+//
+//   2. Dominio → Presentación: Result<T, Failure>
+//      Los casos de uso reciben el Result<T, AppException> del repositorio
+//      y, si es Failure, llaman a ErrorHandler.toFailure(exception) para
+//      traducirlo a Failure (domain/core/failure.dart) — el vocabulario DE
+//      NEGOCIO del error, libre de detalles de infraestructura.
+//
+// FIRMA ESTÁNDAR:
+//   // Repositorio (capa de datos):
+//   Future<Result<ChapterEntity, AppException>> getChapter(String id);
+//
+//   // Caso de uso (capa de dominio):
+//   Future<Result<ChapterEntity, Failure>> execute(String chapterId);
 //
 // USO EN PRESENTACIÓN (providers de Riverpod):
 //   final result = await completeChapterUseCase.execute(chapterId);
 //   result.fold(
 //     onSuccess: (chapter) => state = AsyncData(chapter),
-//     onFailure: (error)   => state = AsyncError(error, StackTrace.current),
+//     onFailure: (failure) => state = AsyncError(failure, StackTrace.current),
 //   );
 //
 // DEPENDENCIAS PERMITIDAS:   dart:core únicamente.

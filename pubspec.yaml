@@ -68,7 +68,15 @@ dependencies:
   # para Android e iOS. REEMPLAZA COMPLETAMENTE a sqlite3_flutter_libs.
   # NO incluir ambas — conflicto de símbolos en la compilación nativa.
   # La clave de cifrado se inyecta via: PRAGMA key='<key>'
-  sqlcipher_flutter_libs: 0.7.0+eol
+  #
+  # IMPORTANTE: fijado en 0.6.8, NO 0.7.0+eol.
+  # Desde la versión 0.7.0, este paquete "no hace nada" — fue reducido a un
+  # stub porque solo es necesario para sqlite3 2.x. La migración a sqlite3 3.x
+  # (que reemplaza este paquete por `hooks: user_defines` en pubspec.yaml)
+  # todavía no es posible aquí: drift 2.x depende de `sqlite3: ^2.6.0`.
+  # Hasta que drift adopte sqlite3 3.x, 0.6.8 es la última versión que
+  # realmente empaqueta los binarios nativos de SQLCipher.
+  sqlcipher_flutter_libs: ^0.6.8
 
   # ── Storage ──────────────────────────────────────────────────────────────
   #
@@ -86,6 +94,11 @@ dependencies:
   # Requerido para obtener applicationDocumentsDirectory donde vive la DB.
   path_provider: ^2.1.5
 
+  # path: Manipulación de rutas de archivos (join, basename) independiente
+  # de plataforma. Ya es transitiva de path_provider; se declara explícita
+  # porque core/infrastructure/database y core/backup la usan directamente.
+  path: ^1.9.1
+
   # ── Security / Cryptography ──────────────────────────────────────────────
   #
   # crypto: Librería criptográfica OFICIAL del equipo de Dart (dart.dev).
@@ -97,6 +110,35 @@ dependencies:
   # bcrypt(cost=12) tarda ~300ms por hash — lento por diseño para prevenir
   # ataques de fuerza bruta. El salt se incluye automáticamente en el hash.
   bcrypt: ^1.1.3
+
+  # encrypt: Motor de cifrado simétrico AES-256-GCM sobre PointyCastle.
+  # 'crypto' (arriba) solo aporta hashing (SHA-256) — no puede cifrar/descifrar.
+  # Usado por EncryptionService, el motor genérico de cifrado del que
+  # SecurityService consume sus primitivas (generación de claves, cifrado
+  # de strings arbitrarios más allá de la clave de la DB).
+  encrypt: ^5.0.3
+
+  # ── Conectividad ─────────────────────────────────────────────────────────
+  #
+  # connectivity_plus: Detecta el tipo de conexión activa (wifi/datos/ninguna)
+  # y expone un stream de cambios. Preparado para las futuras sincronizaciones
+  # con Laravel (Año 3) — hoy no tiene consumidores, igual que SyncQueue.
+  connectivity_plus: ^6.1.0
+
+  # ── Notificaciones ────────────────────────────────────────────────────────
+  #
+  # flutter_local_notifications: Notificaciones locales del SO (no push).
+  # Wrapper de bajo nivel para NotificationService: mostrar, cancelar y pedir
+  # permiso. El contenido/las reglas de cuándo notificar son responsabilidad
+  # de features futuras, no de este paquete.
+  flutter_local_notifications: ^18.0.1
+
+  # timezone: Requerido por flutter_local_notifications para programar
+  # notificaciones futuras (zonedSchedule necesita un TZDateTime, no un
+  # DateTime simple, para sobrevivir cambios de horario de verano).
+  # Ya es transitiva de flutter_local_notifications; se declara explícita
+  # porque NotificationService la usa directamente.
+  timezone: ^0.10.1
 
   # ── Audio ─────────────────────────────────────────────────────────────────
   #

@@ -53,6 +53,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:jardindeleden/core/infrastructure/logging/navigation_logger_provider.dart';
+import 'package:jardindeleden/core/logging/navigation_logger.dart';
+import 'package:jardindeleden/core/navigation/app_navigator_observer.dart';
 import 'package:jardindeleden/core/navigation/app_routes.dart';
 import 'package:jardindeleden/core/navigation/app_shell.dart';
 import 'package:jardindeleden/core/navigation/navigation_error_screen.dart';
@@ -84,14 +87,18 @@ import 'package:jardindeleden/features/worlds/worlds_screen.dart';
 /// MaterialApp.router(routerConfig: router, ...)
 /// ```
 final appRouterProvider = Provider<GoRouter>(
-  (ref) => _buildRouter(),
+  (ref) => _buildRouter(navigationLogger: ref.watch(navigationLoggerProvider)),
   name: 'appRouterProvider',
 );
 
-GoRouter _buildRouter() {
+GoRouter _buildRouter({required NavigationLogger navigationLogger}) {
   return GoRouter(
     initialLocation: AppRoutes.splash,
     debugLogDiagnostics: true,
+
+    // Logs de navegación (LogModules.navigation) — ver
+    // core/navigation/app_navigator_observer.dart.
+    observers: [AppNavigatorObserver(navigationLogger)],
 
     // ── Redirect Guard ────────────────────────────────────────────────────────
     //

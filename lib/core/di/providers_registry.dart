@@ -36,10 +36,30 @@
 // Ciclo de vida: keepAlive: true (nunca se descartan).
 
 export 'package:jardindeleden/core/infrastructure/audio/audio_service_provider.dart';
+export 'package:jardindeleden/core/infrastructure/audit/audit_logger_provider.dart';
+export 'package:jardindeleden/core/infrastructure/backup/backup_service_provider.dart';
+export 'package:jardindeleden/core/infrastructure/cache/cache_service_provider.dart';
+export 'package:jardindeleden/core/infrastructure/connectivity/connectivity_service_provider.dart';
 export 'package:jardindeleden/core/infrastructure/database/database_provider.dart';
+export 'package:jardindeleden/core/infrastructure/date/date_service_provider.dart';
+export 'package:jardindeleden/core/infrastructure/encryption/encryption_service_provider.dart';
+export 'package:jardindeleden/core/infrastructure/error/error_handler_provider.dart';
+export 'package:jardindeleden/core/infrastructure/file/file_service_provider.dart';
+export 'package:jardindeleden/core/infrastructure/logging/app_logger_provider.dart';
+export 'package:jardindeleden/core/infrastructure/logging/educational_event_logger_provider.dart';
+export 'package:jardindeleden/core/infrastructure/logging/log_sinks_provider.dart';
+export 'package:jardindeleden/core/infrastructure/logging/navigation_logger_provider.dart';
+export 'package:jardindeleden/core/infrastructure/logging/performance_logger_provider.dart';
+export 'package:jardindeleden/core/infrastructure/notification/notification_plugin_provider.dart';
+export 'package:jardindeleden/core/infrastructure/notification/notification_service_provider.dart';
+export 'package:jardindeleden/core/infrastructure/permission/permission_service_provider.dart';
+export 'package:jardindeleden/core/infrastructure/security/security_service_provider.dart';
+export 'package:jardindeleden/core/infrastructure/storage/preferences_service_provider.dart';
 export 'package:jardindeleden/core/infrastructure/storage/secure_storage_provider.dart';
 export 'package:jardindeleden/core/infrastructure/storage/shared_prefs_provider.dart';
+export 'package:jardindeleden/core/infrastructure/storage/storage_service_provider.dart';
 export 'package:jardindeleden/core/infrastructure/uuid/uuid_provider.dart';
+export 'package:jardindeleden/core/infrastructure/validation/validation_service_provider.dart';
 
 // ── 2. Navigation ─────────────────────────────────────────────────────────────
 // Router de GoRouter como Provider<GoRouter>.
