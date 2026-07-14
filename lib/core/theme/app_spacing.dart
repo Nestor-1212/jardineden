@@ -60,8 +60,14 @@ abstract final class AppSpacing {
 
   // ── Alturas de Elemento ───────────────────────────────────────────────────
 
-  /// Altura mínima de un elemento táctil (accesibilidad: 44pt).
+  /// Altura mínima de un elemento táctil (accesibilidad: 44pt — WCAG 2.5.5 AA).
   static const double touchTargetMin = 44;
+
+  /// Altura de objetivo táctil grande (accesibilidad: botones grandes,
+  /// perfiles de niños de 4-6 años con motricidad fina en desarrollo).
+  /// Ver core/accessibility/accessibility_settings.dart — se activa con
+  /// AccessibilitySettings.largeButtonsEnabled.
+  static const double touchTargetLarge = 64;
 
   /// Altura estándar de botón de acción principal.
   static const double buttonHeight = 56;

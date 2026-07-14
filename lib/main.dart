@@ -6,7 +6,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jardindeleden/core/di/app_di.dart';
 import 'package:jardindeleden/core/infrastructure/logging/app_logger_provider.dart';
 import 'package:jardindeleden/core/error/global_error_handler.dart';
+import 'package:jardindeleden/core/accessibility/accessibility_settings.dart';
+import 'package:jardindeleden/core/accessibility/color_blind_support.dart';
+import 'package:jardindeleden/core/infrastructure/accessibility/accessibility_controller.dart';
 import 'package:jardindeleden/core/navigation/app_router.dart';
+import 'package:jardindeleden/core/theme/app_high_contrast_colors.dart';
+import 'package:jardindeleden/core/theme/app_motion.dart';
+import 'package:jardindeleden/core/theme/app_text_scale.dart';
 import 'package:jardindeleden/core/theme/app_theme.dart';
 import 'package:jardindeleden/l10n/generated/app_localizations.dart';
 
@@ -56,7 +62,8 @@ void main() {
 /// Widget raíz de la aplicación.
 ///
 /// [ConsumerWidget] (en lugar de [StatelessWidget]) para leer
-/// [appRouterProvider] desde Riverpod sin BuildContext adicional.
+/// [appRouterProvider] y [accessibilityControllerProvider] desde Riverpod
+/// sin BuildContext adicional.
 class JardinDelEdenApp extends ConsumerWidget {
   const JardinDelEdenApp({super.key});
 
@@ -64,13 +71,64 @@ class JardinDelEdenApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(appRouterProvider);
 
+    // AsyncValue en la primera carga (lee StorageService) — se usan valores
+    // por defecto mientras resuelve, nunca se bloquea el primer frame por
+    // esto (mismo patrón que appDatabaseProvider: infra que se activa sin
+    // pantalla de carga dedicada).
+    final accessibility =
+        ref.watch(accessibilityControllerProvider).valueOrNull ??
+            const AccessibilitySettings();
+
+    // ── Alto Contraste + Daltonismo ────────────────────────────────────────
+    //
+    // Se componen en ese orden: primero se elige la paleta base (normal o
+    // alto contraste), luego se le aplica el ajuste de daltonismo si
+    // corresponde — ver core/theme/app_high_contrast_colors.dart y
+    // core/accessibility/color_blind_support.dart para el porqué de cada uno.
+    final baseLight =
+        accessibility.highContrastEnabled ? AppHighContrastTheme.light : AppTheme.light;
+    final baseDark =
+        accessibility.highContrastEnabled ? AppHighContrastTheme.dark : AppTheme.dark;
+
+    var lightTheme = accessibility.colorBlindMode.isActive
+        ? baseLight.copyWith(
+            colorScheme: AppColorBlindAdjustment.adjustScheme(
+              baseLight.colorScheme,
+              accessibility.colorBlindMode,
+            ),
+          )
+        : baseLight;
+    var darkTheme = accessibility.colorBlindMode.isActive
+        ? baseDark.copyWith(
+            colorScheme: AppColorBlindAdjustment.adjustScheme(
+              baseDark.colorScheme,
+              accessibility.colorBlindMode,
+            ),
+          )
+        : baseDark;
+
+    // ── Reducción de Movimiento ───────────────────────────────────────────
+    //
+    // Si el sistema operativo pide reducir movimiento O el jugador lo
+    // activó dentro del juego, las transiciones de página de Material se
+    // desactivan globalmente (appInstantPageTransitionsTheme). Animaciones
+    // puntuales (HUD Breathing, feedback de minijuegos) siguen su propia
+    // lógica en cada widget vía AppMotion.resolve — ver core/theme/app_motion.dart.
+    // Se aplica directamente al ThemeData (no envolviendo con Theme() dentro
+    // de builder) porque MaterialApp.builder no garantiza que Theme.of(context)
+    // ya refleje `theme`/`darkTheme` en ese punto del árbol.
+    if (context.systemPrefersReducedMotion || accessibility.reduceMotionEnabled) {
+      lightTheme = lightTheme.copyWith(pageTransitionsTheme: appInstantPageTransitionsTheme);
+      darkTheme = darkTheme.copyWith(pageTransitionsTheme: appInstantPageTransitionsTheme);
+    }
+
     return MaterialApp.router(
       title: 'Jardín del Edén',
       debugShowCheckedModeBanner: false,
 
-      // ── Temas Material 3 (Sprint 05) ─────────────────────────────────────
-      theme: AppTheme.light,
-      darkTheme: AppTheme.dark,
+      // ── Temas Material 3 (Sprint 05) + Accesibilidad ──────────────────────
+      theme: lightTheme,
+      darkTheme: darkTheme,
 
       // ── Internacionalización (Sprint 06) ─────────────────────────────────
       localizationsDelegates: const [
@@ -83,6 +141,23 @@ class JardinDelEdenApp extends ConsumerWidget {
 
       // ── Navegación GoRouter (Sprint 07) ───────────────────────────────────
       routerConfig: router,
+
+      // ── Escalado de Texto Adaptable (Design System) ───────────────────────
+      //
+      // Acota el TextScaler de accesibilidad del sistema operativo entre
+      // AppTextScale.minSystemScale y .maxSystemScale — respeta la
+      // preferencia del usuario sin permitir que un ajuste extremo rompa el
+      // HUD del juego. Ver core/theme/app_text_scale.dart para el porqué de
+      // los límites y por qué esto NUNCA se combina con el escalado por
+      // tamaño de pantalla (AppTextScale.scale) ni con
+      // AccessibilitySettings.textScaleMode, que son ejes aparte — cada
+      // pantalla los combina explícitamente donde los necesita, en vez de
+      // que este builder global adivine cómo componerlos.
+      builder: (context, child) => MediaQuery.withClampedTextScaling(
+        minScaleFactor: AppTextScale.minSystemScale,
+        maxScaleFactor: AppTextScale.maxSystemScale,
+        child: child!,
+      ),
     );
   }
 }

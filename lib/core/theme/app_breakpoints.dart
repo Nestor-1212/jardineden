@@ -39,6 +39,36 @@ import 'package:flutter/material.dart';
 import 'package:jardindeleden/core/theme/app_spacing.dart';
 
 // ─────────────────────────────────────────────────────────────────────────────
+// SCREEN SIZE
+// Clasificación granular de dispositivo — el resto del Design System
+// adaptable (texto, íconos, imágenes, márgenes) se apoya en este enum en
+// vez de comparar anchos crudos por su cuenta.
+// ─────────────────────────────────────────────────────────────────────────────
+
+/// Categoría de tamaño de pantalla, de más pequeña a más grande.
+///
+/// Mapeo a los anchos de [AppBreakpoints]:
+///   compactPhone < 480px  — "teléfono pequeño" (SE, mini).
+///   phone        480-599  — "teléfono grande" (mayoría de Android/iOS actuales).
+///   phablet      600-767  — Frontera teléfono/tablet, plegables abiertos.
+///   tablet       768-1023 — Tablet de 8-10".
+///   largeTablet  ≥ 1024   — Tablet de 11"+ / Chromebook.
+enum ScreenSize {
+  compactPhone,
+  phone,
+  phablet,
+  tablet,
+  largeTablet;
+
+  /// `true` para [compactPhone] y [phone] — cualquier layout de columna única.
+  bool get isPhone => this == compactPhone || this == phone;
+
+  /// `true` para [phablet], [tablet] y [largeTablet].
+  bool get isTabletOrLarger =>
+      this == phablet || this == tablet || this == largeTablet;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // BREAKPOINTS
 // Constantes estáticas que replican AppSpacing.breakpoint* como API propia.
 // ─────────────────────────────────────────────────────────────────────────────
@@ -78,6 +108,19 @@ abstract final class AppBreakpoints {
 
   /// Retorna `true` si el ancho es de tablet grande o superior (≥1024px).
   static bool isDesktopWidth(double width) => width >= tablet;
+
+  /// Clasifica [width] en una categoría de [ScreenSize].
+  ///
+  /// Fuente única de verdad para "¿es teléfono pequeño o grande?" — todo el
+  /// resto del sistema adaptable (texto, íconos, imágenes, márgenes) llama
+  /// a este método en vez de comparar anchos por su cuenta.
+  static ScreenSize screenSizeOf(double width) {
+    if (width < mobileCompact) return ScreenSize.compactPhone;
+    if (width < mobile) return ScreenSize.phone;
+    if (width < phablet) return ScreenSize.phablet;
+    if (width < tablet) return ScreenSize.tablet;
+    return ScreenSize.largeTablet;
+  }
 
   // ── Columnas de Grid ──────────────────────────────────────────────────────
 
@@ -166,6 +209,9 @@ extension AppBreakpointsContext on BuildContext {
 
   /// `true` si la pantalla es teléfono compacto (< 480px).
   bool get isCompactPhone => AppBreakpoints.isCompactPhone(screenWidth);
+
+  /// Categoría granular de tamaño de pantalla — ver [ScreenSize].
+  ScreenSize get screenSize => AppBreakpoints.screenSizeOf(screenWidth);
 
   /// Número de columnas recomendado para el grid en el ancho actual.
   ///

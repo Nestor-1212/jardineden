@@ -12,8 +12,6 @@
 //   • Volumen de música (double: 0.0 a 1.0)
 //   • Volumen de efectos de sonido (double: 0.0 a 1.0)
 //   • Modo oscuro preferido (bool)
-//   • Tamaño de fuente de accesibilidad (enum: normal, grande, extraGrande)
-//   • Modo alto contraste (bool)
 //   • Tutorial completado (bool)
 //   • Primer lanzamiento (bool)
 //
@@ -21,6 +19,14 @@
 //   • El PIN del Panel de Padres → Vive en la DB con hash bcrypt.
 //   • Progreso del juego → Vive en AppDatabase (Drift).
 //   • Monedas y economía → Viven en AppDatabase (Drift).
+//   • Ajustes de accesibilidad (tamaño de texto, alto contraste, daltonismo,
+//     reducción de movimiento, narración, botones grandes, navegación
+//     simplificada) → Viven en core/accessibility/ (AccessibilityService +
+//     AccessibilityController). Este archivo tenía dos campos de
+//     accesibilidad (fontSize/highContrast) que se retiraron al crear ese
+//     módulo dedicado — un modelo más rico (enums, presets por edad) no
+//     cabía bien como dos flags sueltos aquí, y tener dos fuentes de verdad
+//     para "alto contraste" habría sido un bug esperando a pasar.
 //
 // CLAVES DE PREFERENCIAS:
 //   Todas las claves tienen el prefijo 'jde_' para evitar colisiones.
@@ -47,8 +53,6 @@ abstract interface class PreferencesService {
   static const String keyMusicVolume = 'jde_music_volume';
   static const String keySfxVolume = 'jde_sfx_volume';
   static const String keyDarkMode = 'jde_dark_mode';
-  static const String keyAccessibilityFontSize = 'jde_accessibility_font';
-  static const String keyHighContrast = 'jde_high_contrast';
   static const String keyTutorialCompleted = 'jde_tutorial_completed';
   static const String keyFirstLaunch = 'jde_first_launch';
 
@@ -58,8 +62,6 @@ abstract interface class PreferencesService {
     keyMusicVolume,
     keySfxVolume,
     keyDarkMode,
-    keyAccessibilityFontSize,
-    keyHighContrast,
     keyTutorialCompleted,
     keyFirstLaunch,
   ];
@@ -87,10 +89,6 @@ abstract interface class PreferencesService {
 
   Future<bool?> getDarkModePreference();
   Future<void> setDarkModePreference(bool isDark);
-  Future<String> getAccessibilityFontSize();
-  Future<void> setAccessibilityFontSize(String size);
-  Future<bool> getHighContrastEnabled();
-  Future<void> setHighContrastEnabled(bool enabled);
 
   // ── Estado de la App ──────────────────────────────────────────────────────
 

@@ -42,6 +42,17 @@ abstract final class SharedPrefKeys {
   // ── Sistema 44 ────────────────────────────────────────────────────────────
   /// Timestamp (ISO 8601) de la última sesión de repaso completada.
   static const lastReviewSession = 'jde_s44_last_review';
+
+  // ── Accesibilidad (core/accessibility/) ──────────────────────────────────
+  /// Prefijo 'jde_a11y_' (abreviatura estándar de "accessibility") separado
+  /// del resto para que sea trivial auditar qué se guarda de accesibilidad.
+  static const a11yTextScaleMode = 'jde_a11y_text_scale_mode';
+  static const a11yHighContrast = 'jde_a11y_high_contrast';
+  static const a11yColorBlindMode = 'jde_a11y_color_blind_mode';
+  static const a11yReduceMotion = 'jde_a11y_reduce_motion';
+  static const a11ySimplifiedNavigation = 'jde_a11y_simplified_navigation';
+  static const a11yLargeButtons = 'jde_a11y_large_buttons';
+  static const a11yNarrationEnabled = 'jde_a11y_narration_enabled';
 }
 
 /// Claves para FlutterSecureStorage (datos sensibles — Keychain/Keystore).

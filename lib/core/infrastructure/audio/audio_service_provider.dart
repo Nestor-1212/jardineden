@@ -54,6 +54,16 @@ AudioPlayer sfxPlayer(SfxPlayerRef ref) {
   return player;
 }
 
+/// [AudioPlayer] dedicado a la narración de audio pre-grabada (ver
+/// core/narration/). Canal separado de BGM/SFX porque necesita ducking del
+/// volumen de BGM y reproducción secuencial (nunca superpuesta consigo misma).
+@Riverpod(keepAlive: true)
+AudioPlayer narrationPlayer(NarrationPlayerRef ref) {
+  final player = AudioPlayer();
+  ref.onDispose(player.dispose);
+  return player;
+}
+
 /// Fachada [AudioService] sobre [bgmPlayer] y [sfxPlayer].
 ///
 /// El resto del proyecto depende de esta interfaz, nunca de AudioPlayer

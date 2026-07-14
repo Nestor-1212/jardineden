@@ -35,6 +35,8 @@
 // Singleton providers de capa de plataforma.
 // Ciclo de vida: keepAlive: true (nunca se descartan).
 
+export 'package:jardindeleden/core/infrastructure/accessibility/accessibility_controller.dart';
+export 'package:jardindeleden/core/infrastructure/accessibility/accessibility_service_provider.dart';
 export 'package:jardindeleden/core/infrastructure/audio/audio_service_provider.dart';
 export 'package:jardindeleden/core/infrastructure/audit/audit_logger_provider.dart';
 export 'package:jardindeleden/core/infrastructure/backup/backup_service_provider.dart';
@@ -50,6 +52,7 @@ export 'package:jardindeleden/core/infrastructure/logging/educational_event_logg
 export 'package:jardindeleden/core/infrastructure/logging/log_sinks_provider.dart';
 export 'package:jardindeleden/core/infrastructure/logging/navigation_logger_provider.dart';
 export 'package:jardindeleden/core/infrastructure/logging/performance_logger_provider.dart';
+export 'package:jardindeleden/core/infrastructure/narration/narration_service_provider.dart';
 export 'package:jardindeleden/core/infrastructure/notification/notification_plugin_provider.dart';
 export 'package:jardindeleden/core/infrastructure/notification/notification_service_provider.dart';
 export 'package:jardindeleden/core/infrastructure/permission/permission_service_provider.dart';

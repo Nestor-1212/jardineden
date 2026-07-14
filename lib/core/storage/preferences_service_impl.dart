@@ -76,22 +76,6 @@ final class PreferencesServiceImpl implements PreferencesService {
   Future<void> setDarkModePreference(bool isDark) =>
       _storage.setBool(PreferencesService.keyDarkMode, isDark);
 
-  @override
-  Future<String> getAccessibilityFontSize() async =>
-      _storage.getString(PreferencesService.keyAccessibilityFontSize) ?? 'normal';
-
-  @override
-  Future<void> setAccessibilityFontSize(String size) =>
-      _storage.setString(PreferencesService.keyAccessibilityFontSize, size);
-
-  @override
-  Future<bool> getHighContrastEnabled() async =>
-      _storage.getBool(PreferencesService.keyHighContrast) ?? false;
-
-  @override
-  Future<void> setHighContrastEnabled(bool enabled) =>
-      _storage.setBool(PreferencesService.keyHighContrast, enabled);
-
   // ── Estado de la App ──────────────────────────────────────────────────────
 
   @override
