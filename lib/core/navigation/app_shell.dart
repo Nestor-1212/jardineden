@@ -35,6 +35,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jardindeleden/core/navigation/app_routes.dart';
 import 'package:jardindeleden/core/theme/design_tokens.dart';
+import 'package:jardindeleden/shared/extensions/localization_extensions.dart';
 
 /// Scaffold persistente del shell de navegación principal.
 ///
@@ -54,26 +55,26 @@ class AppShell extends StatelessWidget {
       bottomNavigationBar: NavigationBar(
         selectedIndex: _indexForLocation(location),
         onDestinationSelected: (index) => _onTabTapped(context, index),
-        destinations: const [
+        destinations: [
           NavigationDestination(
-            icon: Icon(AppIcons.home),
-            label: 'Inicio',
+            icon: const Icon(AppIcons.home),
+            label: context.l10n.navHome,
           ),
           NavigationDestination(
-            icon: Icon(AppIcons.worlds),
-            label: 'Mundos',
+            icon: const Icon(AppIcons.worlds),
+            label: context.l10n.navWorlds,
           ),
           NavigationDestination(
-            icon: Icon(AppIcons.missions),
-            label: 'Misiones',
+            icon: const Icon(AppIcons.missions),
+            label: context.l10n.navMissions,
           ),
           NavigationDestination(
-            icon: Icon(AppIcons.pet),
-            label: 'Lumi',
+            icon: const Icon(AppIcons.pet),
+            label: context.l10n.navPet,
           ),
           NavigationDestination(
-            icon: Icon(AppIcons.settings),
-            label: 'Ajustes',
+            icon: const Icon(AppIcons.settings),
+            label: context.l10n.navSettings,
           ),
         ],
       ),
