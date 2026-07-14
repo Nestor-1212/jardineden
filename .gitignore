@@ -1,0 +1,87 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+/coverage/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+# ── JARDÍN DEL EDÉN — Reglas específicas del proyecto ──
+
+# Variables de ambiente (nunca commitear)
+.env
+.env.*
+!.env.example
+
+# Archivos de configuración local de Android (contiene rutas locales del SDK)
+android/local.properties
+
+# Archivos generados por flutter gen-l10n
+lib/l10n/generated/
+
+# Archivos generados por build_runner (Drift, Riverpod, etc.)
+# NOTA: Los archivos .g.dart se regeneran con: flutter pub run build_runner build
+**/*.g.dart
+**/*.freezed.dart
+**/*.gen.dart
+
+# Archivos de coverage de tests
+coverage/
+lcov.info
+
+# Archivos de log internos (generados en runtime)
+*.log.gz
+
+# Claves y certificados de firma (NUNCA en el repositorio)
+*.jks
+*.keystore
+*.p12
+*.p8
+*.mobileprovision
+google-services.json
+GoogleService-Info.plist
+
+# Exports temporales generados por la app
+exports/
+
+# Cache de assets descargados (se regeneran en el dispositivo)
+# Solo aplica si se llegara a tener un directorio de cache local de desarrollo
+.asset_cache/

@@ -1,0 +1,59 @@
+{
+  "@@locale": "es",
+  "@@last_modified": "2026-07-12",
+
+  "appTitle": "Jardín del Edén",
+  "@appTitle": {
+    "description": "Nombre completo de la aplicación mostrado en el sistema."
+  },
+
+  "appSubtitle": "Videojuego educativo bíblico",
+  "@appSubtitle": {
+    "description": "Subtítulo de la aplicación en pantallas de presentación."
+  },
+
+  "loading": "Cargando...",
+  "@loading": {
+    "description": "Texto genérico de carga mientras el sistema inicializa."
+  },
+
+  "errorGeneric": "Algo salió mal. Por favor intenta de nuevo.",
+  "@errorGeneric": {
+    "description": "Mensaje de error genérico para el usuario final."
+  },
+
+  "errorNoConnection": "Sin conexión a internet.",
+  "@errorNoConnection": {
+    "description": "Error de red. Aunque la app es Offline First, algunas features futuras requieren red."
+  },
+
+  "buttonContinue": "Continuar",
+  "@buttonContinue": {
+    "description": "Texto del botón de acción primaria para continuar."
+  },
+
+  "buttonCancel": "Cancelar",
+  "@buttonCancel": {
+    "description": "Texto del botón para cancelar una acción."
+  },
+
+  "buttonRetry": "Reintentar",
+  "@buttonRetry": {
+    "description": "Texto del botón para reintentar una operación fallida."
+  },
+
+  "buttonBack": "Regresar",
+  "@buttonBack": {
+    "description": "Texto del botón para navegar hacia atrás."
+  },
+
+  "buttonClose": "Cerrar",
+  "@buttonClose": {
+    "description": "Texto del botón para cerrar un modal o diálogo."
+  },
+
+  "accessibilityLoading": "Cargando contenido, por favor espera",
+  "@accessibilityLoading": {
+    "description": "Descripción de accesibilidad para indicadores de carga (TalkBack/VoiceOver)."
+  }
+}

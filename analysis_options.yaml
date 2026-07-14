@@ -1,0 +1,103 @@
+﻿# ============================================================
+# JARDÍN DEL EDÉN — Configuración de Análisis Estático
+# ============================================================
+# Extiende las reglas oficiales de Flutter y agrega reglas
+# adicionales que garantizan la calidad del código en un
+# proyecto de escala empresarial mantenido durante 10+ años.
+#
+# REGLA DE ORO: flutter analyze debe pasar con 0 warnings
+# en la rama principal. Cualquier PR que introduzca warnings
+# es rechazado automáticamente por el pipeline de CI/CD.
+# ============================================================
+
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  # custom_lint: Motor para ejecutar riverpod_lint y futuros plugins de lint.
+  # Detecta errores de Riverpod en tiempo de análisis (no en runtime).
+  plugins:
+    - custom_lint
+
+  # Habilitar el modo de análisis de tipos fuerte.
+  # Obliga a que todas las variables tengan tipos explícitos
+  # o puedan ser inferidos de forma no ambigua.
+  language:
+    strict-casts: true
+    strict-inference: true
+    strict-raw-types: true
+
+  # Elevar warnings a errores para las categorías más críticas.
+  errors:
+    # Un import sin usar es un warning que se vuelve error.
+    # Mantiene el código limpio de imports fantasma.
+    unused_import: error
+    # Un campo, variable o parámetro sin usar es error.
+    unused_element: error
+    # Tipo 'dead code' (código inalcanzable) es error.
+    dead_code: error
+    # Uso de tipo deprecated es warning (no error, para no
+    # bloquear actualizaciones graduales de dependencias).
+    deprecated_member_use: warning
+
+  exclude:
+    # Los archivos generados automáticamente por build_runner,
+    # flutter gen-l10n, y Drift no deben analizarse.
+    # Se agregan en el sprint donde se instalan las dependencias.
+    - '**/*.g.dart'
+    - '**/*.freezed.dart'
+    - '**/*.gen.dart'
+    - 'lib/l10n/app_localizations*.dart'
+
+linter:
+  rules:
+    # ── PROHIBICIONES ABSOLUTAS ──────────────────────────
+    # print() no existe en el proyecto. Todo va al LoggingService.
+    avoid_print: true
+
+    # dynamic no tiene lugar en código de producción.
+    # Usa tipos específicos o genéricos.
+    avoid_dynamic_calls: true
+
+    # Nunca usar Object? cuando se puede ser más específico.
+    avoid_returning_null_for_void: true
+
+    # ── IMPORTS ─────────────────────────────────────────
+    # Todos los imports usan el formato package: sin paths relativos.
+    # Garantiza consistencia independientemente de desde dónde se importe.
+    always_use_package_imports: true
+
+    # ── CONST Y FINAL ───────────────────────────────────
+    # Maximizar el uso de const para que Flutter optimice el árbol de widgets.
+    prefer_const_constructors: true
+    prefer_const_constructors_in_immutables: true
+    prefer_const_declarations: true
+    prefer_const_literals_to_create_immutables: true
+
+    # Variables que no se reasignan son final.
+    prefer_final_locals: true
+    prefer_final_fields: true
+
+    # ── STRINGS ─────────────────────────────────────────
+    prefer_single_quotes: true
+
+    # ── TIPOS ───────────────────────────────────────────
+    # Usar el tipo correcto, no el supertipo más genérico.
+    avoid_types_as_parameter_names: true
+
+    # ── COLECCIONES ─────────────────────────────────────
+    prefer_collection_literals: true
+    prefer_is_empty: true
+    prefer_is_not_empty: true
+
+    # ── FUNCIONES ───────────────────────────────────────
+    avoid_redundant_argument_values: true
+
+    # ── WIDGETS FLUTTER ─────────────────────────────────
+    # Un widget con muchos parámetros posicionales es difícil de leer.
+    always_put_required_named_parameters_first: true
+
+
+    # ── NULLSAFETY ──────────────────────────────────────
+    unnecessary_null_checks: true
+    prefer_null_aware_operators: true
+

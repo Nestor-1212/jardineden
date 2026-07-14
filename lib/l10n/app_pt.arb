@@ -1,0 +1,16 @@
+{
+  "@@locale": "pt",
+  "@@last_modified": "2026-07-12",
+
+  "appTitle": "Jardim do Éden",
+  "appSubtitle": "Jogo educativo bíblico",
+  "loading": "Carregando...",
+  "errorGeneric": "Algo deu errado. Por favor, tente novamente.",
+  "errorNoConnection": "Sem conexão com a internet.",
+  "buttonContinue": "Continuar",
+  "buttonCancel": "Cancelar",
+  "buttonRetry": "Tentar novamente",
+  "buttonBack": "Voltar",
+  "buttonClose": "Fechar",
+  "accessibilityLoading": "Carregando conteúdo, por favor aguarde"
+}

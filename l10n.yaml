@@ -1,0 +1,39 @@
+# ============================================================
+# JARDÍN DEL EDÉN — Configuración de Internacionalización
+# ============================================================
+# Este archivo configura el generador oficial de Flutter para
+# localización (flutter gen-l10n).
+#
+# Se ejecuta automáticamente con: flutter pub get
+# porque pubspec.yaml tiene: flutter: generate: true
+#
+# SALIDA: lib/l10n/generated/ (excluida del análisis estático)
+# CLASE GENERADA: AppLocalizations
+# USO EN WIDGETS: AppLocalizations.of(context)!.appTitle
+# ============================================================
+
+# Directorio donde viven los archivos .arb (fuente de verdad)
+arb-dir: lib/l10n
+
+# Nombre del archivo de salida principal
+output-localization-file: app_localizations.dart
+
+# Directorio de salida de los archivos generados
+output-dir: lib/l10n/generated
+
+# Clase principal generada
+output-class: AppLocalizations
+
+# Idioma fuente de verdad (todos los textos nuevos van aquí primero)
+template-arb-file: app_es.arb
+
+# Idiomas soportados en orden de prioridad
+# es: Español (primario — lanzamiento inicial)
+# en: Inglés (Año 4 del roadmap)
+# pt: Portugués (Año 4 del roadmap)
+
+# Genera salida nullable-safe
+nullable-getter: false
+
+# Usar sintaxis preferida de ICU para plurales y géneros
+use-deferred-loading: false

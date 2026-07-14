@@ -1,0 +1,327 @@
+name: jardindeleden
+description: Videojuego educativo cristiano bíblico para niños de 4 a 12 años.
+publish_to: 'none'
+
+# Versión semántica: MAJOR.MINOR.PATCH+BUILD
+# MAJOR: cambios de arquitectura incompatibles
+# MINOR: nueva feature completa (incrementa por sprint)
+# PATCH: correcciones de bugs
+# BUILD: número incremental gestionado por CI/CD
+version: 0.1.0+1
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ENVIRONMENT
+# Dart SDK: >= 3.11.5 (Dart 3.x — required for sealed classes, patterns)
+# Flutter:  >= 3.41.9 (current stable at project start)
+# <4.0.0 previene adopción accidental de breaking changes de Dart 4.
+# ─────────────────────────────────────────────────────────────────────────────
+environment:
+  sdk: '>=3.11.5 <4.0.0'
+  flutter: '>=3.41.9'
+
+# ─────────────────────────────────────────────────────────────────────────────
+# DEPENDENCIAS DE PRODUCCIÓN
+# Regla: solo lo que el APK/IPA final necesita en runtime.
+# Orden: SDK → State/Nav → DB → Storage → Security → Media → Utils
+# ─────────────────────────────────────────────────────────────────────────────
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # flutter_localizations: Sistema oficial de internacionalización de Flutter.
+  # Requerido junto con 'generate: true' para el pipeline de l10n con archivos .arb.
+  flutter_localizations:
+    sdk: flutter
+
+  # ── State Management & Dependency Injection ──────────────────────────────
+  #
+  # flutter_riverpod: Reemplaza a Provider, GetIt, BLoC y MobX en un solo
+  # sistema. Gestiona estado reactivo + inyección de dependencias sin
+  # BuildContext. AsyncValue<T> para loading/data/error sin boilerplate.
+  # Versión 2.x: soporte para Dart 3 sealed classes y patterns.
+  flutter_riverpod: ^2.6.1
+
+  # riverpod_annotation: Anotaciones (@riverpod, @Riverpod) usadas por
+  # riverpod_generator para generar providers type-safe en compile time.
+  # Debe ser compatible con riverpod_generator (mismo ecosistema 2.x).
+  riverpod_annotation: ^2.3.5
+
+  # ── Navigation ───────────────────────────────────────────────────────────
+  #
+  # go_router: Router declarativo OFICIAL de Flutter (flutter.dev publisher).
+  # ShellRoute para bottom nav persistente. Guards redirect para auth.
+  # Deep links nativos. GoRouteData para parámetros tipados.
+  go_router: ^14.8.1
+
+  # ── Database ─────────────────────────────────────────────────────────────
+  #
+  # drift: ORM sobre SQLite con type-safety total en compile time.
+  # Queries validadas por el compilador. Streams reactivos nativos.
+  # Migraciones con rollback. Testing con NativeDatabase.memory().
+  drift: ^2.22.1
+
+  # sqlite3: Bindings Dart para SQLite/SQLCipher. Usado por Drift
+  # a través de NativeDatabase (API moderna, reemplaza drift_sqflite).
+  sqlite3: ^2.5.4
+
+  # sqlcipher_flutter_libs: Provee la biblioteca nativa SQLCipher (AES-256)
+  # para Android e iOS. REEMPLAZA COMPLETAMENTE a sqlite3_flutter_libs.
+  # NO incluir ambas — conflicto de símbolos en la compilación nativa.
+  # La clave de cifrado se inyecta via: PRAGMA key='<key>'
+  sqlcipher_flutter_libs: 0.7.0+eol
+
+  # ── Storage ──────────────────────────────────────────────────────────────
+  #
+  # shared_preferences: Key-value storage oficial (flutter.dev publisher).
+  # Para preferencias del jugador: idioma, volumen, perfil activo, flags.
+  # No usar para secretos ni para datos estructurados con relaciones.
+  shared_preferences: ^2.3.4
+
+  # flutter_secure_storage: Almacenamiento cifrado usando APIs nativas del OS.
+  # iOS: Keychain. Android: Keystore + EncryptedSharedPreferences.
+  # Usado para: clave AES-256 de la DB y hash bcrypt del PIN parental.
+  flutter_secure_storage: ^9.2.4
+
+  # path_provider: Rutas del sistema de archivos portables entre plataformas.
+  # Requerido para obtener applicationDocumentsDirectory donde vive la DB.
+  path_provider: ^2.1.5
+
+  # ── Security / Cryptography ──────────────────────────────────────────────
+  #
+  # crypto: Librería criptográfica OFICIAL del equipo de Dart (dart.dev).
+  # Usada para SHA-256 en la verificación de integridad de assets descargados.
+  # No usar para hashing de contraseñas (para eso está bcrypt más abajo).
+  crypto: ^3.0.6
+
+  # bcrypt: Implementación pure Dart del algoritmo bcrypt para hashing del PIN.
+  # bcrypt(cost=12) tarda ~300ms por hash — lento por diseño para prevenir
+  # ataques de fuerza bruta. El salt se incluye automáticamente en el hash.
+  bcrypt: ^1.1.3
+
+  # ── Audio ─────────────────────────────────────────────────────────────────
+  #
+  # just_audio: Reproducción de audio completa: música ambiental (.ogg),
+  # efectos de sonido, playlists, looping, pitch/speed control.
+  # Soporta mixing de múltiples streams (música + SFX simultáneos).
+  just_audio: ^0.9.42
+
+  # audio_session: Companion obligatorio de just_audio para producción.
+  # Gestiona la sesión de audio del OS: pausar al recibir llamadas,
+  # comportamiento al desconectar auriculares, audio ducking con otras apps.
+  # Sin él la experiencia de audio es incorrecta en iOS y Android.
+  audio_session: ^0.1.21
+
+  # ── Animations ───────────────────────────────────────────────────────────
+  #
+  # lottie: Renderiza animaciones Lottie (.json exportadas de After Effects).
+  # Para: celebraciones de logros, loading del jardín, efectos de monedas.
+  # Los .json pesan 90% menos que GIF equivalente con mayor calidad.
+  # Nota Spine: SDK oficial de Spine requiere licencia comercial.
+  # Se integrará en el sprint de personajes cuando la licencia esté activa.
+  lottie: ^3.3.1
+
+  # ── Utilities ────────────────────────────────────────────────────────────
+  #
+  # uuid: Generación de UUID v4 (device IDs) y UUID v7 (registros del usuario).
+  # UUID v7 es el formato estándar del proyecto para todos los registros
+  # generados en cliente — son ordenables cronológicamente.
+  uuid: ^4.5.1
+
+  # intl: Formateo de fechas, números y plurales adaptado al idioma activo.
+  # Dependencia directa porque se usa DateFormat/NumberFormat en el código.
+  # Ya es transitiva de flutter_localizations; declararla aquí es explícito.
+  intl: ^0.20.2
+
+  # collection: Utilidades de colecciones del equipo de Dart (dart.dev).
+  # Provee: groupBy, SplayTreeMap, ListEquality, firstWhereOrNull.
+  # Usada en: agrupación de misiones, ranking, análisis de progreso diario.
+  collection: ^1.19.1
+
+# ─────────────────────────────────────────────────────────────────────────────
+# DEPENDENCIAS DE DESARROLLO
+# Solo para build time, code generation, testing y tooling.
+# NO se incluyen en el APK/IPA de producción.
+# ─────────────────────────────────────────────────────────────────────────────
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # flutter_lints: Reglas oficiales de lint de Flutter (extendidas en
+  # analysis_options.yaml con reglas adicionales del proyecto).
+  flutter_lints: ^6.0.0
+
+  # ── Code Generation ───────────────────────────────────────────────────────
+  #
+  # build_runner: Orquestador de generación de código. Ejecuta todos los
+  # builders en el orden correcto.
+  # Uso: dart run build_runner build --delete-conflicting-outputs
+  # Uso (watch): dart run build_runner watch --delete-conflicting-outputs
+  build_runner: ^2.4.14
+
+  # riverpod_generator: Genera el código de providers a partir de @riverpod.
+  # Debe ser compatible con riverpod_annotation (mismo ecosistema 2.x).
+  riverpod_generator: ^2.4.3
+
+  # drift_dev: Genera el código de Drift (DAOs, companions, queries) a partir
+  # de las definiciones de tablas. DEBE ser la misma versión que drift.
+  drift_dev: ^2.22.1
+
+  # ── Linting ───────────────────────────────────────────────────────────────
+  #
+  # custom_lint: Motor de plugins de lint. Requerido para que riverpod_lint
+  # funcione. Agrega 'custom_lint' a la sección plugins de analysis_options.
+  custom_lint: ^0.7.4
+
+  # riverpod_lint: Detecta errores comunes de Riverpod en tiempo de desarrollo:
+  # providers no observados, uso incorrecto de ref.listen, dependencias
+  # circulares, providers que deberían ser autodispose o final.
+  riverpod_lint: ^2.3.13
+
+  # ── Testing ───────────────────────────────────────────────────────────────
+  #
+  # mocktail: Mocks sin generación de código. Permite mockear IAuthRepository
+  # en tests de use cases sin necesidad de una DB real.
+  # Ventaja sobre mockito: no requiere build_runner adicional.
+  mocktail: ^1.0.4
+
+  # ── Asset Generation ──────────────────────────────────────────────────────
+  #
+  # flutter_launcher_icons: Genera los iconos de la app en todos los tamaños
+  # (Android densities + adaptive icons, iOS App Icon Set) desde una imagen.
+  # Uso: dart run flutter_launcher_icons
+  # Configuración: ver sección flutter_launcher_icons al final de este archivo.
+  flutter_launcher_icons: ^0.14.3
+
+  # flutter_native_splash: Genera el splash screen nativo (antes de que
+  # Flutter cargue) para evitar la pantalla blanca al iniciar la app.
+  # Uso: dart run flutter_native_splash:create
+  # Configuración: ver sección flutter_native_splash al final de este archivo.
+  flutter_native_splash: ^2.4.3
+
+# ─────────────────────────────────────────────────────────────────────────────
+# CONFIGURACIÓN FLUTTER
+# ─────────────────────────────────────────────────────────────────────────────
+flutter:
+  uses-material-design: true
+
+  # GENERACIÓN DE LOCALIZACIÓN
+  # Activa el pipeline oficial: archivos .arb → clases Dart type-safe.
+  # Los archivos generados viven en lib/l10n/generated/ (excluidos de git).
+  generate: true
+
+  # ── FUENTES ───────────────────────────────────────────────────────────────
+  # Fredoka: familia de botones, contadores HUD, UI del juego.
+  # Nunito: cuerpo de texto, versículos bíblicos, narrativa.
+  #
+  # INSTRUCCIÓN PARA EL EQUIPO:
+  # 1. Descargar desde Google Fonts:
+  #    - Fredoka: fonts.google.com/specimen/Fredoka
+  #    - Nunito:  fonts.google.com/specimen/Nunito
+  # 2. Extraer los .ttf en assets/core/fonts/fredoka/ y /nunito/
+  # 3. Descomentar las líneas siguientes
+  #
+  # fonts:
+  #   - family: Fredoka
+  #     fonts:
+  #       - asset: assets/core/fonts/fredoka/Fredoka-Regular.ttf
+  #         weight: 400
+  #       - asset: assets/core/fonts/fredoka/Fredoka-Medium.ttf
+  #         weight: 500
+  #       - asset: assets/core/fonts/fredoka/Fredoka-SemiBold.ttf
+  #         weight: 600
+  #       - asset: assets/core/fonts/fredoka/Fredoka-Bold.ttf
+  #         weight: 700
+  #
+  #   - family: Nunito
+  #     fonts:
+  #       - asset: assets/core/fonts/nunito/Nunito-Regular.ttf
+  #         weight: 400
+  #       - asset: assets/core/fonts/nunito/Nunito-Italic.ttf
+  #         weight: 400
+  #         style: italic
+  #       - asset: assets/core/fonts/nunito/Nunito-SemiBold.ttf
+  #         weight: 600
+  #       - asset: assets/core/fonts/nunito/Nunito-SemiBoldItalic.ttf
+  #         weight: 600
+  #         style: italic
+  #       - asset: assets/core/fonts/nunito/Nunito-Bold.ttf
+  #         weight: 700
+  #       - asset: assets/core/fonts/nunito/Nunito-BoldItalic.ttf
+  #         weight: 700
+  #         style: italic
+
+  # ── ASSETS ────────────────────────────────────────────────────────────────
+  # REGLA: Flutter falla si se declara un directorio vacío (sin archivos .dart
+  # o de contenido — los .gitkeep son ignorados por el asset bundler).
+  #
+  # Los assets se activan POR SPRINT a medida que se crean los archivos reales.
+  # La estructura de directorios ya existe en el repo (Sprint 02).
+  #
+  # SPRINT DE PANTALLAS (Login, Splash, Profiles):
+  # assets:
+  #   - assets/core/images/logos/
+  #   - assets/core/images/backgrounds/
+  #   - assets/core/images/ui/
+  #
+  # SPRINT DE AUDIO:
+  #   - assets/core/audio/music/main_menu/
+  #   - assets/core/audio/sfx/
+  #
+  # SPRINT DE UI Y ANIMACIONES:
+  #   - assets/core/animations/lottie/
+  #
+  # SPRINT DE MUNDOS (por mundo):
+  #   - assets/worlds/world_001/images/
+  #   - assets/worlds/world_001/audio/es/
+  #   - assets/worlds/world_001/audio/en/
+  #   - assets/worlds/world_001/audio/pt/
+  #
+  # SPRINT DE PERSONAJES (por personaje):
+  #   - assets/characters/lumi/
+  #   - assets/characters/tobias/
+  #   - assets/characters/noah/
+  #   - assets/characters/adam/
+  #   - assets/characters/eve/
+  #   - assets/characters/abraham/
+  #   - assets/characters/moses/
+  #   - assets/characters/david/
+  #   - assets/characters/esther/
+  #   - assets/characters/daniel/
+  #   - assets/characters/jonah/
+  #   - assets/characters/jesus/
+  #   - assets/characters/peter/
+  #   - assets/characters/paul/
+
+# ─────────────────────────────────────────────────────────────────────────────
+# CONFIGURACIÓN flutter_launcher_icons
+# Activar cuando assets/core/images/logos/logo_icon.webp exista.
+# Uso: dart run flutter_launcher_icons
+# ─────────────────────────────────────────────────────────────────────────────
+# flutter_launcher_icons:
+#   android: 'launcher_icon'
+#   ios: true
+#   image_path: 'assets/core/images/logos/logo_icon.webp'
+#   min_sdk_android: 21
+#   remove_alpha_ios: true
+#   # Adaptive icon (Android 8.0+)
+#   adaptive_icon_background: '#1B4332'
+#   adaptive_icon_foreground: 'assets/core/images/logos/logo_icon_adaptive_fg.webp'
+#   # Web (preparado pero no prioritario)
+#   web:
+#     generate: false
+
+# ─────────────────────────────────────────────────────────────────────────────
+# CONFIGURACIÓN flutter_native_splash
+# Activar cuando assets/core/images/logos/logo_full.webp exista.
+# Uso: dart run flutter_native_splash:create
+# ─────────────────────────────────────────────────────────────────────────────
+# flutter_native_splash:
+#   color: '#1B4332'
+#   image: 'assets/core/images/logos/logo_full.webp'
+#   android_12:
+#     color: '#1B4332'
+#     icon_background_color: '#1B4332'
+#     image: 'assets/core/images/logos/logo_icon.webp'
+#   fullscreen: true
+#   android: true
+#   ios: true

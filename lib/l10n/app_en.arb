@@ -1,0 +1,16 @@
+{
+  "@@locale": "en",
+  "@@last_modified": "2026-07-12",
+
+  "appTitle": "Garden of Eden",
+  "appSubtitle": "Biblical educational game",
+  "loading": "Loading...",
+  "errorGeneric": "Something went wrong. Please try again.",
+  "errorNoConnection": "No internet connection.",
+  "buttonContinue": "Continue",
+  "buttonCancel": "Cancel",
+  "buttonRetry": "Retry",
+  "buttonBack": "Back",
+  "buttonClose": "Close",
+  "accessibilityLoading": "Loading content, please wait"
+}
