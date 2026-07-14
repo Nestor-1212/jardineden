@@ -158,9 +158,26 @@ dependencies:
   # lottie: Renderiza animaciones Lottie (.json exportadas de After Effects).
   # Para: celebraciones de logros, loading del jardín, efectos de monedas.
   # Los .json pesan 90% menos que GIF equivalente con mayor calidad.
-  # Nota Spine: SDK oficial de Spine requiere licencia comercial.
-  # Se integrará en el sprint de personajes cuando la licencia esté activa.
   lottie: ^3.3.1
+
+  # rive: Animaciones interactivas en tiempo real (state machines) — la
+  # alternativa GRATUITA a Spine para animación esquelética de personajes.
+  # Nota Spine: el SDK oficial de Spine requiere licencia comercial que el
+  # proyecto todavía no adquirió — las carpetas assets/characters/*/animations/spine/
+  # quedan reservadas para cuando esa licencia se active, pero Rive es el
+  # formato PRIMARIO para animación de personajes mientras tanto (Lumi,
+  # expresiones, idle loops) porque no bloquea el desarrollo con un costo.
+  rive: ^0.13.20
+
+  # ── Vector Graphics ────────────────────────────────────────────────────────
+  #
+  # flutter_svg: Renderiza íconos/ilustraciones vectoriales (.svg). Reemplaza
+  # gradualmente los Material Icons marcados como PLACEHOLDER en AppIcons
+  # (core/theme/app_icons.dart) — monedas, rarezas, expresiones de Lumi —
+  # por vectores propios del Design System, sin depender de un ícono
+  # genérico de terceros. Vectorial: se ve nítido en cualquier densidad de
+  # pantalla sin generar múltiples resoluciones como un PNG.
+  flutter_svg: ^2.0.10
 
   # ── Utilities ────────────────────────────────────────────────────────────
   #
@@ -262,6 +279,15 @@ flutter:
   # 2. Extraer los .ttf en assets/core/fonts/fredoka/ y /nunito/
   # 3. Descomentar las líneas siguientes
   #
+  # NOTA sobre assets/core/fonts/noto_sans/: Noto Sans es la familia de
+  # Google con la cobertura Unicode más amplia del ecosistema (acentos,
+  # símbolos, y escrituras que Fredoka/Nunito no cubren). Se reserva como
+  # FALLBACK — no una familia que el equipo de diseño elija a mano, sino la
+  # red de seguridad para que texto de una traducción futura (Año 4:
+  # inglés, portugués, y lo que se agregue después) nunca muestre un
+  # glifo faltante ("tofu box"). Ver AppTextStyles.fontFamilyFallback en
+  # core/theme/app_text_styles.dart.
+  #
   # fonts:
   #   - family: Fredoka
   #     fonts:
@@ -291,13 +317,44 @@ flutter:
   #       - asset: assets/core/fonts/nunito/Nunito-BoldItalic.ttf
   #         weight: 700
   #         style: italic
+  #
+  #   - family: NotoSans
+  #     fonts:
+  #       - asset: assets/core/fonts/noto_sans/NotoSans-Regular.ttf
+  #         weight: 400
+  #       - asset: assets/core/fonts/noto_sans/NotoSans-Bold.ttf
+  #         weight: 700
 
   # ── ASSETS ────────────────────────────────────────────────────────────────
   # REGLA: Flutter falla si se declara un directorio vacío (sin archivos .dart
   # o de contenido — los .gitkeep son ignorados por el asset bundler).
   #
   # Los assets se activan POR SPRINT a medida que se crean los archivos reales.
-  # La estructura de directorios ya existe en el repo (Sprint 02).
+  # La estructura de directorios ya existe en el repo (Sprint de Assets —
+  # ver también lib/shared/constants/asset_paths.dart, la fuente de verdad
+  # en código de cada path).
+  #
+  # ORGANIZACIÓN (misma forma en core/, worlds/*, characters/*):
+  #   images/                 → .webp (fotos/ilustraciones estáticas)
+  #   icons/svg/              → .svg  (íconos vectoriales — reemplazan
+  #                             gradualmente los placeholders de Material
+  #                             Icons documentados en core/theme/app_icons.dart)
+  #   audio/ambient/          → .ogg  (música — SIN carpeta de idioma:
+  #                             la música no tiene palabras)
+  #   audio/sfx/              → .ogg  (efectos de sonido — sin idioma)
+  #   audio/narration/{es,en,pt}/ → .ogg (narración hablada — CON idioma,
+  #                             es lo único de audio que de verdad lo necesita)
+  #   animations/lottie/      → .json (animaciones vectoriales 2D — UI,
+  #                             celebraciones, loading)
+  #   animations/rive/        → .riv  (animación interactiva con state
+  #                             machines — personajes, formato PRIMARIO
+  #                             mientras Spine espera licencia)
+  #   animations/spine/       → .skel/.atlas (RESERVADO — requiere licencia
+  #                             comercial no adquirida todavía, ver nota en
+  #                             la sección Animations de dependencies)
+  #   videos/                 → RESERVADO, sin paquete todavía (Año futuro
+  #                             del roadmap — cuando se necesite, agregar
+  #                             video_player y activar aquí, no antes)
   #
   # SPRINT DE PANTALLAS (Login, Splash, Profiles):
   # assets:
@@ -305,20 +362,29 @@ flutter:
   #   - assets/core/images/backgrounds/
   #   - assets/core/images/ui/
   #
+  # SPRINT DE ÍCONOS VECTORIALES:
+  #   - assets/core/icons/svg/
+  #
   # SPRINT DE AUDIO:
   #   - assets/core/audio/music/main_menu/
   #   - assets/core/audio/sfx/
   #
   # SPRINT DE UI Y ANIMACIONES:
   #   - assets/core/animations/lottie/
+  #   - assets/core/animations/rive/
   #
-  # SPRINT DE MUNDOS (por mundo):
+  # SPRINT DE MUNDOS (por mundo — mismo patrón world_001..world_010):
   #   - assets/worlds/world_001/images/
-  #   - assets/worlds/world_001/audio/es/
-  #   - assets/worlds/world_001/audio/en/
-  #   - assets/worlds/world_001/audio/pt/
+  #   - assets/worlds/world_001/audio/ambient/
+  #   - assets/worlds/world_001/audio/sfx/
+  #   - assets/worlds/world_001/audio/narration/es/
+  #   - assets/worlds/world_001/audio/narration/en/
+  #   - assets/worlds/world_001/audio/narration/pt/
+  #   - assets/worlds/world_001/animations/lottie/
+  #   - assets/worlds/world_001/animations/rive/
   #
-  # SPRINT DE PERSONAJES (por personaje):
+  # SPRINT DE PERSONAJES (por personaje — images/ + animations/rive/;
+  # animations/spine/ queda fuera de esta lista hasta tener licencia):
   #   - assets/characters/lumi/
   #   - assets/characters/tobias/
   #   - assets/characters/noah/

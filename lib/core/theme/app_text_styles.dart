@@ -43,6 +43,19 @@ abstract final class AppTextStyles {
   /// Más legible para lectura extendida.
   static const String _fontNunito = 'Nunito';
 
+  /// Fuente de respaldo (fallback) — Noto Sans, la familia de Google con
+  /// mayor cobertura Unicode del ecosistema. NO es una fuente que se elija
+  /// para un texto en particular; se agrega a `fontFamilyFallback` para que
+  /// un glifo que Fredoka/Nunito no incluyan (acentos poco comunes, símbolos)
+  /// no se muestre como un "tofu box" en las traducciones de en/pt (Año 4
+  /// del roadmap) ni en las que se agreguen después. Ver
+  /// AssetPaths y la nota en pubspec.yaml (sección fonts).
+  static const String _fontNotoSansFallback = 'NotoSans';
+
+  /// Lista de fallback para mezclar en cualquier [TextStyle] del proyecto:
+  /// `AppTextStyles.body.copyWith(fontFamilyFallback: AppTextStyles.fontFamilyFallback)`.
+  static const List<String> fontFamilyFallback = [_fontNotoSansFallback];
+
   // ── Display (Títulos de Pantalla Especial) ────────────────────────────────
 
   /// Para pantallas de celebración, títulos de mundos, splash screens.
