@@ -1,0 +1,17 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// ios/Flutter/Production.xcconfig
+//
+// Configuración de compilación para el flavor "production" en iOS. Ver
+// ios/Flutter/Development.xcconfig para las instrucciones completas de
+// integración manual en Xcode.
+//
+// Scheme de Xcode a crear: "production" (debe coincidir con
+// `--flavor production`). Sin sufijo de bundle id — es el único que se
+// publica en el App Store, debe coincidir con AppConfig.packageName para
+// AppEnvironment.prod ('com.jardindeleden.app').
+// ─────────────────────────────────────────────────────────────────────────────
+
+#include "Generated.xcconfig"
+
+PRODUCT_BUNDLE_IDENTIFIER = com.jardindeleden.app
+PRODUCT_NAME = Jardín del Edén

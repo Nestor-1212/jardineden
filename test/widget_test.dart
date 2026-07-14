@@ -11,7 +11,7 @@
 //   └── helpers/        ← Fakes, fixtures, mocks reutilizables
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:jardindeleden/main.dart';
+import 'package:jardindeleden/bootstrap.dart';
 
 void main() {
   group('JardinDelEdenApp', () {

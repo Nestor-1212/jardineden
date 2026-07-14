@@ -1,0 +1,32 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// ios/Flutter/Development.xcconfig
+//
+// Configuración de compilación para el flavor "development" en iOS —
+// contraparte del flavor "development" de Android (ver
+// android/app/build.gradle.kts) y de AppEnvironment.dev (ver
+// core/config/app_environment.dart).
+//
+// ⚠️ ESTE ARCHIVO POR SÍ SOLO NO ACTIVA NADA EN XCODE — falta un paso
+// manual que solo se puede hacer con Xcode abierto (editar el .pbxproj a
+// mano/por script es frágil y puede corromper el proyecto). Pasos para
+// completar la integración (una sola vez, se versiona con git después):
+//
+//   1. Abrir ios/Runner.xcworkspace en Xcode.
+//   2. Runner (proyecto) → seleccionar el target "Runner" → pestaña Info.
+//   3. En "Configurations", duplicar "Debug" → nombrarla "Debug-development"
+//      y asignarle este archivo (Development.xcconfig) en vez de Debug.xcconfig.
+//   4. Duplicar "Release" → "Release-development", mismo archivo.
+//   5. Product → Scheme → Manage Schemes → duplicar el scheme "Runner" →
+//      nombrarlo exactamente "development" (debe coincidir con
+//      `--flavor development` de Flutter) → en Run usar "Debug-development",
+//      en Archive usar "Release-development".
+//   6. Repetir para QA.xcconfig, Staging.xcconfig, Production.xcconfig.
+//
+// Una vez hecho esto para los 4 ambientes, correr:
+//   flutter run --flavor development -t lib/main_development.dart --dart-define=ENV=dev
+// ─────────────────────────────────────────────────────────────────────────────
+
+#include "Generated.xcconfig"
+
+PRODUCT_BUNDLE_IDENTIFIER = com.jardindeleden.app.dev
+PRODUCT_NAME = Jardín del Edén Dev

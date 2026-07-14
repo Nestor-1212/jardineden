@@ -1,0 +1,55 @@
+{
+  // Configuraciones de ejecución/depuración para los 4 ambientes del
+  // proyecto — ver core/config/app_environment.dart y bootstrap.dart.
+  // Cada una empareja: entry point (program) + flavor nativo (--flavor) +
+  // AppEnvironment (--dart-define=ENV=...). Elegir desde el panel "Run and
+  // Debug" de VSCode en vez de escribir el comando a mano evita el error
+  // más común de este tipo de setup: correr un flavor con el ENV de otro.
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Development",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_development.dart",
+      "args": ["--flavor", "development", "--dart-define=ENV=dev"]
+    },
+    {
+      "name": "QA",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_qa.dart",
+      "args": ["--flavor", "qa", "--dart-define=ENV=qa"]
+    },
+    {
+      "name": "Staging",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_staging.dart",
+      "args": ["--flavor", "staging", "--dart-define=ENV=staging"]
+    },
+    {
+      "name": "Production",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_production.dart",
+      "args": ["--flavor", "production", "--dart-define=ENV=prod"]
+    },
+    {
+      "name": "Development (Profile)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile",
+      "program": "lib/main_development.dart",
+      "args": ["--flavor", "development", "--dart-define=ENV=dev"]
+    },
+    {
+      "name": "Production (Release)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release",
+      "program": "lib/main_production.dart",
+      "args": ["--flavor", "production", "--dart-define=ENV=prod"]
+    }
+  ]
+}

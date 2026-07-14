@@ -29,8 +29,16 @@ abstract final class AppConfig {
   /// Nombre de la aplicación mostrado al sistema operativo.
   static const String appName = 'Jardín del Edén';
 
-  /// Identificador único del paquete en las tiendas de aplicaciones.
-  static const String packageName = 'com.jardindeleden.app';
+  /// Identificador único del paquete — incluye el sufijo de flavor nativo
+  /// (ver android/app/build.gradle.kts) para que coincida exactamente con
+  /// el applicationId real de cada instalación. Solo producción no lleva
+  /// sufijo — es el único id que se publica en las tiendas.
+  static String get packageName => switch (environment) {
+        AppEnvironment.dev => 'com.jardindeleden.app.dev',
+        AppEnvironment.qa => 'com.jardindeleden.app.qa',
+        AppEnvironment.staging => 'com.jardindeleden.app.staging',
+        AppEnvironment.prod => 'com.jardindeleden.app',
+      };
 
   // ── Ambiente Activo ───────────────────────────────────────────────────────
 
@@ -58,9 +66,10 @@ abstract final class AppConfig {
   // ── Logging ───────────────────────────────────────────────────────────────
 
   /// Nivel mínimo de log que se registra.
-  /// dev: verbose | staging: debug | prod: info
+  /// dev: verbose | qa/staging: debug | prod: info
   static String get minimumLogLevel => switch (environment) {
         AppEnvironment.dev => 'verbose',
+        AppEnvironment.qa => 'debug',
         AppEnvironment.staging => 'debug',
         AppEnvironment.prod => 'info',
       };
@@ -68,9 +77,16 @@ abstract final class AppConfig {
   // ── Sistema 44 (Repetición Espaciada) ────────────────────────────────────
 
   /// Factor de aceleración del tiempo para el Sistema 44.
-  /// dev: 1440 (1 min = 1 día) | staging: 24 (1h = 1d) | prod: 1 (tiempo real)
+  /// dev: 1440 (1 min = 1 día) | qa: 120 (12 min = 1 día) |
+  /// staging: 24 (1h = 1d) | prod: 1 (tiempo real)
+  ///
+  /// QA queda a propósito ENTRE dev y staging: necesita probar varios
+  /// ciclos de repetición espaciada en una sesión de prueba (más rápido que
+  /// staging), pero sin ser tan instantáneo como dev, que dificultaría
+  /// notar bugs de timing que sí aparecerían con staging/producción.
   static int get sistema44TimeAccelerationFactor => switch (environment) {
         AppEnvironment.dev => 1440,
+        AppEnvironment.qa => 120,
         AppEnvironment.staging => 24,
         AppEnvironment.prod => 1,
       };
@@ -84,9 +100,15 @@ abstract final class AppConfig {
   // ── Feature Flags ─────────────────────────────────────────────────────────
 
   /// Habilita las herramientas de debugging visual en la UI.
-  /// Solo disponible en dev.
-  static bool get debugOverlayEnabled => environment == AppEnvironment.dev;
+  /// Disponible en dev Y qa — el equipo de QA necesita ver el mismo
+  /// overlay de diagnóstico para reportar bugs con contexto (estado
+  /// interno, valores de AppConfig activos). Nunca en staging/prod.
+  static bool get debugOverlayEnabled =>
+      environment == AppEnvironment.dev || environment == AppEnvironment.qa;
 
   /// Habilita el botón de "Reset completo" en la pantalla de desarrollo.
-  static bool get devResetButtonEnabled => environment == AppEnvironment.dev;
+  /// Igual que [debugOverlayEnabled]: QA necesita reiniciar datos de
+  /// prueba entre corridas tan seguido como un desarrollador.
+  static bool get devResetButtonEnabled =>
+      environment == AppEnvironment.dev || environment == AppEnvironment.qa;
 }

@@ -1,0 +1,15 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// ios/Flutter/QA.xcconfig
+//
+// Configuración de compilación para el flavor "qa" en iOS. Ver
+// ios/Flutter/Development.xcconfig para las instrucciones completas de
+// integración manual en Xcode (los 4 ambientes siguen el mismo patrón,
+// documentado una sola vez ahí para no repetirlo 4 veces).
+//
+// Scheme de Xcode a crear: "qa" (debe coincidir con `--flavor qa`).
+// ─────────────────────────────────────────────────────────────────────────────
+
+#include "Generated.xcconfig"
+
+PRODUCT_BUNDLE_IDENTIFIER = com.jardindeleden.app.qa
+PRODUCT_NAME = Jardín del Edén QA

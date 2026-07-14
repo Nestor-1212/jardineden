@@ -1,0 +1,14 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// ios/Flutter/Staging.xcconfig
+//
+// Configuración de compilación para el flavor "staging" en iOS. Ver
+// ios/Flutter/Development.xcconfig para las instrucciones completas de
+// integración manual en Xcode.
+//
+// Scheme de Xcode a crear: "staging" (debe coincidir con `--flavor staging`).
+// ─────────────────────────────────────────────────────────────────────────────
+
+#include "Generated.xcconfig"
+
+PRODUCT_BUNDLE_IDENTIFIER = com.jardindeleden.app.staging
+PRODUCT_NAME = Jardín del Edén Staging
